@@ -1,0 +1,8 @@
+app-admin/setools
+sys-apps/checkpolicy
+sys-apps/policycoreutils
+sys-apps/selinux-python
+sys-libs/libselinux
+sys-libs/libsemanage
+sys-libs/libsepol
+sys-process/audit

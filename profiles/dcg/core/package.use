@@ -1,0 +1,9 @@
+app-admin/sudo ldap sssd
+# app-crypt/mit-krb5 openldap
+dev-libs/cyrus-sasl kerberos
+net-dns/bind gssapi
+net-fs/samba winbind
+net-nds/openldap sasl experimental minimal
+sys-auth/pambase pam_krb5 securetty sssd
+sys-auth/sssd nfsv4 passkey python samba
+sys-fs/cryptsetup passwdqc ssh

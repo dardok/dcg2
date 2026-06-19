@@ -1,0 +1,4 @@
+net-libs/ngtcp2 gnutls
+sys-apps/systemd boot cryptsetup curl pkcs11 secureboot tpm ukify
+sys-fs/lvm2 lvm
+net-libs/nghttp2 xml
