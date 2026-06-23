@@ -1,0 +1,15 @@
+#
+# /etc
+#
+/etc/pdns(/.*)?				gen_context(system_u:object_r:pdns_conf_t,s0)
+
+#
+# /usr
+#
+/usr/bin/pdns_control		--	gen_context(system_u:object_r:pdns_control_exec_t,s0)
+/usr/bin/pdns_server		--	gen_context(system_u:object_r:pdns_exec_t,s0)
+
+#
+# /var
+#
+/var/lib/pdns(/.*)?				gen_context(system_u:object_r:pdns_var_lib_t,s0)

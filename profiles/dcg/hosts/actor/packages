@@ -1,3 +1,4 @@
 *sys-kernel/gentoo-kernel-bin
-*net-dns/pdns
+*sec-policy/selinux-init
+*sec-policy/selinux-pdns
 *net-misc/kea
