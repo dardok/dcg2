@@ -52,6 +52,7 @@ require {
 	type systemd_resolved_t;
 	type systemd_tmpfiles_t;
 	type systemd_userdbd_t;
+	type systemd_user_runtime_t;
 	type tmpfs_t;
 	type tracefs_t;
 	type udev_t;
@@ -158,6 +159,7 @@ allow sysadm_systemd_t self:capability2 { bpf perfmon };
 #============= sysadm_t ==============
 allow sysadm_t node_t:tcp_socket { node_bind };
 allow sysadm_t portage_sandbox_t:process { noatsecure rlimitinh siginh transition };
+allow sysadm_t systemd_user_runtime_t:dir watch;
 
 #============= syslogd_t ==============
 allow syslogd_t cgroup_t:file { getattr open read };

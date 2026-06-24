@@ -7,7 +7,9 @@
 # /usr
 #
 /usr/bin/pdns_control		--	gen_context(system_u:object_r:pdns_control_exec_t,s0)
-/usr/bin/pdns_server		--	gen_context(system_u:object_r:pdns_exec_t,s0)
+/usr/sbin/pdns_server		--	gen_context(system_u:object_r:pdns_exec_t,s0)
+/usr/bin/rec_control		--	gen_context(system_u:object_r:pdns_control_exec_t,s0)
+/usr/sbin/pdns_recursor		--	gen_context(system_u:object_r:pdns_exec_t,s0)
 
 #
 # /var
