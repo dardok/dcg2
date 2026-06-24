@@ -1,0 +1,203 @@
+module custom 1.0;
+
+require {
+	type auditd_etc_t;
+	type auditd_log_t;
+	type bin_t;
+	type cgroup_t;
+	type debugfs_t;
+	type device_t;
+	type devpts_t;
+	type dosfs_t;
+	type file_context_t;
+	type fs_t;
+	type getty_t;
+	type hugetlbfs_t;
+	type init_runtime_t;
+	type init_t;
+	type initrc_t;
+	type kernel_t;
+	type loadkeys_t;
+	type local_login_t;
+	type lvm_t;
+	type mount_runtime_t;
+	type node_t;
+	type nsfs_t;
+	type ntpd_t;
+	type portage_conf_t;
+	type portage_fetch_t;
+	type portage_sandbox_t;
+	type portage_t;
+	type postgresql_runtime_t;
+	type proc_t;
+	type pstore_t;
+	type restorecond_exec_t;
+	type security_t;
+	type selinux_config_t;
+	type semanage_store_t;
+	type semanage_t;
+	type shadow_t;
+	type ssh_home_t;
+	type sshd_t;
+	type staff_sudo_t;
+	type staff_t;
+	type sysadm_systemd_t;
+	type sysadm_t;
+	type syslogd_t;
+	type systemd_generator_t;
+	type systemd_logind_t;
+	type systemd_networkd_t;
+	type systemd_nsresourced_t;
+	type systemd_pcrphase_t;
+	type systemd_resolved_t;
+	type systemd_tmpfiles_t;
+	type systemd_userdbd_t;
+	type tmpfs_t;
+	type tracefs_t;
+	type udev_t;
+	type unlabeled_t;
+	type user_runtime_t;
+	type usr_t;
+	type var_log_t;
+	type var_t;
+
+	class blk_file { getattr ioctl open read };
+	class capability { dac_read_search mknod net_admin sys_resource };
+	class capability2 { bpf perfmon };
+	class dir { add_name create getattr open read relabelfrom relabelto remove_name search watch write };
+	class fd { use };
+	class file { execute getattr map open read relabelfrom relabelto write };
+	class filesystem { associate getattr };
+	class io_uring { allowed };
+	class lnk_file { getattr read };
+	class netlink_audit_socket { create };
+	class netlink_kobject_uevent_socket { getattr read write };
+	class process { noatsecure rlimitinh siginh transition };
+	class sem { associate read unix_read unix_write write };
+	class sock_file { create unlink write };
+	class tcp_socket { node_bind };
+	class udp_socket { node_bind };
+	class unix_stream_socket { connectto read write };
+}
+
+#============= getty_t ==============
+allow getty_t tmpfs_t:dir { getattr open read search };
+
+#============= loadkeys_t ==============
+allow loadkeys_t init_t:unix_stream_socket { read write };
+
+#============= local_login_t ==============
+allow local_login_t init_runtime_t:sock_file { write };
+allow local_login_t systemd_logind_t:unix_stream_socket { connectto };
+
+#============= lvm_t ==============
+allow lvm_t initrc_t:sem { associate read unix_read unix_write write };
+
+#============= ntpd_t ==============
+allow ntpd_t cgroup_t:file { getattr open read };
+
+#============= portage_fetch_t ==============
+allow portage_fetch_t var_t:dir { write };
+
+#============= portage_sandbox_t ==============
+allow portage_sandbox_t cgroup_t:filesystem { getattr };
+allow portage_sandbox_t debugfs_t:filesystem { getattr };
+allow portage_sandbox_t device_t:filesystem { getattr };
+allow portage_sandbox_t hugetlbfs_t:filesystem { getattr };
+allow portage_sandbox_t proc_t:filesystem { getattr };
+allow portage_sandbox_t pstore_t:filesystem { getattr };
+allow portage_sandbox_t self:io_uring { allowed };
+allow portage_sandbox_t shadow_t:file { getattr };
+allow portage_sandbox_t sysadm_t:fd { use };
+allow portage_sandbox_t tracefs_t:filesystem { getattr };
+
+#============= portage_t ==============
+allow portage_t node_t:tcp_socket { node_bind };
+allow portage_t node_t:udp_socket { node_bind };
+allow portage_t portage_conf_t:dir { watch };
+allow portage_t postgresql_runtime_t:dir { relabelfrom };
+allow portage_t proc_t:filesystem { associate getattr };
+allow portage_t self:netlink_audit_socket { create };
+allow portage_t user_runtime_t:dir { watch };
+
+#============= semanage_t ==============
+allow semanage_t cgroup_t:filesystem { getattr };
+allow semanage_t debugfs_t:filesystem { getattr };
+allow semanage_t device_t:filesystem { getattr };
+allow semanage_t devpts_t:filesystem { getattr };
+allow semanage_t file_context_t:file { relabelfrom relabelto };
+allow semanage_t fs_t:filesystem { getattr };
+allow semanage_t hugetlbfs_t:filesystem { getattr };
+allow semanage_t pstore_t:filesystem { getattr };
+allow semanage_t selinux_config_t:file { relabelfrom relabelto };
+allow semanage_t semanage_store_t:dir { relabelfrom relabelto };
+allow semanage_t semanage_store_t:file { relabelfrom relabelto };
+allow semanage_t tmpfs_t:dir { search };
+allow semanage_t tmpfs_t:filesystem { getattr };
+allow semanage_t tracefs_t:filesystem { getattr };
+allow semanage_t var_log_t:dir { search };
+
+#============= sshd_t ==============
+allow sshd_t ssh_home_t:dir { add_name remove_name write };
+allow sshd_t ssh_home_t:sock_file { create unlink };
+allow sshd_t systemd_logind_t:unix_stream_socket { connectto };
+
+#============= staff_sudo_t ==============
+allow staff_sudo_t init_runtime_t:sock_file { write };
+allow staff_sudo_t systemd_logind_t:unix_stream_socket { connectto };
+allow staff_sudo_t usr_t:file { open read };
+
+#============= staff_t ==============
+allow staff_t init_runtime_t:sock_file { write };
+
+#============= sysadm_systemd_t ==============
+allow sysadm_systemd_t restorecond_exec_t:file { execute };
+allow sysadm_systemd_t self:capability { mknod };
+allow sysadm_systemd_t self:capability2 { bpf perfmon };
+
+#============= sysadm_t ==============
+allow sysadm_t node_t:tcp_socket { node_bind };
+allow sysadm_t portage_sandbox_t:process { noatsecure rlimitinh siginh transition };
+
+#============= syslogd_t ==============
+allow syslogd_t cgroup_t:file { getattr open read };
+allow syslogd_t tmpfs_t:dir { search };
+
+#============= systemd_generator_t ==============
+allow systemd_generator_t self:capability { dac_read_search };
+allow systemd_generator_t tmpfs_t:dir { read };
+
+#============= systemd_networkd_t ==============
+allow systemd_networkd_t mount_runtime_t:dir { search };
+allow systemd_networkd_t mount_runtime_t:file { getattr open read };
+
+#============= systemd_nsresourced_t ==============
+allow systemd_nsresourced_t cgroup_t:file { getattr open read };
+allow systemd_nsresourced_t fs_t:filesystem { getattr };
+allow systemd_nsresourced_t self:capability2 { perfmon };
+
+#============= systemd_pcrphase_t ==============
+allow systemd_pcrphase_t dosfs_t:dir { getattr search };
+allow systemd_pcrphase_t dosfs_t:file { getattr open read };
+allow systemd_pcrphase_t dosfs_t:filesystem { getattr };
+allow systemd_pcrphase_t init_runtime_t:dir { create };
+allow systemd_pcrphase_t nsfs_t:file { getattr };
+allow systemd_pcrphase_t self:capability { dac_read_search };
+allow systemd_pcrphase_t tmpfs_t:dir { open read search };
+allow systemd_pcrphase_t tmpfs_t:file { getattr open read };
+allow systemd_pcrphase_t unlabeled_t:dir { search };
+
+#============= systemd_resolved_t ==============
+allow systemd_resolved_t cgroup_t:file { getattr open read };
+allow systemd_resolved_t systemd_networkd_t:unix_stream_socket { connectto };
+
+#============= systemd_tmpfiles_t ==============
+allow systemd_tmpfiles_t bin_t:lnk_file { getattr read };
+allow systemd_tmpfiles_t security_t:lnk_file { getattr read };
+
+#============= systemd_userdbd_t ==============
+allow systemd_userdbd_t cgroup_t:file { getattr open read };
+
+#============= udev_t ==============
+allow udev_t kernel_t:netlink_kobject_uevent_socket { getattr read write };
+allow udev_t tmpfs_t:file { getattr read write };
