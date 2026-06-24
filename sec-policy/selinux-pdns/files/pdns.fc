@@ -1,7 +1,7 @@
 #
 # /etc
 #
-/etc/pdns(/.*)?				gen_context(system_u:object_r:pdns_conf_t,s0)
+/etc/powerdns(/.*)?				gen_context(system_u:object_r:pdns_conf_t,s0)
 
 #
 # /usr
