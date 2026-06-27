@@ -1,7 +1,6 @@
 *app-admin/ansible
 *app-admin/awscli
 *app-admin/helm
-*app-admin/keepassxc
 *app-admin/sudo
 *app-admin/sysstat
 *app-admin/terraform
