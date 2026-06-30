@@ -32,9 +32,7 @@
 *app-emulation/virt-firmware
 *app-emulation/virt-manager
 *app-emulation/virt-viewer
-*app-forensics/lynis
 *app-laptop/laptop-mode-tools
-*app-misc/brightnessctl
 *app-misc/cliphist
 *app-misc/dateutils
 *app-misc/dragon
@@ -55,7 +53,6 @@
 *app-shells/fzf
 *app-shells/liquidprompt
 *app-shells/powerline
-*app-text/xmlformat
 *app-vim/pathogen
 *app-vim/wayland-clipboard
 *dev-db/spatialite
@@ -78,7 +75,6 @@
 *dev-python/pyserial
 *dev-util/nvidia-cuda-toolkit
 *dev-util/rpmdevtools
-*dev-util/rustup
 *dev-util/shellcheck-bin
 *dev-util/vulkan-tools
 *dev-util/yamllint
