@@ -661,7 +661,7 @@ CREATE OR REPLACE FUNCTION proc_host_groups_insert() RETURNS trigger AS $$
 DECLARE
     v_class_name text := 'host_group_' || new.name;
     v_class_id integer;
-    v_opt_name text := 'dcg-boot-default';
+    v_boot_default_opt_name text := 'dcg-boot-default';
 BEGIN
     PERFORM audit_dhcp4_client_class(
         'insert',
@@ -681,7 +681,7 @@ BEGIN
             NULL::int,
             NULL::bigint,
             NULL,
-            ARRAY[v_opt_name || ' ' || new.boot_default]::text[]
+            ARRAY[v_boot_default_opt_name || ' ' || new.boot_default]::text[]
         );
     END IF;
 
@@ -694,7 +694,7 @@ CREATE OR REPLACE FUNCTION proc_host_groups_update() RETURNS trigger AS $$
 DECLARE
     v_old_class_name text := 'host_group_' || old.name;
     v_new_class_name text := 'host_group_' || new.name;
-    v_opt_name text := 'dcg-boot-default';
+    v_boot_default_opt_name text := 'dcg-boot-default';
 BEGIN
     PERFORM audit_dhcp4_client_class(
         'update',
@@ -726,8 +726,8 @@ BEGIN
             v_new_class_name,
             NULL::int,
             NULL::bigint,
-            CASE WHEN old.boot_default IS NULL THEN NULL ELSE ARRAY[v_opt_name || ' ' || old.boot_default]::text[] END,
-            CASE WHEN new.boot_default IS NULL THEN NULL ELSE ARRAY[v_opt_name || ' ' || new.boot_default]::text[] END
+            CASE WHEN old.boot_default IS NULL THEN NULL ELSE ARRAY[v_boot_default_opt_name || ' ' || old.boot_default]::text[] END,
+            CASE WHEN new.boot_default IS NULL THEN NULL ELSE ARRAY[v_boot_default_opt_name || ' ' || new.boot_default]::text[] END
         );
     END IF;
 
@@ -739,7 +739,7 @@ CREATE TRIGGER host_groups_update AFTER UPDATE ON host_groups FOR EACH ROW EXECU
 CREATE OR REPLACE FUNCTION proc_host_groups_delete() RETURNS trigger AS $$
 DECLARE
     v_old_class_name text := 'host_group_' || old.name;
-    v_opt_name text := 'dcg-boot-default';
+    v_boot_default_opt_name text := 'dcg-boot-default';
 BEGIN
     PERFORM audit_dhcp4_client_class(
         'delete',
@@ -752,7 +752,7 @@ BEGIN
             v_old_class_name,
             NULL::int,
             NULL::bigint,
-            ARRAY[v_opt_name || ' ' || old.boot_default]::text[],
+            ARRAY[v_boot_default_opt_name || ' ' || old.boot_default]::text[],
             NULL
         );
     END IF;
@@ -845,8 +845,8 @@ BEGIN
             NULL::text,
             new.mgmt_device_id,
             NULL::bigint,
-            ARRAY[v_boot_default_opt_name || ' ' || old.boot_default]::text[],
-            ARRAY[v_boot_default_opt_name || ' ' || new.boot_default]::text[]
+            CASE WHEN old.boot_default IS NULL THEN NULL ELSE ARRAY[v_boot_default_opt_name || ' ' || old.boot_default]::text[] END,
+            CASE WHEN new.boot_default IS NULL THEN NULL ELSE ARRAY[v_boot_default_opt_name || ' ' || new.boot_default]::text[] END
         );
     END IF;
 
