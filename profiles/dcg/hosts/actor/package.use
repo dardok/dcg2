@@ -1,3 +1,4 @@
+mail-mta/postgres postgres
 dev-db/postgresql ldap python uuid xml
 net-dns/pdns geoip ldap postgres tools
 net-misc/kea postgres shell

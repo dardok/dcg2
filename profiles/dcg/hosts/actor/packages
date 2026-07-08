@@ -1,3 +1,4 @@
+*mail-mta/postfix
 *net-dns/pdns
 *net-dns/pdns-recursor
 *net-misc/kea
