@@ -307,8 +307,14 @@ SELECT
 FROM dns_authority WHERE type = 'SOA';
 
 CREATE OR REPLACE VIEW pdns_records AS
+WITH ranked_rows AS (
+    SELECT
+        ROW_NUMBER() OVER (ORDER BY 1) as id,
+        *
+    FROM dns_allnodes
+)
 SELECT 
-    ROW_NUMBER() OVER (ORDER BY 1) AS id,
+    id,
     (SELECT id FROM pdns_domains WHERE name = zone) AS domain_id,
     CASE
         WHEN type IN ('SOA', 'NS', 'MX') THEN zone
@@ -341,5 +347,14 @@ SELECT
     END AS prio,
     false AS disabled,
     NULL::varchar AS ordername,
-    (type IN ('NS', 'SOA')) AS auth
-FROM dns_allnodes;
+    true AS auth,
+    '(0, ' || id || ')' AS ctid
+FROM ranked_rows;
+
+CREATE OR REPLACE RULE ignore_view_insert AS
+ON INSERT TO pdns_records
+DO INSTEAD NOTHING;
+
+CREATE OR REPLACE RULE ignore_view_update AS
+ON UPDATE TO pdns_records
+DO INSTEAD NOTHING;

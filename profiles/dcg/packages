@@ -6,8 +6,10 @@
 *app-misc/tmuxp
 *app-portage/gentoolkit
 *dev-vcs/git
+*net-misc/socat
 *sys-apps/ethtool
 *sys-apps/ipmitool
+*sys-apps/nvme-cli
 *sys-apps/restorecond
 *sys-block/parted
 *sys-boot/efibootmgr
