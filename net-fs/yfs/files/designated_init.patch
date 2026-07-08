@@ -1,0 +1,120 @@
+diff '--color=auto' -u -r -N a/src/afs/yfs_dns.c b/src/afs/yfs_dns.c
+--- a/src/afs/yfs_dns.c	2025-12-08 16:45:25.000000000 -0500
++++ b/src/afs/yfs_dns.c	2026-07-02 12:50:25.466451940 -0400
+@@ -142,12 +142,12 @@
+ 
+ static struct opr_reservation_ops yfs_dnslookup_ops =
+ {
+-    yfs_dnslookup_constructor,
+-    yfs_dnslookup_matchfunc,
+-    yfs_dnslookup_hashfunc,
+-    yfs_dnslookup_fetcher,
+-    yfs_dnslookup_validfunc,
+-    yfs_dnslookup_destructor
++    .constructor = yfs_dnslookup_constructor,
++    .match = yfs_dnslookup_matchfunc,
++    .hashval = yfs_dnslookup_hashfunc,
++    .fetch = yfs_dnslookup_fetcher,
++    .valid = yfs_dnslookup_validfunc,
++    .destructor = yfs_dnslookup_destructor
+ };
+ 
+ int
+diff '--color=auto' -u -r -N a/src/afs/yfs_volume.c b/src/afs/yfs_volume.c
+--- a/src/afs/yfs_volume.c	2025-12-08 16:45:25.000000000 -0500
++++ b/src/afs/yfs_volume.c	2026-07-02 12:52:05.383212394 -0400
+@@ -398,12 +398,12 @@
+ 
+ static struct opr_reservation_ops yfs_volname_ops =
+ {
+-    yfs_volname_constructor,
+-    yfs_volname_matchfunc,
+-    yfs_volname_hashfunc,
+-    yfs_volname_fetcher,
+-    yfs_volname_validfunc,
+-    yfs_volname_destructor
++    .constructor = yfs_volname_constructor,
++    .match = yfs_volname_matchfunc,
++    .hashval = yfs_volname_hashfunc,
++    .fetch = yfs_volname_fetcher,
++    .valid = yfs_volname_validfunc,
++    .destructor = yfs_volname_destructor
+ };
+ 
+ void
+diff '--color=auto' -u -r -N a/src/ptserver/yfs_ptcache.c b/src/ptserver/yfs_ptcache.c
+--- a/src/ptserver/yfs_ptcache.c	2025-12-08 16:45:25.000000000 -0500
++++ b/src/ptserver/yfs_ptcache.c	2026-07-02 12:54:29.635806732 -0400
+@@ -167,22 +167,22 @@
+ 
+ static struct opr_reservation_ops yfs_ptname_ops =
+ {
+-    yfs_ptname_constructor,
+-    yfs_ptname_matchfunc,
+-    yfs_ptname_hashfunc,
+-    yfs_ptcache_fetcher,
+-    yfs_ptcache_validfunc,
+-    yfs_ptcache_destructor
++    .constructor = yfs_ptname_constructor,
++    .match = yfs_ptname_matchfunc,
++    .hashval = yfs_ptname_hashfunc,
++    .fetch = yfs_ptcache_fetcher,
++    .valid = yfs_ptcache_validfunc,
++    .destructor = yfs_ptcache_destructor
+ };
+ 
+ static struct opr_reservation_ops yfs_ptid_ops =
+ {
+-    yfs_ptid_constructor,
+-    yfs_ptid_matchfunc,
+-    yfs_ptid_hashfunc,
+-    yfs_ptcache_fetcher,
+-    yfs_ptcache_validfunc,
+-    yfs_ptcache_destructor
++    .constructor = yfs_ptid_constructor,
++    .match = yfs_ptid_matchfunc,
++    .hashval = yfs_ptid_hashfunc,
++    .fetch = yfs_ptcache_fetcher,
++    .valid = yfs_ptcache_validfunc,
++    .destructor = yfs_ptcache_destructor
+ };
+ 
+ void
+diff '--color=auto' -u -r -N a/src/vlserver/yfs_vlcache.c b/src/vlserver/yfs_vlcache.c
+--- a/src/vlserver/yfs_vlcache.c	2025-12-08 16:45:25.000000000 -0500
++++ b/src/vlserver/yfs_vlcache.c	2026-07-02 12:54:10.533704087 -0400
+@@ -242,22 +242,22 @@
+ 
+ static struct opr_reservation_ops yfs_vlname_ops =
+ {
+-    yfs_vlname_constructor,
+-    yfs_vlname_matchfunc,
+-    yfs_vlname_hashfunc,
+-    yfs_vlcache_fetcher,
+-    yfs_vlcache_validfunc,
+-    yfs_vlcache_destructor
++    .constructor = yfs_vlname_constructor,
++    .match = yfs_vlname_matchfunc,
++    .hashval = yfs_vlname_hashfunc,
++    .fetch = yfs_vlcache_fetcher,
++    .valid = yfs_vlcache_validfunc,
++    .destructor = yfs_vlcache_destructor
+ };
+ 
+ static struct opr_reservation_ops yfs_vlid_ops =
+ {
+-    yfs_vlid_constructor,
+-    yfs_vlid_matchfunc,
+-    yfs_vlid_hashfunc,
+-    yfs_vlcache_fetcher,
+-    yfs_vlcache_validfunc,
+-    yfs_vlcache_destructor
++    .constructor = yfs_vlid_constructor,
++    .match = yfs_vlid_matchfunc,
++    .hashval = yfs_vlid_hashfunc,
++    .fetch = yfs_vlcache_fetcher,
++    .valid = yfs_vlcache_validfunc,
++    .destructor = yfs_vlcache_destructor
+ };
+ 
+ void
