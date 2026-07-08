@@ -15,6 +15,7 @@
 *sys-boot/efibootmgr
 *sys-kernel/dracut
 *sys-kernel/linux-firmware
+*sys-fs/btrfs-progs
 *sys-fs/dosfstools
 *sys-fs/lvm2
 *sys-fs/xfsprogs
