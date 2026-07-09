@@ -3,7 +3,7 @@ dev-db/postgresql ldap python uuid xml
 mail-mta/postfix postgres sasl
 net-dns/pdns geoip ldap postgres tools
 net-misc/kea postgres shell
-net-nds/openldap -minimal
+net-nds/openldap -minimal odbc
 sys-kernel/installkernel dracut uki ukify
 sys-firmware/ipxe secureboot uefi uefi64 undi usb
 sys-libs/timezone-data leaps-timezone
