@@ -1,5 +1,6 @@
-mail-mta/postgres postgres
+app-crypt/mit-krb5 openldap
 dev-db/postgresql ldap python uuid xml
+mail-mta/postgres postgres
 net-dns/pdns geoip ldap postgres tools
 net-misc/kea postgres shell
 sys-kernel/installkernel dracut uki ukify
