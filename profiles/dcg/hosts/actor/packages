@@ -1,3 +1,5 @@
+*dev-python/flask
+*dev-python/psycopg:2
 *mail-mta/postfix
 *net-dns/pdns
 *net-dns/pdns-recursor
