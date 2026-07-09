@@ -9,6 +9,7 @@ require {
 	type device_t;
 	type devpts_t;
 	type dosfs_t;
+    type etc_mail_t;
 	type file_context_t;
 	type fs_t;
 	type getty_t;
@@ -28,6 +29,8 @@ require {
 	type portage_fetch_t;
 	type portage_sandbox_t;
 	type portage_t;
+    type postfix_smtpd_t;
+    type postfix_spool_t;
 	type postgresql_runtime_t;
 	type proc_t;
 	type pstore_t;
@@ -203,3 +206,7 @@ allow systemd_userdbd_t cgroup_t:file { getattr open read };
 #============= udev_t ==============
 allow udev_t kernel_t:netlink_kobject_uevent_socket { getattr read write };
 allow udev_t tmpfs_t:file { getattr read write };
+
+#============= postfix_smtpd_t ==============
+allow postfix_smtpd_t etc_mail_t:file { getattr map open read };
+allow postfix_smtpd_t postfix_spool_t:sock_file write;
