@@ -2,6 +2,7 @@
 *net-dns/pdns
 *net-dns/pdns-recursor
 *net-ftp/atftp
+*net-misc/chrony
 *net-misc/kea
 *net-nds/openldap
 *sys-kernel/gentoo-kernel-bin
