@@ -7,3 +7,4 @@
 *sec-policy/selinux-dcg
 *sec-policy/selinux-pdns
 *sys-firmware/ipxe
+*www-servers/apache
