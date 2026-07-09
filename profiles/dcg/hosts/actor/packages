@@ -1,7 +1,9 @@
 *mail-mta/postfix
 *net-dns/pdns
 *net-dns/pdns-recursor
+*net-ftp/atftp
 *net-misc/kea
 *sys-kernel/gentoo-kernel-bin
 *sec-policy/selinux-dcg
 *sec-policy/selinux-pdns
+*sys-firmware/ipxe

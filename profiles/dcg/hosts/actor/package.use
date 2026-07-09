@@ -3,3 +3,4 @@ dev-db/postgresql ldap python uuid xml
 net-dns/pdns geoip ldap postgres tools
 net-misc/kea postgres shell
 sys-kernel/installkernel dracut uki ukify
+sys-firmware/ipxe secureboot uefi ueif64 undi usb
