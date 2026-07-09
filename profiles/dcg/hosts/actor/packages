@@ -3,6 +3,7 @@
 *net-dns/pdns-recursor
 *net-ftp/atftp
 *net-misc/kea
+*net-nds/openldap
 *sys-kernel/gentoo-kernel-bin
 *sec-policy/selinux-dcg
 *sec-policy/selinux-pdns
