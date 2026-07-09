@@ -1,3 +1,4 @@
+*dev-db/psqlodbc
 *dev-python/flask
 *dev-python/psycopg:2
 *mail-mta/postfix
