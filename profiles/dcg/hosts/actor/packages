@@ -8,6 +8,8 @@
 *net-misc/chrony
 *net-misc/kea
 *net-nds/openldap
+*net-fs/openafs
+*sys-apps/cracklib-words
 *sys-kernel/gentoo-kernel-bin
 *sec-policy/selinux-dcg
 *sec-policy/selinux-pdns
