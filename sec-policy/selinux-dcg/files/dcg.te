@@ -67,6 +67,7 @@ require {
 	type unlabeled_t;
 	type user_runtime_t;
 	type usr_t;
+	type var_lib_t;
 	type var_log_t;
 	type var_t;
 
@@ -91,6 +92,7 @@ require {
 
 #============= afs_bosserver_t ==============
 allow afs_bosserver_t bin_t:dir { getattr search };
+allow afs_bosserver_t var_lib_t:dir { getattr search };
 
 #============= getty_t ==============
 allow getty_t tmpfs_t:dir { getattr open read search };
