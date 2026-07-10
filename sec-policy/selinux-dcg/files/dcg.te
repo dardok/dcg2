@@ -1,6 +1,7 @@
 module dcg 1.0;
 
 require {
+	type afs_bosserver_t;
 	type auditd_etc_t;
 	type auditd_log_t;
 	type bin_t;
@@ -87,6 +88,9 @@ require {
 	class udp_socket { node_bind };
 	class unix_stream_socket { connectto read write };
 }
+
+#============= afs_bosserver_t ==============
+allow afs_bosserver_t bin_t:dir { getattr search };
 
 #============= getty_t ==============
 allow getty_t tmpfs_t:dir { getattr open read search };
