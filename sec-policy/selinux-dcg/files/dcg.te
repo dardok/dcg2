@@ -4,6 +4,7 @@ require {
 	type auditd_etc_t;
 	type auditd_log_t;
 	type bin_t;
+	type cert_t;
 	type cgroup_t;
 	type debugfs_t;
 	type device_t;
@@ -17,6 +18,7 @@ require {
 	type init_runtime_t;
 	type init_t;
 	type initrc_t;
+    type kadmind_t;
 	type kernel_t;
 	type loadkeys_t;
 	type local_login_t;
@@ -216,3 +218,6 @@ allow postfix_smtpd_t postfix_spool_t:sock_file write;
 #============= slapd_db_t ==============
 allow slapd_t slapd_db_t:file map;
 
+#============= kadmind_t ==============
+allow kadmind_t cert_t:dir search;
+allow kadmind_t cert_t:file { open read };
