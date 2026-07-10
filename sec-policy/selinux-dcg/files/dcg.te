@@ -40,6 +40,8 @@ require {
 	type semanage_store_t;
 	type semanage_t;
 	type shadow_t;
+	type slapd_t;
+	type slapd_db_t;
 	type ssh_home_t;
 	type sshd_t;
 	type staff_sudo_t;
@@ -210,3 +212,7 @@ allow udev_t tmpfs_t:file { getattr read write };
 #============= postfix_smtpd_t ==============
 allow postfix_smtpd_t etc_mail_t:file { getattr map open read };
 allow postfix_smtpd_t postfix_spool_t:sock_file write;
+
+#============= slapd_db_t ==============
+allow slapd_t slapd_db_t:file map;
+
