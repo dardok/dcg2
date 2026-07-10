@@ -220,4 +220,5 @@ allow slapd_t slapd_db_t:file map;
 
 #============= kadmind_t ==============
 allow kadmind_t cert_t:dir search;
-allow kadmind_t cert_t:file { open read };
+allow kadmind_t cert_t:file { getattr open read };
+allow kadmind_t cert_t:lnk_file { getattr read };
