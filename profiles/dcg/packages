@@ -6,13 +6,17 @@
 *app-misc/tmuxp
 *app-portage/gentoolkit
 *dev-vcs/git
+*net-misc/socat
 *sys-apps/ethtool
 *sys-apps/ipmitool
+*sys-apps/nvme-cli
 *sys-apps/restorecond
+*sys-auth/sssd
 *sys-block/parted
 *sys-boot/efibootmgr
 *sys-kernel/dracut
 *sys-kernel/linux-firmware
+*sys-fs/btrfs-progs
 *sys-fs/dosfstools
 *sys-fs/lvm2
 *sys-fs/xfsprogs
