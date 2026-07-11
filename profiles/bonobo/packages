@@ -19,7 +19,6 @@
 *app-containers/nvidia-container-toolkit
 *app-containers/podman
 *app-containers/skopeo
-*app-crypt/coolkey
 *app-crypt/efitools
 *app-crypt/intel-ipsec-mb
 *app-crypt/libsecret
