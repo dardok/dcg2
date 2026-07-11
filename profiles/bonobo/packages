@@ -61,6 +61,7 @@
 *dev-debug/valgrind
 *dev-libs/cudnn
 *dev-libs/hyprgraphics
+*dev-libs/opensc
 *dev-python/black
 *dev-python/fiona
 *dev-python/flask
@@ -73,6 +74,7 @@
 *dev-python/pyroute2
 *dev-python/pyserial
 *dev-util/nvidia-cuda-toolkit
+*dev-util/pkgdev
 *dev-util/rpmdevtools
 *dev-util/shellcheck-bin
 *dev-util/vulkan-tools
