@@ -20,6 +20,7 @@ gen_require(`
 	type kernel_t;
 	type kmod_t;
 	type krb5kdc_t;
+	type local_login_t;
 	type lvm_t;
 	type mount_t;
 	type pdns_t;
@@ -127,6 +128,10 @@ portage_compile_domain(kmod_t)
 #============= krb5kdc_t ==============
 systemd_read_machines(krb5kdc_t)
 systemd_stream_connect_resolved(krb5kdc_t)
+
+#============= local_login_t ==============
+init_search_keys(local_login_t)
+init_write_runtime_socket(local_login_t)
 
 #============= lvm_t ==============
 allow lvm_t initrc_t:sem { associate read unix_read unix_write write };
