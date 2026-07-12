@@ -7,7 +7,7 @@ POLICY_FILES="dcg.if dcg.te dcg.fc"
 
 inherit selinux-policy-2
 
-DESCRIPTION="SELinux policy for dcg"
+DESCRIPTION="Distributed Computing Group custom SELinux policy"
 
 KEYWORDS="~amd64 ~x86"
 
@@ -18,6 +18,7 @@ DEPEND+="
         sec-policy/selinux-kerberos[${SELINUX_POLICY_USEDEP}]
         sec-policy/selinux-ldap[${SELINUX_POLICY_USEDEP}]
         sec-policy/selinux-postfix[${SELINUX_POLICY_USEDEP}]
+        sec-policy/selinux-rpc[${SELINUX_POLICY_USEDEP}]
         sec-policy/selinux-sssd[${SELINUX_POLICY_USEDEP}]
         sec-policy/selinux-sudo[${SELINUX_POLICY_USEDEP}]
         sec-policy/selinux-tftp[${SELINUX_POLICY_USEDEP}]
@@ -29,6 +30,7 @@ RDEPEND+="
         sec-policy/selinux-kerberos[${SELINUX_POLICY_USEDEP}]
         sec-policy/selinux-ldap[${SELINUX_POLICY_USEDEP}]
         sec-policy/selinux-postfix[${SELINUX_POLICY_USEDEP}]
+        sec-policy/selinux-rpc[${SELINUX_POLICY_USEDEP}]
         sec-policy/selinux-sssd[${SELINUX_POLICY_USEDEP}]
         sec-policy/selinux-sudo[${SELINUX_POLICY_USEDEP}]
         sec-policy/selinux-tftp[${SELINUX_POLICY_USEDEP}]
