@@ -13,6 +13,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND+="
         sec-policy/selinux-afs[${SELINUX_POLICY_USEDEP}]
+        sec-policy/selinux-dhcp[${SELINUX_POLICY_USEDEP}]
         sec-policy/selinux-kerberos[${SELINUX_POLICY_USEDEP}]
         sec-policy/selinux-ldap[${SELINUX_POLICY_USEDEP}]
         sec-policy/selinux-postfix[${SELINUX_POLICY_USEDEP}]
@@ -21,6 +22,7 @@ DEPEND+="
 "
 RDEPEND+="
         sec-policy/selinux-afs[${SELINUX_POLICY_USEDEP}]
+        sec-policy/selinux-dhcp[${SELINUX_POLICY_USEDEP}]
         sec-policy/selinux-kerberos[${SELINUX_POLICY_USEDEP}]
         sec-policy/selinux-ldap[${SELINUX_POLICY_USEDEP}]
         sec-policy/selinux-postfix[${SELINUX_POLICY_USEDEP}]
