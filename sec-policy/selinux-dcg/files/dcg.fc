@@ -17,5 +17,5 @@
 /var/lib/openafs/db(/.*)?   --      gen_context(system_u:object_r:afs_dbdir_t,s0)
 /var/lib/openafs(/.*)?   --      gen_context(system_u:object_r:afs_dbdir_t,s0)
 
-/usr/lib/systemd/system/kea-*\.service   --      gen_context(system_u:object_r:dhcpd_unit_t)
-/usr/bin/kea-.*        --      gen_context(system_u:object_r:dhcpd_exec_t)
+/usr/lib/systemd/system/kea-*\.service   --      gen_context(system_u:object_r:dhcpd_unit_t,s0)
+/usr/bin/kea-.*        --      gen_context(system_u:object_r:dhcpd_exec_t,s0)
