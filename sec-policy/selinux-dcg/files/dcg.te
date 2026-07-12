@@ -189,7 +189,9 @@ sssd_read_config(sssd_t)
 #============= staff_sudo_t ==============
 allow staff_sudo_t systemd_logind_t:unix_stream_socket connectto;
 files_read_usr_files(staff_sudo_t)
+init_search_keys(staff_sudo_t)
 init_write_runtime_socket(staff_sudo_t)
+kernel_rw_afs_state(staff_sudo_t)
 sssd_read_config(staff_sudo_t)
 
 #============= sysadm_systemd_t ==============
@@ -254,3 +256,6 @@ fs_rw_cgroup_files(syslogd_t)
 fs_rw_cgroup_files(systemd_nsresourced_t)
 fs_rw_cgroup_files(systemd_resolved_t)
 fs_rw_cgroup_files(systemd_userdbd_t)
+
+#============= pdns_t ==============
+dontaudit pdns_t self:process { getcap setcap };
