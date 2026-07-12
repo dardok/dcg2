@@ -1,57 +1,49 @@
-module dcg 1.0;
+policy_module(dcg, 1.0)
 
-require {
+gen_require(`
 	type afs_bosserver_t;
-	type auditd_etc_t;
+	type afs_config_t;
+	type afs_dbdir_t;
+	type afs_fsserver_t;
+	type afs_ptserver_t;
+	type afs_t;
+	type afs_vlserver_t;
 	type auditd_log_t;
-	type bin_t;
-	type cert_t;
 	type cgroup_t;
-	type debugfs_t;
-	type device_t;
-	type devpts_t;
-	type dosfs_t;
-    type etc_mail_t;
-	type file_context_t;
-	type fs_t;
+	type gcc_config_t;
 	type getty_t;
-	type hugetlbfs_t;
-	type init_runtime_t;
-	type init_t;
+	type httpd_t;
 	type initrc_t;
-    type kadmind_t;
+	type kadmind_t;
 	type kernel_t;
-	type loadkeys_t;
-	type local_login_t;
+	type kmod_t;
+	type krb5kdc_t;
 	type lvm_t;
-	type mount_runtime_t;
-	type node_t;
-	type nsfs_t;
-	type ntpd_t;
+	type mount_t;
 	type portage_conf_t;
 	type portage_fetch_t;
 	type portage_sandbox_t;
+	type portage_tmp_t;
 	type portage_t;
-    type postfix_smtpd_t;
-    type postfix_spool_t;
-	type postgresql_runtime_t;
-	type proc_t;
-	type pstore_t;
+	type postfix_pickup_t;
+	type postfix_qmgr_t;
 	type restorecond_exec_t;
+	type rpcd_t;
 	type security_t;
-	type selinux_config_t;
-	type semanage_store_t;
 	type semanage_t;
-	type shadow_t;
-	type slapd_t;
 	type slapd_db_t;
+	type slapd_t;
 	type ssh_home_t;
 	type sshd_t;
+	type sssd_exec_t;
+	type sssd_public_t;
+	type sssd_t;
+	type sssd_var_lib_t;
 	type staff_sudo_t;
-	type staff_t;
 	type sysadm_systemd_t;
 	type sysadm_t;
 	type syslogd_t;
+	type system_dbusd_t;
 	type systemd_generator_t;
 	type systemd_logind_t;
 	type systemd_networkd_t;
@@ -59,172 +51,200 @@ require {
 	type systemd_pcrphase_t;
 	type systemd_resolved_t;
 	type systemd_tmpfiles_t;
-	type systemd_userdbd_t;
-	type systemd_user_runtime_t;
-	type tmpfs_t;
-	type tracefs_t;
 	type udev_t;
-	type unlabeled_t;
-	type user_runtime_t;
-	type usr_t;
-	type var_lib_t;
-	type var_log_t;
-	type var_t;
-
-	class blk_file { getattr ioctl open read };
-	class capability { dac_read_search mknod net_admin sys_resource };
-	class capability2 { bpf perfmon };
-	class dir { add_name create getattr open read relabelfrom relabelto remove_name search watch write };
-	class fd { use };
-	class file { execute getattr map open read relabelfrom relabelto write };
-	class filesystem { associate getattr };
-	class io_uring { allowed };
-	class lnk_file { getattr read };
-	class netlink_audit_socket { create };
-	class netlink_kobject_uevent_socket { getattr read write };
-	class process { noatsecure rlimitinh siginh transition };
-	class sem { associate read unix_read unix_write write };
-	class sock_file { create unlink write };
-	class tcp_socket { node_bind };
-	class udp_socket { node_bind };
-	class unix_stream_socket { connectto read write };
-}
+	type unreserved_port_t;
+')
 
 #============= afs_bosserver_t ==============
-allow afs_bosserver_t bin_t:dir { getattr search };
-allow afs_bosserver_t var_lib_t:dir { getattr search };
+manage_files_pattern(afs_bosserver_t, afs_dbdir_t, afs_dbdir_t)
+allow afs_bosserver_t unreserved_port_t:udp_socket name_bind;
+corecmd_exec_bin(afs_bosserver_t)
+corecmd_search_bin(afs_bosserver_t)
+files_search_var_lib(afs_bosserver_t)
+
+#============= afs_fsserver_t ==============
+manage_dirs_pattern(afs_fsserver_t, afs_dbdir_t, afs_dbdir_t)
+manage_files_pattern(afs_fsserver_t, afs_dbdir_t, afs_dbdir_t)
+manage_sock_files_pattern(afs_fsserver_t, afs_dbdir_t, afs_dbdir_t)
+allow afs_fsserver_t self:unix_stream_socket connectto;
+files_search_var_lib(afs_fsserver_t)
+init_rw_inherited_stream_socket(afs_fsserver_t)
+init_use_fds(afs_fsserver_t)
+sssd_search_lib(afs_fsserver_t)
+sssd_stream_connect(afs_fsserver_t)
+systemd_read_machines(afs_fsserver_t)
+systemd_stream_connect_resolved(afs_fsserver_t)
+
+#============= afs_ptserver_t ==============
+rw_files_pattern(afs_ptserver_t, afs_dbdir_t, afs_dbdir_t)
+files_search_var_lib(afs_ptserver_t)
+init_rw_inherited_stream_socket(afs_ptserver_t)
+init_use_fds(afs_ptserver_t)
+sssd_search_lib(afs_ptserver_t)
+sssd_stream_connect(afs_ptserver_t)
+systemd_read_machines(afs_ptserver_t)
+systemd_stream_connect_resolved(afs_ptserver_t)
+
+#============= afs_vlserver_t ==============
+rw_files_pattern(afs_vlserver_t, afs_dbdir_t, afs_dbdir_t)
+files_search_var_lib(afs_vlserver_t)
+init_rw_inherited_stream_socket(afs_vlserver_t)
+init_use_fds(afs_vlserver_t)
+sssd_search_lib(afs_vlserver_t)
+sssd_stream_connect(afs_vlserver_t)
+systemd_read_machines(afs_vlserver_t)
+systemd_stream_connect_resolved(afs_vlserver_t)
+
+#============= afs_t ==============
+allow afs_t afs_config_t:dir search;
+allow afs_t afs_config_t:file { getattr open read };
+allow afs_t afs_config_t:lnk_file read;
+init_search_keys(afs_t)
+
+#============= auditd_log_t ==============
+systemd_tmpfilesd_managed(auditd_log_t)
+
+#============= gcc_config_t ==============
+allow gcc_config_t self:capability dac_read_search;
 
 #============= getty_t ==============
-allow getty_t tmpfs_t:dir { getattr open read search };
+fs_list_tmpfs(getty_t)
 
-#============= loadkeys_t ==============
-allow loadkeys_t init_t:unix_stream_socket { read write };
+#============= kadmind_t ==============
+systemd_read_machines(kadmind_t)
+systemd_stream_connect_resolved(kadmind_t)
 
-#============= local_login_t ==============
-allow local_login_t init_runtime_t:sock_file { write };
-allow local_login_t systemd_logind_t:unix_stream_socket { connectto };
+#============= kmod_t ==============
+portage_compile_domain(kmod_t)
+
+#============= krb5kdc_t ==============
+systemd_read_machines(krb5kdc_t)
+systemd_stream_connect_resolved(krb5kdc_t)
 
 #============= lvm_t ==============
 allow lvm_t initrc_t:sem { associate read unix_read unix_write write };
+init_search_keys(lvm_t)
 
-#============= ntpd_t ==============
-allow ntpd_t cgroup_t:file { getattr open read };
+#============= mount_t ==============
+init_read_runtime_files(mount_t)
 
 #============= portage_fetch_t ==============
-allow portage_fetch_t var_t:dir { write };
-
-#============= portage_sandbox_t ==============
-allow portage_sandbox_t cgroup_t:filesystem { getattr };
-allow portage_sandbox_t debugfs_t:filesystem { getattr };
-allow portage_sandbox_t device_t:filesystem { getattr };
-allow portage_sandbox_t hugetlbfs_t:filesystem { getattr };
-allow portage_sandbox_t proc_t:filesystem { getattr };
-allow portage_sandbox_t pstore_t:filesystem { getattr };
-allow portage_sandbox_t self:io_uring { allowed };
-allow portage_sandbox_t shadow_t:file { getattr };
-allow portage_sandbox_t sysadm_t:fd { use };
-allow portage_sandbox_t tracefs_t:filesystem { getattr };
+init_search_units(portage_fetch_t)
+rpc_manage_nfs_rw_content(portage_fetch_t)
 
 #============= portage_t ==============
-allow portage_t node_t:tcp_socket { node_bind };
-allow portage_t node_t:udp_socket { node_bind };
-allow portage_t portage_conf_t:dir { watch };
-allow portage_t postgresql_runtime_t:dir { relabelfrom };
-allow portage_t proc_t:filesystem { associate getattr };
-allow portage_t self:netlink_audit_socket { create };
-allow portage_t user_runtime_t:dir { watch };
+allow portage_t portage_conf_t:dir watch;
+allow portage_t portage_tmp_t:chr_file { create getattr unlink };
+allow portage_t portage_tmp_t:dir watch;
+corenet_tcp_bind_generic_node(portage_t)
+corenet_udp_bind_generic_node(portage_t)
+dev_rw_lvm_control(portage_t)
+files_mmap_read_kernel_modules(portage_t)
+fs_getattr_dos_fs(portage_t)
+fs_getattr_nfs(portage_t)
+fs_getattr_nsfs_files(portage_t)
+init_search_keys(portage_t)
+kernel_get_sysvipc_info(portage_t)
+kernel_getattr_proc(portage_t)
+kernel_list_unlabeled(portage_t)
+kernel_read_unlabeled_files(portage_t)
+modutils_read_module_deps(portage_t)
+storage_raw_read_fixed_disk(portage_t)
+userdom_watch_user_runtime_dirs(portage_t)
+
+#============= rpcd_t ==============
+kernel_list_unlabeled(rpcd_t)
+
+#============= security_t ==============
+systemd_tmpfilesd_managed(security_t)
 
 #============= semanage_t ==============
-allow semanage_t cgroup_t:filesystem { getattr };
-allow semanage_t debugfs_t:filesystem { getattr };
-allow semanage_t device_t:filesystem { getattr };
-allow semanage_t devpts_t:filesystem { getattr };
-allow semanage_t file_context_t:file { relabelfrom relabelto };
-allow semanage_t fs_t:filesystem { getattr };
-allow semanage_t hugetlbfs_t:filesystem { getattr };
-allow semanage_t pstore_t:filesystem { getattr };
-allow semanage_t selinux_config_t:file { relabelfrom relabelto };
-allow semanage_t semanage_store_t:dir { relabelfrom relabelto };
-allow semanage_t semanage_store_t:file { relabelfrom relabelto };
-allow semanage_t tmpfs_t:dir { search };
-allow semanage_t tmpfs_t:filesystem { getattr };
-allow semanage_t tracefs_t:filesystem { getattr };
-allow semanage_t var_log_t:dir { search };
+allow semanage_t self:process getsched;
+
+#============= slapd_t ==============
+allow slapd_t slapd_db_t:file map;
+sasl_lock_keytab(slapd_t)
 
 #============= sshd_t ==============
-allow sshd_t ssh_home_t:dir { add_name remove_name write };
-allow sshd_t ssh_home_t:sock_file { create unlink };
-allow sshd_t systemd_logind_t:unix_stream_socket { connectto };
+allow sshd_t ssh_home_t:sock_file create;
+allow sshd_t systemd_logind_t:unix_stream_socket connectto;
+ssh_manage_home_files(sshd_t)
+
+#============= sssd_t ==============
+allow sssd_t self:process { getcap setcap setpgid };
+can_exec(sssd_t, sssd_exec_t)
+allow sssd_t sssd_var_lib_t:file map;
+files_watch_etc_dirs(sssd_t)
+files_watch_etc_files(sssd_t)
+kernel_getattr_proc(sssd_t)
+kernel_read_kernel_sysctls(sssd_t)
+sssd_read_config(sssd_t)
 
 #============= staff_sudo_t ==============
-allow staff_sudo_t init_runtime_t:sock_file { write };
-allow staff_sudo_t systemd_logind_t:unix_stream_socket { connectto };
-allow staff_sudo_t usr_t:file { open read };
-
-#============= staff_t ==============
-allow staff_t init_runtime_t:sock_file { write };
+allow staff_sudo_t systemd_logind_t:unix_stream_socket connectto;
+files_read_usr_files(staff_sudo_t)
+init_write_runtime_socket(staff_sudo_t)
+sssd_read_config(staff_sudo_t)
 
 #============= sysadm_systemd_t ==============
-allow sysadm_systemd_t restorecond_exec_t:file { execute };
-allow sysadm_systemd_t self:capability { mknod };
+allow sysadm_systemd_t restorecond_exec_t:file execute;
+allow sysadm_systemd_t self:capability mknod;
 allow sysadm_systemd_t self:capability2 { bpf perfmon };
 
 #============= sysadm_t ==============
-allow sysadm_t node_t:tcp_socket { node_bind };
-allow sysadm_t portage_sandbox_t:process { noatsecure rlimitinh siginh transition };
-allow sysadm_t systemd_user_runtime_t:dir watch;
+init_search_keys(sysadm_t)
 
 #============= syslogd_t ==============
-allow syslogd_t cgroup_t:file { getattr open read };
-allow syslogd_t tmpfs_t:dir { search };
+fs_search_tmpfs(syslogd_t)
 
 #============= systemd_generator_t ==============
-allow systemd_generator_t self:capability { dac_read_search };
-allow systemd_generator_t tmpfs_t:dir { read };
+allow systemd_generator_t self:capability dac_read_search;
+apache_search_sys_content(systemd_generator_t)
+fs_list_tmpfs(systemd_generator_t)
+rpc_read_nfs_content(systemd_generator_t)
 
 #============= systemd_networkd_t ==============
-allow systemd_networkd_t mount_runtime_t:dir { search };
-allow systemd_networkd_t mount_runtime_t:file { getattr open read };
+mount_list_runtime(systemd_networkd_t)
+mount_read_runtime_files(systemd_networkd_t)
 
 #============= systemd_nsresourced_t ==============
-allow systemd_nsresourced_t cgroup_t:file { getattr open read };
-allow systemd_nsresourced_t fs_t:filesystem { getattr };
-allow systemd_nsresourced_t self:capability2 { perfmon };
+allow systemd_nsresourced_t self:capability2 perfmon;
+fs_getattr_xattr_fs(systemd_nsresourced_t)
 
 #============= systemd_pcrphase_t ==============
-allow systemd_pcrphase_t dosfs_t:dir { getattr search };
-allow systemd_pcrphase_t dosfs_t:file { getattr open read };
-allow systemd_pcrphase_t dosfs_t:filesystem { getattr };
-allow systemd_pcrphase_t init_runtime_t:dir { create };
-allow systemd_pcrphase_t nsfs_t:file { getattr };
-allow systemd_pcrphase_t self:capability { dac_read_search };
-allow systemd_pcrphase_t tmpfs_t:dir { open read search };
-allow systemd_pcrphase_t tmpfs_t:file { getattr open read };
-allow systemd_pcrphase_t unlabeled_t:dir { search };
+allow systemd_pcrphase_t self:capability dac_read_search;
+fs_getattr_nsfs_files(systemd_pcrphase_t)
+fs_list_tmpfs(systemd_pcrphase_t)
+fs_read_dos_files(systemd_pcrphase_t)
+fs_read_tmpfs_files(systemd_pcrphase_t)
+fs_search_dos(systemd_pcrphase_t)
+init_create_runtime_dirs(systemd_pcrphase_t)
+kernel_list_unlabeled(systemd_pcrphase_t)
 
 #============= systemd_resolved_t ==============
-allow systemd_resolved_t cgroup_t:file { getattr open read };
-allow systemd_resolved_t systemd_networkd_t:unix_stream_socket { connectto };
+systemd_stream_connect_networkd(systemd_resolved_t)
 
 #============= systemd_tmpfiles_t ==============
-allow systemd_tmpfiles_t bin_t:lnk_file { getattr read };
-allow systemd_tmpfiles_t security_t:lnk_file { getattr read };
-
-#============= systemd_userdbd_t ==============
-allow systemd_userdbd_t cgroup_t:file { getattr open read };
+corecmd_search_bin(systemd_tmpfiles_t)
 
 #============= udev_t ==============
 allow udev_t kernel_t:netlink_kobject_uevent_socket { getattr read write };
-allow udev_t tmpfs_t:file { getattr read write };
+fs_rw_tmpfs_files(udev_t)
 
-#============= postfix_smtpd_t ==============
-allow postfix_smtpd_t etc_mail_t:file { getattr map open read };
-allow postfix_smtpd_t postfix_spool_t:sock_file write;
+#============= sssd_public_t:file map ==============
+dcg_sssd_read_public_files(httpd_t)
+dcg_sssd_read_public_files(portage_sandbox_t)
+dcg_sssd_read_public_files(portage_t)
+dcg_sssd_read_public_files(postfix_pickup_t)
+dcg_sssd_read_public_files(postfix_qmgr_t)
+dcg_sssd_read_public_files(slapd_t)
+dcg_sssd_read_public_files(sshd_t)
+dcg_sssd_read_public_files(sssd_t)
+dcg_sssd_read_public_files(staff_sudo_t)
+dcg_sssd_read_public_files(system_dbusd_t)
 
-#============= slapd_db_t ==============
-allow slapd_t slapd_db_t:file map;
-
-#============= kadmind_t ==============
-allow kadmind_t cert_t:dir search;
-allow kadmind_t cert_t:file { getattr open read };
-allow kadmind_t cert_t:lnk_file { getattr read };
+#============= cgroup_t ==============
+fs_rw_cgroup_files(syslogd_t)
+fs_rw_cgroup_files(systemd_nsresourced_t)
+fs_rw_cgroup_files(systemd_resolved_t)
+fs_rw_cgroup_files(systemd_userdbd_t)

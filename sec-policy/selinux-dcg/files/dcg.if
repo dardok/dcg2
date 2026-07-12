@@ -1,0 +1,21 @@
+########################################
+## <summary>
+##  Read and memory-map SSSD public files.
+## </summary>
+## <param name="domain">
+##  <summary>
+##  Domain allowed access.
+##  </summary>
+## </param>
+#
+interface(`dcg_sssd_read_public_files',`
+    gen_require(`
+        type sssd_public_t;
+    ')
+
+    # Call the standard, vendor-provided interface
+    sssd_read_public_files($1)
+
+    # Augment it with the missing mmap capability
+    allow $1 sssd_public_t:file map;
+')
