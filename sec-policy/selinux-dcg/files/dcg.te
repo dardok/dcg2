@@ -241,16 +241,16 @@ allow udev_t kernel_t:netlink_kobject_uevent_socket { getattr read write };
 fs_rw_tmpfs_files(udev_t)
 
 #============= sssd_public_t:file map ==============
-dcg_sssd_read_public_files(httpd_t)
-dcg_sssd_read_public_files(portage_sandbox_t)
-dcg_sssd_read_public_files(portage_t)
-dcg_sssd_read_public_files(postfix_pickup_t)
-dcg_sssd_read_public_files(postfix_qmgr_t)
-dcg_sssd_read_public_files(slapd_t)
-dcg_sssd_read_public_files(sshd_t)
-dcg_sssd_read_public_files(sssd_t)
-dcg_sssd_read_public_files(staff_sudo_t)
-dcg_sssd_read_public_files(system_dbusd_t)
+#dcg_sssd_read_public_files(httpd_t)
+#dcg_sssd_read_public_files(portage_sandbox_t)
+#dcg_sssd_read_public_files(portage_t)
+#dcg_sssd_read_public_files(postfix_pickup_t)
+#dcg_sssd_read_public_files(postfix_qmgr_t)
+#dcg_sssd_read_public_files(slapd_t)
+#dcg_sssd_read_public_files(sshd_t)
+#dcg_sssd_read_public_files(sssd_t)
+#dcg_sssd_read_public_files(staff_sudo_t)
+#dcg_sssd_read_public_files(system_dbusd_t)
 
 #============= cgroup_t ==============
 fs_rw_cgroup_files(syslogd_t)
