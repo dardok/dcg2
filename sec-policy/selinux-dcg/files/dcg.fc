@@ -7,7 +7,8 @@
 
 # --- Standard Services (/srv and /var) ---
 /srv/tftp(/.*)?                    gen_context(system_u:object_r:tftpdir_t,s0)
-/srv/nfs(/.*)?                    gen_context(system_u:object_r:nfsd_rw_t,s0)
+/srv/nfs/distfiles(/.*)?           <<none>>
+/srv/nfs(/.*)?                     gen_context(system_u:object_r:nfsd_rw_t,s0)
 /var/cache/binhost(/.*)?           gen_context(system_u:object_r:portage_ebuild_t,s0)
 
 # --- OpenLDAP Configurations ---
