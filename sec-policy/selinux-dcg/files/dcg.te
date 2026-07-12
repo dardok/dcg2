@@ -12,6 +12,7 @@ gen_require(`
 	type cgroup_t;
 	type gcc_config_t;
 	type getty_t;
+	type gpg_runtime_t;
 	type hi_reserved_port_t;
 	type httpd_t;
 	type initrc_t;
@@ -142,6 +143,8 @@ rpc_manage_nfs_rw_content(portage_fetch_t)
 allow portage_t portage_conf_t:dir watch;
 allow portage_t portage_tmp_t:chr_file { create getattr unlink };
 allow portage_t portage_tmp_t:dir watch;
+allow portage_t gpg_runtime_t:dir watch;
+dontaudit portage_t self:capability sys_rawio;
 corenet_tcp_bind_generic_node(portage_t)
 corenet_udp_bind_generic_node(portage_t)
 dev_rw_lvm_control(portage_t)
@@ -186,6 +189,7 @@ files_watch_etc_files(sssd_t)
 kernel_getattr_proc(sssd_t)
 kernel_read_kernel_sysctls(sssd_t)
 sssd_read_config(sssd_t)
+systemd_watch_resolved_runtime(sssd_t)
 
 #============= staff_sudo_t ==============
 allow staff_sudo_t systemd_logind_t:unix_stream_socket connectto;
@@ -241,16 +245,16 @@ allow udev_t kernel_t:netlink_kobject_uevent_socket { getattr read write };
 fs_rw_tmpfs_files(udev_t)
 
 #============= sssd_public_t:file map ==============
-#dcg_sssd_read_public_files(httpd_t)
-#dcg_sssd_read_public_files(portage_sandbox_t)
-#dcg_sssd_read_public_files(portage_t)
-#dcg_sssd_read_public_files(postfix_pickup_t)
-#dcg_sssd_read_public_files(postfix_qmgr_t)
-#dcg_sssd_read_public_files(slapd_t)
-#dcg_sssd_read_public_files(sshd_t)
-#dcg_sssd_read_public_files(sssd_t)
-#dcg_sssd_read_public_files(staff_sudo_t)
-#dcg_sssd_read_public_files(system_dbusd_t)
+dcg_sssd_read_public_files(httpd_t)
+dcg_sssd_read_public_files(portage_sandbox_t)
+dcg_sssd_read_public_files(portage_t)
+dcg_sssd_read_public_files(postfix_pickup_t)
+dcg_sssd_read_public_files(postfix_qmgr_t)
+dcg_sssd_read_public_files(slapd_t)
+dcg_sssd_read_public_files(sshd_t)
+dcg_sssd_read_public_files(sssd_t)
+dcg_sssd_read_public_files(staff_sudo_t)
+dcg_sssd_read_public_files(system_dbusd_t)
 
 #============= cgroup_t ==============
 fs_rw_cgroup_files(syslogd_t)
