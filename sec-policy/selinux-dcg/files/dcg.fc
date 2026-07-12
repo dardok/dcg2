@@ -1,6 +1,3 @@
-# --- System Configurations ---
-/etc/security/faillock\.conf   --  gen_context(system_u:object_r:etc_t,s0)
-
 # --- Service Overrides ---
 /srv/http/htdocs/snapshots(/.*)?   <<none>>
 /srv/http/git-repos(/.*)?          gen_context(system_u:object_r:httpd_git_rw_content_t,s0)
