@@ -21,6 +21,7 @@ gen_require(`
 	type krb5kdc_t;
 	type lvm_t;
 	type mount_t;
+	type pdns_t;
 	type portage_conf_t;
 	type portage_fetch_t;
 	type portage_sandbox_t;
