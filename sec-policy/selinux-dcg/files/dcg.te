@@ -12,6 +12,7 @@ gen_require(`
 	type cgroup_t;
 	type gcc_config_t;
 	type getty_t;
+	type hi_reserved_port_t;
 	type httpd_t;
 	type initrc_t;
 	type kadmind_t;
@@ -112,8 +113,11 @@ allow gcc_config_t self:capability dac_read_search;
 fs_list_tmpfs(getty_t)
 
 #============= kadmind_t ==============
+allow kadmind_t hi_reserved_port_t:tcp_socket name_bind;
 systemd_read_machines(kadmind_t)
 systemd_stream_connect_resolved(kadmind_t)
+miscfiles_read_generic_certs(kadmind_t)
+miscfiles_search_generic_cert_dirs(kadmind_t)
 
 #============= kmod_t ==============
 portage_compile_domain(kmod_t)
@@ -169,6 +173,7 @@ sasl_lock_keytab(slapd_t)
 #============= sshd_t ==============
 allow sshd_t ssh_home_t:sock_file create;
 allow sshd_t systemd_logind_t:unix_stream_socket connectto;
+init_search_keys(sshd_t)
 ssh_manage_home_files(sshd_t)
 
 #============= sssd_t ==============
