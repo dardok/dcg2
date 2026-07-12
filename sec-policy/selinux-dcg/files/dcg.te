@@ -51,6 +51,7 @@ gen_require(`
 	type systemd_pcrphase_t;
 	type systemd_resolved_t;
 	type systemd_tmpfiles_t;
+	type systemd_userdbd_t;
 	type udev_t;
 	type unreserved_port_t;
 ')
