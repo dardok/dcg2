@@ -1,21 +1,26 @@
-/etc/security/faillock.conf   --      gen_context(system_u:object_r:etc_t,s0)
+# --- System Configurations ---
+/etc/security/faillock\.conf   --  gen_context(system_u:object_r:etc_t,s0)
 
-/srv/tftp(/.*)?   --      gen_context(system_u:object_r:tftpdir_t,s0)
-/srv/nfs(/.*)?   --      gen_context(system_u:object_r:nfsd_rw_t,s0)
-/srv/http(/.*)?   --      gen_context(system_u:object_r:httpd_sys_content_t,s0)
-/srv/http/git-repos(/.*)?   --      gen_context(system_u:object_r:httpd_git_rw_content_t,s0)
+# --- Service Overrides ---
+/srv/http/git-repos(/.*)?          gen_context(system_u:object_r:httpd_git_rw_content_t,s0)
+/srv/http(/.*)?                    gen_context(system_u:object_r:httpd_sys_content_t,s0)
 
-/etc/openldap/iphost.d(/.*)?   --      gen_context(system_u:object_r:slapd_db_t,s0)
-/etc/openldap/ipnetwork.d(/.*)?   --      gen_context(system_u:object_r:slapd_db_t,s0)
-/etc/openldap/service.d(/.*)?   --      gen_context(system_u:object_r:slapd_db_t,s0)
-/etc/openldap/sudoers.d(/.*)?   --      gen_context(system_u:object_r:slapd_db_t,s0)
-/var/lib/openldap(/.*)?   --      gen_context(system_u:object_r:slapd_db_t,s0)
+# --- Standard Services (/srv and /var) ---
+/srv/tftp(/.*)?                    gen_context(system_u:object_r:tftpdir_t,s0)
+/srv/nfs(/.*)?                    gen_context(system_u:object_r:nfsd_rw_t,s0)
+/var/cache/binhost(/.*)?           gen_context(system_u:object_r:portage_ebuild_t,s0)
 
-/var/cache/binhost(/.*)?   --      gen_context(system_u:object_r:portage_ebuild_t,s0)
+# --- OpenLDAP Configurations ---
+/etc/openldap/iphost\.d(/.*)?       gen_context(system_u:object_r:slapd_db_t,s0)
+/etc/openldap/ipnetwork\.d(/.*)?    gen_context(system_u:object_r:slapd_db_t,s0)
+/etc/openldap/service\.d(/.*)?      gen_context(system_u:object_r:slapd_db_t,s0)
+/etc/openldap/sudoers\.d(/.*)?      gen_context(system_u:object_r:slapd_db_t,s0)
+/var/lib/openldap(/.*)?            gen_context(system_u:object_r:slapd_db_t,s0)
 
-/var/lib/openafs/logs(/.*)?   --      gen_context(system_u:object_r:afs_logfile_t,s0)
-/var/lib/openafs/db(/.*)?   --      gen_context(system_u:object_r:afs_dbdir_t,s0)
-/var/lib/openafs(/.*)?   --      gen_context(system_u:object_r:afs_dbdir_t,s0)
+# --- OpenAFS Configurations ---
+/var/lib/openafs/logs(/.*)?        gen_context(system_u:object_r:afs_logfile_t,s0)
+/var/lib/openafs(/.*)?             gen_context(system_u:object_r:afs_dbdir_t,s0)
 
-/usr/lib/systemd/system/kea-*\.service   --      gen_context(system_u:object_r:dhcpd_unit_t,s0)
-/usr/bin/kea-.*        --      gen_context(system_u:object_r:dhcpd_exec_t,s0)
+# --- Kea DHCP ---
+/usr/lib/systemd/system/kea-.*\.service -- gen_context(system_u:object_r:dhcpd_unit_t,s0)
+/usr/bin/kea-.*                         -- gen_context(system_u:object_r:dhcpd_exec_t,s0)
