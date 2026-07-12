@@ -257,6 +257,3 @@ fs_rw_cgroup_files(syslogd_t)
 fs_rw_cgroup_files(systemd_nsresourced_t)
 fs_rw_cgroup_files(systemd_resolved_t)
 fs_rw_cgroup_files(systemd_userdbd_t)
-
-#============= pdns_t ==============
-dontaudit pdns_t self:process { getcap setcap };
