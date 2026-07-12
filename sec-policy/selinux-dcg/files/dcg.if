@@ -1,6 +1,6 @@
 ########################################
 ## <summary>
-##  Read and memory-map SSSD public files.
+##  Don't audit attempts to memory-map SSSD public files.
 ## </summary>
 ## <param name="domain">
 ##  <summary>
@@ -17,5 +17,5 @@ interface(`dcg_sssd_read_public_files',`
     sssd_read_public_files($1)
 
     # Augment it with the missing mmap capability
-    allow $1 sssd_public_t:file map;
+    dontaudit $1 sssd_public_t:file map;
 ')
