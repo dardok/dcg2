@@ -43,6 +43,7 @@ gen_require(`
 	type sssd_public_t;
 	type sssd_t;
 	type sssd_var_lib_t;
+	type ss_t;
 	type staff_sudo_t;
 	type sysadm_systemd_t;
 	type sysadm_t;
@@ -117,6 +118,7 @@ fs_list_tmpfs(getty_t)
 
 #============= kadmind_t ==============
 allow kadmind_t hi_reserved_port_t:tcp_socket name_bind;
+corenet_tcp_bind_rsync_port(kadmind_t)
 systemd_read_machines(kadmind_t)
 systemd_stream_connect_resolved(kadmind_t)
 miscfiles_read_generic_certs(kadmind_t)
@@ -143,6 +145,9 @@ init_read_runtime_files(mount_t)
 #============= portage_fetch_t ==============
 init_search_units(portage_fetch_t)
 rpc_manage_nfs_rw_content(portage_fetch_t)
+
+#============= portage_sandbox_t ==============
+allow portage_sandbox_t self:io_uring allowed;
 
 #============= portage_t ==============
 allow portage_t portage_conf_t:dir watch;
@@ -178,6 +183,13 @@ allow semanage_t self:process getsched;
 #============= slapd_t ==============
 allow slapd_t slapd_db_t:file map;
 sasl_lock_keytab(slapd_t)
+
+#============= ss_t ==============
+domain_read_all_domains_state(ss_t)
+init_read_state(ss_t)
+kernel_read_state(ss_t)
+postfix_read_master_state(ss_t)
+rpc_read_rpcd_state(ss_t)
 
 #============= sshd_t ==============
 allow sshd_t ssh_home_t:sock_file create;
