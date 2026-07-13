@@ -62,13 +62,14 @@ gen_require(`
 ')
 
 #============= afs_bosserver_t ==============
-manage_files_pattern(afs_bosserver_t, afs_dbdir_t, afs_dbdir_t)
 allow afs_bosserver_t unreserved_port_t:udp_socket name_bind;
+manage_files_pattern(afs_bosserver_t, afs_dbdir_t, afs_dbdir_t)
 corecmd_exec_bin(afs_bosserver_t)
 corecmd_search_bin(afs_bosserver_t)
 files_search_var_lib(afs_bosserver_t)
 
 #============= afs_fsserver_t ==============
+allow afs_fsserver_t self:process signal;
 manage_dirs_pattern(afs_fsserver_t, afs_dbdir_t, afs_dbdir_t)
 manage_files_pattern(afs_fsserver_t, afs_dbdir_t, afs_dbdir_t)
 manage_sock_files_pattern(afs_fsserver_t, afs_dbdir_t, afs_dbdir_t)
@@ -82,6 +83,7 @@ systemd_read_machines(afs_fsserver_t)
 systemd_stream_connect_resolved(afs_fsserver_t)
 
 #============= afs_ptserver_t ==============
+allow afs_ptserver_t self:process signal;
 rw_files_pattern(afs_ptserver_t, afs_dbdir_t, afs_dbdir_t)
 files_search_var_lib(afs_ptserver_t)
 init_rw_inherited_stream_socket(afs_ptserver_t)
@@ -92,6 +94,7 @@ systemd_read_machines(afs_ptserver_t)
 systemd_stream_connect_resolved(afs_ptserver_t)
 
 #============= afs_vlserver_t ==============
+allow afs_vlserver_t self:process signal;
 rw_files_pattern(afs_vlserver_t, afs_dbdir_t, afs_dbdir_t)
 files_search_var_lib(afs_vlserver_t)
 init_rw_inherited_stream_socket(afs_vlserver_t)
