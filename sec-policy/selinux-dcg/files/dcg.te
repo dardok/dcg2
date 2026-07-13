@@ -253,6 +253,7 @@ allow sysadm_systemd_t self:capability2 { bpf perfmon };
 #============= sysadm_t ==============
 allow sysadm_t infiniband_device_t:chr_file map;
 allow sysadm_t self:io_uring allowed;
+files_exec_usr_files(sysadm_t)
 init_search_keys(sysadm_t)
 ldap_stream_connect(sysadm_t)
 dev_rw_infiniband(sysadm_t)
