@@ -131,6 +131,7 @@ miscfiles_search_generic_cert_dirs(kadmind_t)
 
 #============= kmod_t ==============
 portage_compile_domain(kmod_t)
+logging_write_generic_logs(kmod_t)
 
 #============= krb5kdc_t ==============
 systemd_read_machines(krb5kdc_t)
@@ -256,6 +257,8 @@ init_search_keys(sysadm_t)
 ldap_stream_connect(sysadm_t)
 dev_rw_infiniband(sysadm_t)
 dev_watch_dev_dirs(sysadm_t)
+dev_rw_generic_chr_files(sysadm_t)
+dev_rw_generic_usb_dev(sysadm_t)
 
 #============= syslogd_t ==============
 fs_search_tmpfs(syslogd_t)
@@ -298,6 +301,7 @@ init_search_keys(systemd_tmpfiles_t)
 #============= udev_t ==============
 allow udev_t kernel_t:netlink_kobject_uevent_socket { getattr read write };
 fs_rw_tmpfs_files(udev_t)
+libs_exec_lib_files(udev_t)
 
 #============= sssd_public_t:file map ==============
 dcg_sssd_read_public_files(httpd_t)
