@@ -209,10 +209,12 @@ ssh_rw_tcp_sockets(ss_t)
 systemd_rw_networkd_netlink_route_sockets(ss_t)
 
 #============= sshd_t ==============
-allow sshd_t ssh_home_t:sock_file create;
+allow sshd_t ssh_home_t:sock_file { create unlink };
 allow sshd_t systemd_logind_t:unix_stream_socket connectto;
+fs_search_nfs(sshd_t)
 init_search_keys(sshd_t)
 ssh_manage_home_files(sshd_t)
+unconfined_shell_domtrans(sshd_t)
 
 #============= sssd_t ==============
 allow sssd_t self:process { getcap setcap setpgid };
@@ -254,6 +256,7 @@ fs_list_tmpfs(systemd_generator_t)
 rpc_read_nfs_content(systemd_generator_t)
 
 #============= systemd_networkd_t ==============
+fs_rw_tmpfs_files(systemd_networkd_t)
 mount_list_runtime(systemd_networkd_t)
 mount_read_runtime_files(systemd_networkd_t)
 
