@@ -211,6 +211,7 @@ systemd_rw_networkd_netlink_route_sockets(ss_t)
 #============= sshd_t ==============
 allow sshd_t ssh_home_t:sock_file { create unlink };
 allow sshd_t systemd_logind_t:unix_stream_socket connectto;
+fs_read_nfs_symlinks(sshd_t)
 fs_search_nfs(sshd_t)
 init_search_keys(sshd_t)
 ssh_manage_home_files(sshd_t)
@@ -226,6 +227,7 @@ kernel_getattr_proc(sssd_t)
 kernel_read_kernel_sysctls(sssd_t)
 sssd_read_config(sssd_t)
 systemd_list_resolved_runtime(sssd_t)
+systemd_read_logind_runtime_files(sssd_t)
 systemd_watch_resolved_runtime(sssd_t)
 systemd_watch_resolved_runtime_dirs(sssd_t)
 
