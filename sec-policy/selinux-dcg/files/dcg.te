@@ -52,6 +52,7 @@ gen_require(`
 	type system_dbusd_t;
 	type systemd_generator_t;
 	type systemd_logind_t;
+	type systemd_modules_load_t;
 	type systemd_networkd_t;
 	type systemd_nsresourced_t;
 	type systemd_pcrphase_t;
@@ -260,6 +261,9 @@ allow systemd_generator_t self:capability dac_read_search;
 apache_search_sys_content(systemd_generator_t)
 fs_list_tmpfs(systemd_generator_t)
 rpc_read_nfs_content(systemd_generator_t)
+
+#============= systemd_modules_load_t ==============
+fs_list_tmpfs(systemd_modules_load_t)
 
 #============= systemd_networkd_t ==============
 fs_rw_tmpfs_files(systemd_networkd_t)
