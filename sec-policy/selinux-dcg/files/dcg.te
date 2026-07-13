@@ -185,11 +185,25 @@ allow slapd_t slapd_db_t:file map;
 sasl_lock_keytab(slapd_t)
 
 #============= ss_t ==============
+allow ss_t self:capability { dac_override dac_read_search sys_admin sys_ptrace };
+allow ss_t self:capability2 perfmon;
+dev_getattr_all_sockets(ss_t)
 domain_read_all_domains_state(ss_t)
+domain_getattr_all_domains(ss_t)
+init_getattr(ss_t)
 init_read_state(ss_t)
+init_rw_inherited_stream_socket(ss_t)
+init_rw_script_stream_sockets(ss_t)
+kernel_getattr_dgram_sockets(ss_t)
 kernel_read_state(ss_t)
+kernel_rw_stream_sockets(ss_t)
+logging_audit_socket_activation(ss_t)
 postfix_read_master_state(ss_t)
 rpc_read_rpcd_state(ss_t)
+rpc_tcp_rw_nfs_sockets(ss_t)
+rpc_udp_rw_nfs_sockets(ss_t)
+ssh_rw_tcp_sockets(ss_t)
+systemd_rw_networkd_netlink_route_sockets(ss_t)
 
 #============= sshd_t ==============
 allow sshd_t ssh_home_t:sock_file create;
