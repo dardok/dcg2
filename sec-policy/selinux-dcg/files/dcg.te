@@ -27,8 +27,8 @@ gen_require(`
 	type portage_conf_t;
 	type portage_fetch_t;
 	type portage_sandbox_t;
-	type portage_tmp_t;
 	type portage_t;
+	type portage_tmp_t;
 	type postfix_pickup_t;
 	type postfix_qmgr_t;
 	type restorecond_exec_t;
@@ -37,14 +37,15 @@ gen_require(`
 	type semanage_t;
 	type slapd_db_t;
 	type slapd_t;
+	type ss_t;
 	type ssh_home_t;
 	type sshd_t;
 	type sssd_exec_t;
 	type sssd_public_t;
 	type sssd_t;
 	type sssd_var_lib_t;
-	type ss_t;
 	type staff_sudo_t;
+	type staff_t;
 	type sysadm_systemd_t;
 	type sysadm_t;
 	type syslogd_t;
@@ -230,6 +231,9 @@ systemd_list_resolved_runtime(sssd_t)
 systemd_read_logind_runtime_files(sssd_t)
 systemd_watch_resolved_runtime(sssd_t)
 systemd_watch_resolved_runtime_dirs(sssd_t)
+
+#============= staff_t ==============
+init_search_keys(staff_t)
 
 #============= staff_sudo_t ==============
 allow staff_sudo_t systemd_logind_t:unix_stream_socket connectto;
