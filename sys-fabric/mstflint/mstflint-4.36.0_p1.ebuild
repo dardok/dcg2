@@ -39,8 +39,6 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/mstflint-4.29.0-build-system.patch"
-	"${FILESDIR}/mstflint-4.29.0-gcc15.patch"
 )
 
 src_prepare() {
