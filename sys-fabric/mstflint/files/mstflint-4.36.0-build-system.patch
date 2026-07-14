@@ -1,0 +1,62 @@
+diff '--color=auto' --no-dereference -u -r -N a/configure.ac b/configure.ac
+--- a/configure.ac	2026-05-13 06:51:12.000000000 -0400
++++ b/configure.ac	2026-07-14 07:53:13.278376007 -0400
+@@ -62,9 +62,6 @@
+ ]])], [OPENSSL_VERSION_VALID=yes], [OPENSSL_VERSION_VALID=no])
+ OS=$(uname -s)
+ KERNEL_VER=`uname -r | egrep -E -o '[[0-9]]+\.[[0-9]]+' | head -1`
+-OFED_VER=`ofed_info -s | egrep -E -o '[[0-9]]+\.[[0-9]]+' | head -1`
+-OFED_EXIST=`ofed_info -s`
+-OFED_NOT_EXIST="ofed_info: command not found"
+ MTCR_CONF_DIR=""
+ LDL=""
+ LDFLAGS="$LDFLAGS -lstdc++"
+diff '--color=auto' --no-dereference -u -r -N a/mtcr_ul/Makefile.am b/mtcr_ul/Makefile.am
+--- a/mtcr_ul/Makefile.am	2026-05-13 06:51:12.000000000 -0400
++++ b/mtcr_ul/Makefile.am	2026-07-14 07:55:03.705175046 -0400
+@@ -32,7 +32,8 @@
+ 
+ AM_CPPFLAGS = -I$(top_srcdir) -I$(top_srcdir)/include/mtcr_ul -I$(top_srcdir)/common -I$(top_srcdir)/dev_mgt
+ 
+-pkglib_LTLIBRARIES = libmtcr_ul.la
++noinst_LIBRARIES = libmtcr_ul.a
++noinst_LTLIBRARIES = libmtcr_ul.la
+ 
+ libmtcr_ul_la_SOURCES = mtcr_ul.c mtcr_ib.h  mtcr_int_defs.h\
+ 			mtcr_ib_res_mgt.h mtcr_ib_res_mgt.c\
+@@ -47,12 +48,15 @@
+ 			fwctrl.c fwctrl.h fwctrl_ioctl.h \
+ 			mtcr_gpu.c mtcr_gpu.h
+ libmtcr_ul_la_CFLAGS = -W -Wall -g -MP -MD -fPIC -DMTCR_API="" -DMST_UL
++libmtcr_ul_a_CFLAGS = -W -Wall -g -MP -MD -fPIC -DMTCR_API="" -DMST_UL
+ libmtcr_ul_la_DEPENDENCIES = 
+ 
+ if ENABLE_INBAND
+ libmtcr_ul_la_SOURCES += mtcr_ib_ofed.c
+ endif
+ 
++libmtcr_ul_a_SOURCES = $(libmtcr_ul_la_SOURCES)
++
+ if ENABLE_VFIO
+ libmtcr_ul_la_DEPENDENCIES += $(top_builddir)/vfio_driver_access/libvfio_access_driver.la
+ endif
+@@ -74,7 +78,3 @@
+ 
+ libraryincludedir=$(includedir)/mstflint
+ libraryinclude_HEADERS = $(top_srcdir)/include/mtcr_ul/mtcr.h  $(top_srcdir)/include/mtcr_ul/mtcr_com_defs.h  $(top_srcdir)/include/mtcr_ul/mtcr_mf.h
+-
+-install-exec-hook:
+-	rm -f $(DESTDIR)$(pkglibdir)/libmtcr_ul.so* $(DESTDIR)$(pkglibdir)/libmtcr_ul.la
+-	ln -snf mstflint/libmtcr_ul.a $(DESTDIR)$(libdir)/
+diff '--color=auto' --no-dereference -u -r -N a/resourcetools/resourcedump_lib/src/sdk/Makefile.am b/resourcetools/resourcedump_lib/src/sdk/Makefile.am
+--- a/resourcetools/resourcedump_lib/src/sdk/Makefile.am	2026-05-13 06:51:12.000000000 -0400
++++ b/resourcetools/resourcedump_lib/src/sdk/Makefile.am	2026-07-14 07:55:49.988649794 -0400
+@@ -86,7 +86,7 @@
+ 
+ # if !WIN_BUILD
+ libresource_dump_sdk.so: libresource_dump_sdk.la
+-	$(CC) -Wall -pthread -shared ${CFLAGS} ${LDFLAGS} $(COMPILER_FPIC) libresource_dump_sdk_la-resource_dump_sdk.o \
++	$(CC) -Wall -pthread -shared ${CFLAGS} ${LDFLAGS} $(COMPILER_FPIC) .libs/libresource_dump_sdk_la-resource_dump_sdk.o \
+ 	-o libresource_dump_sdk.so ${AM_LDFLAGS} $(resource_dump_sdk_so_DEPS)
+ # else
+ # libresource_dump_sdk.dll: libresource_dump_sdk.la
