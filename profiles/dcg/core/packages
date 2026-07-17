@@ -1,1 +1,4 @@
+*sys-apps/mlxup-bin
 *sys-auth/sssd
+*sys-cluster/rdma-core
+*sys-fabric/mstflint

@@ -4,6 +4,7 @@
 *app-editors/vim
 *app-misc/tmux
 *app-misc/tmuxp
+*app-portage/eix
 *app-portage/gentoolkit
 *dev-vcs/git
 *net-misc/socat
