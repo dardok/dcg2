@@ -256,6 +256,7 @@ allow sysadm_t infiniband_device_t:chr_file map;
 allow sysadm_t self:io_uring allowed;
 files_exec_usr_files(sysadm_t)
 init_search_keys(sysadm_t)
+chronyd_dgram_send(sysadm_t)
 ldap_stream_connect(sysadm_t)
 dev_rw_infiniband(sysadm_t)
 dev_watch_dev_dirs(sysadm_t)
