@@ -16,3 +16,5 @@
 *sec-policy/selinux-pdns
 *sys-firmware/ipxe
 *www-servers/apache
+
+*net-proxy/squid
