@@ -9,6 +9,7 @@ gen_require(`
 	type afs_t;
 	type afs_vlserver_t;
 	type auditd_log_t;
+	type chronyd_t;
 	type cgroup_t;
 	type gcc_config_t;
 	type getty_t;
@@ -114,6 +115,9 @@ init_search_keys(afs_t)
 
 #============= auditd_log_t ==============
 systemd_tmpfilesd_managed(auditd_log_t)
+
+#============= chronyd_t ==============
+allow chronyd_t sysadm_t:unix_dgram_socket sendto;
 
 #============= gcc_config_t ==============
 allow gcc_config_t self:capability dac_read_search;
