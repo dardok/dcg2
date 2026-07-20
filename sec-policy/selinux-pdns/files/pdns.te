@@ -58,6 +58,7 @@ kernel_search_network_sysctl(pdns_t)
 
 miscfiles_getattr_localization(pdns_t)
 miscfiles_rw_localization(pdns_t)
+miscfiles_read_generic_certs(pdns_t)
 miscfiles_search_generic_cert_dirs(pdns_t)
 
 corecmd_search_bin(pdns_t)
