@@ -6,7 +6,7 @@
 *app-admin/terraform
 *app-arch/createrepo_c
 *app-arch/deb2targz
-*app-arch/p7zip
+*app-arch/7zip
 *app-arch/rar
 *=app-arch/rpm-4.20*
 *app-containers/apptainer
