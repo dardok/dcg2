@@ -47,6 +47,7 @@ allow pdns_t self:udp_socket create_socket_perms;
 allow pdns_t self:unix_dgram_socket create_socket_perms;
 allow pdns_t var_run_t:sock_file { unlink read write };
 pdns_read_config(pdns_t)
+pdns_stream_connect(pdns_t)
 
 files_read_etc_runtime_files(pdns_t)
 kernel_read_kernel_sysctls(pdns_t)
@@ -58,6 +59,8 @@ kernel_search_network_sysctl(pdns_t)
 
 miscfiles_getattr_localization(pdns_t)
 miscfiles_rw_localization(pdns_t)
+miscfiles_read_generic_certs(pdns_t)
+miscfiles_search_generic_cert_dirs(pdns_t)
 
 corecmd_search_bin(pdns_t)
 

@@ -96,6 +96,6 @@ interface(`pdns_stream_connect',`
 		type pdns_t, pdns_var_run_t;
 	')
 
-	files_search_pids($1)
+	files_search_runtime($1)
 	stream_connect_pattern($1, pdns_var_run_t, pdns_var_run_t, pdns_t)
 ')
