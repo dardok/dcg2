@@ -71,6 +71,7 @@
 *dev-python/kubernetes
 *dev-python/mypy
 *dev-python/networkx
+*dev-python/pip
 *dev-python/pyroute2
 *dev-python/pyserial
 *dev-util/nvidia-cuda-toolkit
