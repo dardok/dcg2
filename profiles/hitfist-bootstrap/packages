@@ -1,0 +1,13 @@
+*app-crypt/tpm2-tools
+*dev-python/cryptography
+*dev-vcs/git
+*net-wireless/wpa_supplicant
+*sys-block/parted
+*sys-boot/efibootmgr
+*sys-boot/mokutil
+*sys-boot/shim
+*sys-firmware/intel-microcode
+*sys-fs/cryptsetup
+*sys-kernel/installkernel
+*sys-kernel/linux-firmware
+*sys-libs/efivar
