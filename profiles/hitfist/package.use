@@ -1,0 +1,52 @@
+app-admin/keepassxc browser
+app-crypt/swtpm fuse seccomp
+app-editors/vim gpm sound
+app-emulation/libvirt fuse libssh2 nbd parted policykit virt-network virtiofsd
+app-emulation/libvirt-glib -vala
+app-emulation/qemu pipewire python snappy spice gtk io-uring usb usbredir fuse keyutils lzo multipath ssh
+app-emulation/spice gstreamer lz4
+app-misc/brightnessctl systemd udev
+dev-libs/appstream qt6
+dev-libs/libdbusmenu gtk3
+dev-libs/re2 icu
+dev-qt/qt5compat icu qml
+dev-qt/qtbase cups gtk icu libproxy
+dev-qt/qtbase icu
+dev-qt/qtbase opengl
+dev-qt/qtdeclarative opengl
+dev-qt/qtdeclarative svg
+dev-qt/qtgui accessibility dbus egl jpeg
+dev-qt/qttools opengl
+dev-qt/qttools qml
+dev-qt/qtwayland qml
+gui-apps/waypipe dmabuf lz4 zstd
+gui-libs/gtk colord cups gstreamer sysprof
+kde-frameworks/kconfig dbus qml
+kde-frameworks/kguiaddons dbus
+media-libs/freetype harfbuzz svg
+media-libs/gst-plugins-base alsa opengl theora
+media-libs/libcanberra -udev -alsa
+media-libs/libjxl gif jpeg
+media-libs/libpulse dbus gtk
+media-libs/libsdl2 gles2 pipewire
+media-libs/libv4l jpeg
+media-plugins/gst-plugins-meta a52 aac alsa cdda dts dvd flac mp3 mpeg ogg pulseaudio theora v4l vorbis x264
+media-sound/pulseaudio-daemon bluetooth dbus gstreamer
+media-video/ffmpeg-compat alsa lcms opengl pulseaudio sdl svg vorbis x264 xvid
+media-video/pipewire bluetooth dbus gstreamer
+media-video/vlc dbus xml libnotify optimisememory v4l vpx x264 x265 svc png rdp pulseaudio
+net-dns/dnsmasq dbus
+net-dns/dnsmasq script
+net-libs/gnutls pkcs11 tools zstd
+net-libs/gtk-vnc -vala
+net-libs/webkit-gtk avif jpegxl keyring lcms pdf spell
+net-misc/freerdp client gstreamer jpeg pulseaudio server usb
+net-misc/spice-gtk policykit usbredir webdav lz4
+net-print/cups dbus usb
+net-wireless/bluez cups
+sys-firmware/ipxe usb
+sys-fs/btrfs-progs -udev
+sys-libs/minizip-ng compat
+x11-base/xwayland libei
+x11-libs/gtk+ colord cups sysprof
+x11-misc/xdg-utils dbus gnome
