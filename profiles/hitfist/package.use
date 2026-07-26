@@ -25,6 +25,7 @@ kde-frameworks/kconfig dbus qml
 kde-frameworks/kguiaddons dbus
 media-libs/freetype harfbuzz svg
 media-libs/gst-plugins-base alsa opengl theora
+media-libs/harfbuzz icu
 media-libs/libcanberra -udev -alsa
 media-libs/libjxl gif jpeg
 media-libs/libpulse dbus gtk
