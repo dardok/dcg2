@@ -19,6 +19,7 @@
 *app-containers/nvidia-container-toolkit
 *app-containers/podman
 *app-containers/skopeo
+*app-crypt/ccid
 *app-crypt/efitools
 *app-crypt/intel-ipsec-mb
 *app-crypt/libsecret
@@ -206,6 +207,7 @@
 *sys-fs/xfsprogs
 *sys-kernel/dracut
 *sys-kernel/linux-firmware
+*sys-libs/liburing
 *sys-power/acpi
 *sys-power/acpid
 *sys-power/cpupower
