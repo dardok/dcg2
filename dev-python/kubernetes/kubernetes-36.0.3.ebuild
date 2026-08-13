@@ -30,9 +30,11 @@ DEPEND="
 	dev-python/requests
 	dev-python/requests-oauthlib
 	>=dev-python/typing-extensions-4.16.0
-	&& ( >=dev-python/urllib3-2.7.0 <dev-python/urllib3-3.0.0 )
+	>=dev-python/urllib3-2.7.0
+	<dev-python/urllib3-3.0.0
 	>=dev-python/durationpy-0.7
-	&& ( >=dev-python/aiohttp-3.14.3 <dev-python/aiohttp-4.0.0 )
+	>=dev-python/aiohttp-3.14.3
+	<dev-python/aiohttp-4.0.0
 	aiohttp-retry>=2.9.1
 "
 
