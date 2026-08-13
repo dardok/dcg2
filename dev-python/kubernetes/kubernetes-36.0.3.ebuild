@@ -35,7 +35,7 @@ DEPEND="
 	>=dev-python/durationpy-0.7
 	>=dev-python/aiohttp-3.14.3
 	<dev-python/aiohttp-4.0.0
-	aiohttp-retry>=2.9.1
+	>=aiohttp-retry-2.9.1
 "
 
 python_install_all() {
