@@ -21,11 +21,12 @@ RESTRICT="test" # 10 tests fail for 1.0.1
 
 # upstream order
 RDEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
-	>=dev-python/pandas-1.4[${PYTHON_USEDEP}]
-	>=dev-python/shapely-2.0.0[${PYTHON_USEDEP}]
-	>=dev-python/pyproj-3.3.0[${PYTHON_USEDEP}]
-	dev-python/fiona[${PYTHON_USEDEP}]
+	>=dev-python/numpy-2[${PYTHON_USEDEP}]
+	>=dev-python/pyogrio-0.8[${PYTHON_USEDEP}]
+	dev-python/packaging[${PYTHON_USEDEP}]
+	>=dev-python/pandas-2.2.0[${PYTHON_USEDEP}]
+	>=dev-python/pyproj-3.7.0[${PYTHON_USEDEP}]
+	>=dev-python/shapely-2.1.0[${PYTHON_USEDEP}]
 "
 
 EPYTEST_DESELECT=(
