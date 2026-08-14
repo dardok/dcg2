@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
-DISTUTILS_USE_PEP517=poetry
+DISTUTILS_USE_PEP517=standalone
 inherit distutils-r1
 
 DESCRIPTION="Vectorized spatial vector file format I/O using GDAL/OGR"
@@ -18,8 +18,12 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+BDEPEND="
+	dev-python/cython
+"
 RDEPEND="
 	dev-python/certifi
 	dev-python/numpy
 	dev-python/packaging
+	sci-libs/gdal
 "
