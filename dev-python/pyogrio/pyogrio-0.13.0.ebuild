@@ -4,8 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
-DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1 optfeature
+DISTUTILS_USE_PEP517=poetry
+inherit distutils-r1
 
 DESCRIPTION="Vectorized spatial vector file format I/O using GDAL/OGR"
 HOMEPAGE="
