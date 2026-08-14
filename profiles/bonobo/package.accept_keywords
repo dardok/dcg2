@@ -14,6 +14,7 @@ dev-libs/cudnn
 dev-libs/hyprgraphics
 dev-libs/hyprland-protocols
 dev-libs/hyprlang
+dev-libs/wayland-protocols
 dev-util/hyprwayland-scanner
 dev-util/nvidia-cuda-toolkit
 gui-apps/hypridle
@@ -39,3 +40,12 @@ net-misc/usbip
 net-wireless/bluez-tools
 sys-block/libfabric
 x11-themes/pulse-glass
+
+dev-python/pyogrio
+dev-python/geopandas
+
+dev-python/kubernetes
+dev-python/durationpy
+dev-python/setuptools
+dev-python/aiohttp
+dev-python/aiohttp-retry

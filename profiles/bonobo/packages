@@ -64,10 +64,8 @@
 *dev-libs/hyprgraphics
 *dev-libs/opensc
 *dev-python/black
-*dev-python/fiona
 *dev-python/flask
 *dev-python/flask-cors
-*dev-python/flask-socketio
 *dev-python/geopandas
 *dev-python/kubernetes
 *dev-python/mypy
@@ -178,10 +176,12 @@
 *net-misc/socat
 *net-misc/tigervnc
 *net-misc/usbip
+*net-proxy/squid
 *net-vpn/openconnect
 *net-wireless/bluez
 *net-wireless/bluez-tools
 *net-wireless/iwd
+*gui-apps/qt6ct
 *sys-apps/bat
 *sys-apps/eza
 *sys-apps/fd
