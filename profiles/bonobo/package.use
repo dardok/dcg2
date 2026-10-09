@@ -1,4 +1,3 @@
-
 app-containers/apptainer network rootless suid
 app-text/xmlto text
 gui-apps/quickshell -crash-handler pam bluetooth hyprland layer-shell
@@ -7,7 +6,7 @@ media-video/pipewire bluetooth extra
 net-dns/dnsmasq script
 net-firewall/iptables nftables
 net-libs/gnutls tools
-sys-apps/systemd acl audit boot bpf cryptsetup curl http idn importd pam pcre pkcs11 policykit remote -sysv-utils ukify
+sys-apps/systemd acl audit boot -bpf cryptsetup curl http idn importd pam pcre pkcs11 policykit remote -sysv-utils ukify
 sys-fs/e2fsprogs fuse
 sys-kernel/gentoo-sources experimental
 sys-libs/zlib minizip

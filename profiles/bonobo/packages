@@ -6,7 +6,7 @@
 *app-admin/terraform
 *app-arch/createrepo_c
 *app-arch/deb2targz
-*app-arch/p7zip
+*app-arch/7zip
 *app-arch/rar
 *=app-arch/rpm-4.20*
 *app-containers/apptainer
@@ -19,6 +19,7 @@
 *app-containers/nvidia-container-toolkit
 *app-containers/podman
 *app-containers/skopeo
+*app-crypt/ccid
 *app-crypt/efitools
 *app-crypt/intel-ipsec-mb
 *app-crypt/libsecret
@@ -63,14 +64,13 @@
 *dev-libs/hyprgraphics
 *dev-libs/opensc
 *dev-python/black
-*dev-python/fiona
 *dev-python/flask
 *dev-python/flask-cors
-*dev-python/flask-socketio
 *dev-python/geopandas
 *dev-python/kubernetes
 *dev-python/mypy
 *dev-python/networkx
+*dev-python/pip
 *dev-python/pyroute2
 *dev-python/pyserial
 *dev-util/nvidia-cuda-toolkit
@@ -176,10 +176,12 @@
 *net-misc/socat
 *net-misc/tigervnc
 *net-misc/usbip
+*net-proxy/squid
 *net-vpn/openconnect
 *net-wireless/bluez
 *net-wireless/bluez-tools
 *net-wireless/iwd
+*gui-apps/qt6ct
 *sys-apps/bat
 *sys-apps/eza
 *sys-apps/fd
@@ -205,6 +207,7 @@
 *sys-fs/xfsprogs
 *sys-kernel/dracut
 *sys-kernel/linux-firmware
+*sys-libs/liburing
 *sys-power/acpi
 *sys-power/acpid
 *sys-power/cpupower
