@@ -5,6 +5,7 @@ dev-libs/hyprland-protocols ~amd64 ~arm64
 dev-libs/udis86 ~arm64
 dev-util/hyprwayland-scanner ~amd64 ~arm64
 dev-cpp/tomlplusplus ~amd64 ~arm64
+gui-apps/hyprshutdown ~amd64 ~arm64
 gui-libs/aquamarine ~amd64 ~arm64
 gui-libs/hyprcursor ~amd64 ~arm64
 gui-libs/hyprutils ~amd64 ~arm64
