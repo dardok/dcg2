@@ -3,3 +3,4 @@ dev-util/nvidia-cuda-toolkit rdma
 
 media-libs/tiff -opengl
 sys-apps/systemd cryptsetup secureboot ukify bpf boot tpm curl elfutils pkcs11 tpm
+media-libs/libglvnd X
