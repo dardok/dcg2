@@ -1,5 +1,7 @@
 CUSTOM_PROFILE="yes"
 
+COMMON_FLAGS="-O2 -pipe -march=native -flto=auto"
+
 ACCEPT_LICENSE="*"
 LINGUAS="-* en"
 
@@ -17,7 +19,16 @@ CUDA_ARCH_BIN=10.3
 TF_CUDA_COMPUTE_CAPABILITIES=10.3
 TORCH_CUDA_ARCH_LIST=10.3
 
+USE="${USE} lto pgo"
 USE="${USE} -clang -llvm"
-USE="${USE} -X wayland vulkan"
 USE="${USE} bash-completion vim-syntax"
+USE="${USE} btrfs xfs nfs nfsv41 device-mapper"
+USE="${USE} audit caps dbus introspection python sqlite"
+USE="${USE} pam policykit ssl tls openssl ssh sasl crypt sudo"
+USE="${USE} kerberos gss gssapi keyring smartcard pkcs11"
+USE="${USE} curl ldap lm_sensors snmp xml zstd lzma"
+USE="${USE} alsa gstreamer ffmpeg jack pipewire pulseaudio v4l ogg theora vorbis x264 x265 mp3 lv2"
+USE="${USE} -X wayland gtk cairo colord opencl opengl vaapi vdpau vulkan"
+USE="${USE} png jpeg tiff gdk-pixbuf openexr svg heif"
+USE="${USE} corefonts fontconfig pango truetype"
 USE="${USE} fips"
