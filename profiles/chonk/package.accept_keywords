@@ -2,6 +2,7 @@ app-crypt/efitools
 app-misc/tmuxp
 dev-python/libtmux
 dev-util/nvidia-cuda-toolkit
+gui-apps/quickshell
 gui-libs/eglexternalplatform
 gui-libs/egl-gbm
 gui-libs/egl-wayland
