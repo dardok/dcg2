@@ -1,3 +1,4 @@
 x11-drivers/nvidia-drivers
 dev-util/nvidia-cuda-toolkit
 gui-libs/egl-gbm
+gui-libs/egl-wayland
