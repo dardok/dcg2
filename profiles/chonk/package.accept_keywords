@@ -3,3 +3,4 @@ dev-util/nvidia-cuda-toolkit
 gui-libs/egl-gbm
 gui-libs/egl-wayland
 gui-libs/egl-wayland2
+gui-libs/eglexternalplatform
