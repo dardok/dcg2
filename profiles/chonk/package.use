@@ -2,5 +2,6 @@ dev-util/nvidia-cuda-toolkit rdma
 gui-apps/quickshell -i3
 media-libs/libglvnd X
 media-libs/tiff -opengl
+media-video/pipewire extra
 sys-apps/systemd cryptsetup secureboot ukify bpf boot tpm curl elfutils pkcs11 tpm
 x11-drivers/nvidia-drivers kernel-open -tools persistenced powerd
