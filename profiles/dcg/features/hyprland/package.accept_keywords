@@ -1,3 +1,4 @@
+dev-cpp/glaze ~amd64 ~arm64
 dev-libs/hyprlang ~amd64 ~arm64
 dev-libs/hyprgraphics ~amd64 ~arm64
 dev-libs/udis86 ~arm64
