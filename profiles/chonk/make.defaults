@@ -2,7 +2,17 @@ CUSTOM_PROFILE="yes"
 
 CPU_FLAGS_ARM="edsp neon neon-fp16 thumb vfp vfpv3 vfpv4 vfp-d32 aes sha1 sha2 crc32 sm4 asimd asimddp asimdfhm asimdhp sve sve2 i8mm v4 v5 v6 v7 v8 thumb2"
 
-VIDEO_CARDS="fbdev intel vesa dummy"
+VIDEO_CARDS="dummy nvidia"
+AMDGPU_TARGETS=""
+
+ALSA_CARDS="hda-intel usb-audio"
+
+LLVM_TARGETS="NVPTX BPF WebAssembly"
+
+CUDA_GENERATION=Blackwell
+CUDA_ARCH_BIN=10.3
+TF_CUDA_COMPUTE_CAPABILITIES=10.3
+TORCH_CUDA_ARCH_LIST=10.3
 
 USE="${USE} wayland vulkan"
 USE="${USE} bash-completion vim-syntax"
