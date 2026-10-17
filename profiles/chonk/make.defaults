@@ -17,5 +17,5 @@ CUDA_ARCH_BIN=10.3
 TF_CUDA_COMPUTE_CAPABILITIES=10.3
 TORCH_CUDA_ARCH_LIST=10.3
 
-USE="${USE} wayland vulkan"
+USE="${USE} -X wayland vulkan"
 USE="${USE} bash-completion vim-syntax"
