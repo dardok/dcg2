@@ -1,11 +1,10 @@
-x11-drivers/nvidia-drivers
-dev-util/nvidia-cuda-toolkit
-gui-libs/egl-gbm
-gui-libs/egl-wayland
-gui-libs/egl-wayland2
-gui-libs/eglexternalplatform
-
 app-crypt/efitools
 app-misc/tmuxp
 dev-python/libtmux
-net-misc/lldpd **
+dev-util/nvidia-cuda-toolkit
+gui-libs/eglexternalplatform
+gui-libs/egl-gbm
+gui-libs/egl-wayland
+gui-libs/egl-wayland2
+net-misc/lldpd ~arm64
+x11-drivers/nvidia-drivers
