@@ -7,3 +7,4 @@ gui-libs/eglexternalplatform
 
 app-crypt/efitools
 app-misc/tmuxp
+net-misc/lldpd
