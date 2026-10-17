@@ -7,7 +7,7 @@ LINGUAS="-* en"
 
 CPU_FLAGS_ARM="edsp neon neon-fp16 thumb vfp vfpv3 vfpv4 vfp-d32 aes sha1 sha2 crc32 sm4 asimd asimddp asimdfhm asimdhp sve sve2 i8mm v4 v5 v6 v7 v8 thumb2"
 
-VIDEO_CARDS="dummy nvidia virgl"
+VIDEO_CARDS="dummy nvidia virgl zink"
 AMDGPU_TARGETS=""
 
 ALSA_CARDS="hda-intel usb-audio"
