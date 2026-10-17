@@ -7,4 +7,5 @@ gui-libs/eglexternalplatform
 
 app-crypt/efitools
 app-misc/tmuxp
+dev-python/libtmux
 net-misc/lldpd
