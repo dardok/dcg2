@@ -10,7 +10,7 @@
 *app-portage/eix
 *app-portage/gentoolkit
 *dev-vcs/git
-#*net-misc/lldpd
+*net-misc/lldpd
 *net-misc/socat
 *sys-apps/ethtool
 *sys-apps/ipmitool
@@ -21,4 +21,6 @@
 *sys-kernel/linux-firmware
 *sys-fs/dosfstools
 *sys-fs/xfsprogs
+*x11-terms/kitty
 *x11-terms/kitty-terminfo
+*sys-apps/smartmontools
