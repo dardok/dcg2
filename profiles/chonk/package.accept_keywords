@@ -1,5 +1,6 @@
 app-crypt/efitools
 app-misc/tmuxp
+app-shells/liquidprompt
 dev-python/libtmux
 dev-util/nvidia-cuda-toolkit
 gui-apps/quickshell

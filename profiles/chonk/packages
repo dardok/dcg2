@@ -6,6 +6,7 @@
 *app-misc/tmuxp
 *app-portage/eix
 *app-portage/gentoolkit
+*app-shells/liquidprompt
 *dev-util/nvidia-cuda-toolkit
 *dev-vcs/git
 *media-video/pipewire
