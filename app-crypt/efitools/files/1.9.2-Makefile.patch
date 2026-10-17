@@ -74,21 +74,19 @@
  MYGUID		= 11111111-2222-3333-4444-123456789abc
  INSTALL		= install
  BINDIR		= $(DESTDIR)/usr/bin
-@@ -47,14 +45,14 @@
+@@ -47,12 +45,12 @@
  endif
  
  ifeq ($(ARCH),arm)
 -  LDFLAGS += --defsym=EFI_SUBSYSTEM=0x0a
 +  LIBS += --defsym=EFI_SUBSYSTEM=0x0a
--  FORMAT = -O binary
-+  FORMAT = -O efi-app-arm
+   FORMAT = -O binary
  endif
  
  ifeq ($(ARCH),aarch64)
 -  LDFLAGS += --defsym=EFI_SUBSYSTEM=0x0a
 +  LIBS += --defsym=EFI_SUBSYSTEM=0x0a
--  FORMAT = -O binary
-+  FORMAT = -O efi-app-aarch64
+   FORMAT = -O binary
  endif
  
 @@ -61,9 +59,9 @@

@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/1.9.2-Makefile.patch
 	"${FILESDIR}"/1.9.2-gcc15.patch
 	"${FILESDIR}"/1.9.2-fix-binutils-2.46.patch
+	"${FILESDIR}"/1.9.2-Makefile-arm.patch
 )
 
 check_and_set_objcopy() {

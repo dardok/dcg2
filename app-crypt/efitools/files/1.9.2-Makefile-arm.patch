@@ -1,0 +1,17 @@
+--- a/Make.rules	2026-10-17 10:08:42.498382337 -0400
++++ b/Make.rules	2026-10-17 10:08:17.226666665 -0400
+@@ -46,12 +46,12 @@
+ 
+ ifeq ($(ARCH),arm)
+   LIBS += --defsym=EFI_SUBSYSTEM=0x0a
+-  FORMAT = -O binary
++  FORMAT = -O efi-app-arm
+ endif
+ 
+ ifeq ($(ARCH),aarch64)
+   LIBS += --defsym=EFI_SUBSYSTEM=0x0a
+-  FORMAT = -O binary
++  FORMAT = -O efi-app-aarch64
+ endif
+ 
+ %.efi: %.so
