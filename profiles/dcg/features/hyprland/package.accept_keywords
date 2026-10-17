@@ -8,6 +8,7 @@ dev-cpp/tomlplusplus ~amd64 ~arm64
 gui-apps/hyprshutdown ~amd64 ~arm64
 gui-libs/aquamarine ~amd64 ~arm64
 gui-libs/hyprcursor ~amd64 ~arm64
+gui-libs/hyprtoolkit ~amd64 ~arm64
 gui-libs/hyprutils ~amd64 ~arm64
 gui-libs/hyprwire ~amd64 ~arm64
 gui-wm/hyprland ~amd64 ~arm64
