@@ -1,0 +1,8 @@
+CUSTOM_PROFILE="yes"
+
+CPU_FLAGS_ARM="edsp neon neon-fp16 thumb vfp vfpv3 vfpv4 vfp-d32 aes sha1 sha2 crc32 sm4 asimd asimddp asimdfhm asimdhp sve sve2 i8mm v4 v5 v6 v7 v8 thumb2"
+
+VIDEO_CARDS="fbdev intel vesa dummy"
+
+USE="${USE} wayland vulkan"
+USE="${USE} bash-completion vim-syntax"
