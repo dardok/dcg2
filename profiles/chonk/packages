@@ -9,6 +9,7 @@
 *app-shells/liquidprompt
 *dev-util/nvidia-cuda-toolkit
 *dev-vcs/git
+*dev-vcs/git-lfs
 *media-video/pipewire
 *media-video/v4l2loopback
 *media-video/wireplumber
