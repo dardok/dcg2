@@ -1,3 +1,4 @@
 x11-drivers/nvidia-drivers kernel-open -tools persistenced powerd
+dev-util/nvidia-cuda-toolkit rdma
 
 sys-apps/systemd cryptsetup secureboot ukify bpf boot tpm curl elfutils pkcs11 tpm
