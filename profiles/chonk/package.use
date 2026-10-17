@@ -1,5 +1,5 @@
 dev-util/nvidia-cuda-toolkit rdma
-gui-apps/quickshell -i3
+gui-apps/quickshell -i3 -crash-handler
 media-libs/libglvnd X
 media-libs/tiff -opengl
 media-video/pipewire extra
