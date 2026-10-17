@@ -27,6 +27,7 @@
 *sys-fs/xfsprogs
 *sys-kernel/dracut
 *sys-kernel/linux-firmware
+*sys-process/atop
 *x11-drivers/nvidia-drivers
 *x11-terms/kitty
 *x11-terms/kitty-terminfo
