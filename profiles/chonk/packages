@@ -7,6 +7,7 @@
 *app-portage/eix
 *app-portage/gentoolkit
 *app-shells/liquidprompt
+*dev-python/uv
 *dev-util/nvidia-cuda-toolkit
 *dev-vcs/git
 *dev-vcs/git-lfs
