@@ -12,6 +12,7 @@ media-video/v4l2loopback ~*
 net-misc/lldpd ~arm64
 sci-ml/hf_xet
 sci-ml/huggingface_hub
+sci-ml/safetensors
 sys-apps/haveged
 sys-process/atop
 x11-drivers/nvidia-drivers
