@@ -4,7 +4,6 @@ gui-apps/quickshell -i3 -crash-handler
 media-libs/libglvnd X
 media-libs/tiff -opengl
 media-video/pipewire extra
-sci-ml/caffe2 distributed flash gloo memefficient cusparselt kineto
 sci-ml/huggingface_hub torch
 sci-ml/pytorch distributed flash gloo memefficient cusparselt kineto
 sys-apps/systemd cryptsetup secureboot ukify bpf boot tpm curl elfutils pkcs11 tpm
