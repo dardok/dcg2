@@ -1,15 +1,24 @@
+app-containers/aardvark-dns
+app-containers/netavark
+app-containers/nvidia-container-toolkit ~*
+app-containers/podman
+app-containers/container-libs
 app-crypt/efitools
 app-misc/tmuxp
 app-shells/liquidprompt ~*
+dev-cpp/tlfloat ~arm64
 dev-libs/cpuinfo
 dev-libs/cusparselt ~arm64
 dev-libs/cutlass ~*
+dev-libs/dynolog ~arm64
 dev-libs/FXdiv ~arm64
+dev-python/jiter
 dev-libs/mimalloc ~arm64
+dev-libs/pfs ~arm64
 dev-libs/pocketfft ~arm64
 dev-libs/sleef
-dev-cpp/tlfloat ~arm64
 dev-python/libtmux
+dev-python/openai
 dev-util/nvidia-cuda-toolkit
 gui-apps/quickshell
 dev-libs/cudnn
@@ -17,8 +26,10 @@ gui-libs/eglexternalplatform
 gui-libs/egl-gbm
 gui-libs/egl-wayland
 gui-libs/egl-wayland2
+media-libs/nv-codec-headers ~arm64
+media-libs/nvidia-vaapi-driver ~*
 media-video/v4l2loopback ~*
-net-misc/lldpd ~arm64
+net-misc/lldpd **
 sci-ml/caffe2
 sci-ml/cudnn-frontend **
 sci-ml/FP16
@@ -29,7 +40,9 @@ sci-ml/huggingface_hub
 sci-ml/onnx
 sci-ml/pytorch
 sci-ml/safetensors
+sci-ml/sentencepiece ~*
 sci-ml/tensorpipe ~*
 sys-apps/haveged
+sys-libs/libnvidia-container ~*
 sys-process/atop
 x11-drivers/nvidia-drivers

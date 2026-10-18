@@ -1,2 +1,1 @@
-sci-ml/caffe2 -distributed
 sci-ml/pytorch -distributed

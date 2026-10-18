@@ -1,13 +1,15 @@
 dev-libs/cutlass tools
 dev-util/nvidia-cuda-toolkit rdma profiler
-gui-apps/quickshell -i3 -crash-handler
+media-libs/gst-plugins-bad vnc
 media-libs/libglvnd X
 media-libs/tiff -opengl
 media-video/pipewire extra
-sci-ml/caffe2 distributed
+net-firewall/iptables nftables
+net-firewall/nftables json
 sci-ml/huggingface_hub torch
-sci-ml/pytorch flash gloo distributed memefficient cusparselt kineto
+sci-ml/pytorch distributed flash gloo memefficient cusparselt kineto
 sys-apps/systemd cryptsetup secureboot ukify bpf boot tpm curl elfutils pkcs11 tpm
+sys-fs/btrfs-progs -man
 sys-fs/lvm2 lvm
 sys-process/atop modules
-x11-drivers/nvidia-drivers kernel-open -tools persistenced powerd
+x11-drivers/nvidia-drivers -tools persistenced powerd
