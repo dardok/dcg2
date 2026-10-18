@@ -22,6 +22,7 @@
 *sys-apps/ethtool
 *sys-apps/haveged
 *sys-apps/ipmitool
+*sys-apps/lm-sensors
 *sys-apps/nvme-cli
 *sys-apps/smartmontools
 *sys-block/parted
