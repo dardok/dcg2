@@ -1,3 +1,4 @@
+dev-libs/cutlass tools
 dev-util/nvidia-cuda-toolkit rdma profiler
 gui-apps/quickshell -i3 -crash-handler
 media-libs/libglvnd X
