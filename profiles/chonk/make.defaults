@@ -10,8 +10,8 @@ EMERGE_DEFAULT_OPTS="--keep-going --binpkg-respect-use=y --with-bdeps=y -j48 --l
 ACCEPT_LICENSE="*"
 AMDGPU_TARGETS="-*"
 LINGUAS="-* en"
-LLVM_TARGETS="NVPTX BPF WebAssembly"
-LUA_SINGLE_TARGET="lua5-4"
+LLVM_TARGETS="-* NVPTX BPF WebAssembly"
+LUA_SINGLE_TARGET="-* lua5-4"
 LUA_TARGETS="-* lua5-4"
 VIDEO_CARDS="-* ast dummy fbdev nvidia virgl zink"
 
