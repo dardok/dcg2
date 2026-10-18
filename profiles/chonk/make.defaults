@@ -11,9 +11,9 @@ ACCEPT_LICENSE="*"
 AMDGPU_TARGETS="-*"
 LINGUAS="-* en"
 LLVM_TARGETS="NVPTX BPF WebAssembly"
-LUA_SINGLE_TARGET="-* lua5-4"
-LUA_TARGETS="lua5-4"
-VIDEO_CARDS="ast dummy fbdev nvidia virgl zink"
+LUA_SINGLE_TARGET="lua5-4"
+LUA_TARGETS="-* lua5-4"
+VIDEO_CARDS="-* ast dummy fbdev nvidia virgl zink"
 
 CUDA_GENERATION=Blackwell
 CUDA_ARCH_BIN=10.3
