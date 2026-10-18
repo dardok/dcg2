@@ -1,5 +1,6 @@
 app-containers/aardvark-dns
 app-containers/netavark
+app-containers/nvidia-container-toolkit ~*
 app-containers/podman
 app-containers/container-libs
 app-crypt/efitools
@@ -40,5 +41,6 @@ sci-ml/safetensors
 sci-ml/sentencepiece ~*
 sci-ml/tensorpipe ~*
 sys-apps/haveged
+sys-libs/libnvidia-container ~*
 sys-process/atop
 x11-drivers/nvidia-drivers
