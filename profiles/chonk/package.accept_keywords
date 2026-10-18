@@ -29,7 +29,7 @@ gui-libs/egl-wayland2
 media-libs/nv-codec-headers ~arm64
 media-libs/nvidia-vaapi-driver ~*
 media-video/v4l2loopback ~*
-net-misc/lldpd
+net-misc/lldpd **
 sci-ml/caffe2
 sci-ml/cudnn-frontend **
 sci-ml/FP16
