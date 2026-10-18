@@ -1,4 +1,5 @@
 *app-admin/sudo
+*app-containers/nvidia-container-toolkit
 *app-containers/podman
 *app-containers/podman-compose
 *app-crypt/efitools
