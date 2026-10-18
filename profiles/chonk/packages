@@ -7,6 +7,7 @@
 *app-portage/eix
 *app-portage/gentoolkit
 *app-shells/liquidprompt
+*dev-python/openai
 *dev-python/pip
 *dev-python/uv
 *dev-util/nvidia-cuda-toolkit
@@ -20,6 +21,7 @@
 *net-misc/lldpd
 *net-misc/socat
 *sci-ml/huggingface_hub
+*sci-ml/sentencepiece
 *sys-apps/ethtool
 *sys-apps/haveged
 *sys-apps/ipmitool

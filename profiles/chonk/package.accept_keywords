@@ -1,6 +1,7 @@
 app-crypt/efitools
 app-misc/tmuxp
 app-shells/liquidprompt ~*
+dev-cpp/tlfloat ~arm64
 dev-libs/cpuinfo
 dev-libs/cusparselt ~arm64
 dev-libs/cutlass ~*
@@ -10,8 +11,8 @@ dev-libs/mimalloc ~arm64
 dev-libs/pfs ~arm64
 dev-libs/pocketfft ~arm64
 dev-libs/sleef
-dev-cpp/tlfloat ~arm64
 dev-python/libtmux
+dev-python/openai
 dev-util/nvidia-cuda-toolkit
 gui-apps/quickshell
 dev-libs/cudnn
@@ -31,6 +32,7 @@ sci-ml/huggingface_hub
 sci-ml/onnx
 sci-ml/pytorch
 sci-ml/safetensors
+sci-ml/sentencepiece ~*
 sci-ml/tensorpipe ~*
 sys-apps/haveged
 sys-process/atop
