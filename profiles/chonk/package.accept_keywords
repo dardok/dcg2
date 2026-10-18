@@ -18,6 +18,7 @@ sci-ml/huggingface_hub
 sci-ml/onnx
 sci-ml/pytorch
 sci-ml/safetensors
+sci-ml/tensorpipe
 sys-apps/haveged
 sys-process/atop
 x11-drivers/nvidia-drivers
