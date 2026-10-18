@@ -4,6 +4,7 @@ app-shells/liquidprompt ~*
 dev-libs/cpuinfo
 dev-libs/cusparselt ~arm64
 dev-libs/cutlass ~*
+dev-libs/dynolog ~arm64
 dev-libs/FXdiv ~arm64
 dev-libs/mimalloc ~arm64
 dev-libs/pocketfft ~arm64
