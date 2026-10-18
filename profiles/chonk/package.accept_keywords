@@ -15,6 +15,7 @@ net-misc/lldpd ~arm64
 sci-ml/caffe2
 sci-ml/hf_xet
 sci-ml/huggingface_hub
+sci-ml/onnx
 sci-ml/pytorch
 sci-ml/safetensors
 sys-apps/haveged
