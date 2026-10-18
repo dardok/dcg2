@@ -10,5 +10,6 @@ gui-libs/egl-wayland
 gui-libs/egl-wayland2
 media-video/v4l2loopback ~*
 net-misc/lldpd ~arm64
+sys-apps/haveged
 sys-process/atop
 x11-drivers/nvidia-drivers
