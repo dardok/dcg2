@@ -1,4 +1,5 @@
 app-containers/podman
+app-containers/container-libs
 app-crypt/efitools
 app-misc/tmuxp
 app-shells/liquidprompt ~*
