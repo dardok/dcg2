@@ -4,6 +4,7 @@ COMMON_FLAGS="-O2 -pipe -march=native -flto=auto"
 
 CPU_FLAGS_ARM="edsp neon neon-fp16 thumb vfp vfpv3 vfpv4 vfp-d32 aes sha1 sha2 crc32 sm4 asimd asimddp asimdfhm asimdhp sve sve2 i8mm v4 v5 v6 v7 v8 thumb2"
 
+FEATURES="buildpkg"
 MAKEOPTS="-j48 -l 48"
 EMERGE_DEFAULT_OPTS="--keep-going --binpkg-respect-use=y --with-bdeps=y -j48 --load-average=48"
 
