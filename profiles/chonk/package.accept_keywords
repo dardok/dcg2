@@ -6,6 +6,7 @@ dev-libs/sleef
 dev-python/libtmux
 dev-util/nvidia-cuda-toolkit
 gui-apps/quickshell
+dev-libs/cudnn
 gui-libs/eglexternalplatform
 gui-libs/egl-gbm
 gui-libs/egl-wayland
