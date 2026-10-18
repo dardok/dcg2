@@ -23,6 +23,7 @@ sci-ml/caffe2
 sci-ml/cudnn-frontend **
 sci-ml/FP16
 sci-ml/gloo **
+sci-ml/kineto ~arm64
 sci-ml/hf_xet
 sci-ml/huggingface_hub
 sci-ml/onnx
