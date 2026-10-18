@@ -20,8 +20,6 @@
 *media-video/pipewire
 *media-video/v4l2loopback
 *media-video/wireplumber
-*gui-apps/quickshell
-*gui-apps/waypipe
 *net-misc/lldpd
 *net-misc/socat
 *sci-ml/huggingface_hub
