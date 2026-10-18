@@ -7,6 +7,7 @@ dev-libs/cutlass ~*
 dev-libs/dynolog ~arm64
 dev-libs/FXdiv ~arm64
 dev-libs/mimalloc ~arm64
+dev-libs/pfs ~arm64
 dev-libs/pocketfft ~arm64
 dev-libs/sleef
 dev-cpp/tlfloat ~arm64
