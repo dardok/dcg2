@@ -27,6 +27,7 @@
 *sys-block/parted
 *sys-boot/efibootmgr
 *sys-fs/dosfstools
+*sys-fs/lvm2
 *sys-fs/xfsprogs
 *sys-kernel/dracut
 *sys-kernel/linux-firmware
