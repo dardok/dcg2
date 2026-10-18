@@ -14,7 +14,7 @@ gui-libs/egl-wayland2
 media-video/v4l2loopback ~*
 net-misc/lldpd ~arm64
 sci-ml/caffe2
-sci-ml/cudnn-frontend ~*1.28.0
+sci-ml/cudnn-frontend ~*1.12.0
 sci-ml/hf_xet
 sci-ml/huggingface_hub
 sci-ml/onnx
