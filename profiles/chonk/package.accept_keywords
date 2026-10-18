@@ -7,6 +7,7 @@ dev-libs/FXdiv ~arm64
 dev-libs/mimalloc ~arm64
 dev-libs/pocketfft ~arm64
 dev-libs/sleef
+dev-cpp/tlfloat ~arm64
 dev-python/libtmux
 dev-util/nvidia-cuda-toolkit
 gui-apps/quickshell
