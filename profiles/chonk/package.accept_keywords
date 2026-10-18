@@ -18,6 +18,7 @@ media-video/v4l2loopback ~*
 net-misc/lldpd ~arm64
 sci-ml/caffe2
 sci-ml/cudnn-frontend **
+sci-ml/FP16
 sci-ml/gloo **
 sci-ml/hf_xet
 sci-ml/huggingface_hub
