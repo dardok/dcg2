@@ -2,7 +2,7 @@ dev-libs/cutlass tools
 dev-util/nvidia-cuda-toolkit rdma profiler
 media-libs/gst-plugins-bad vnc
 media-libs/libglvnd X
-media-libs/tiff -opengl -truetype
+media-libs/tiff -opengl
 media-video/pipewire extra
 net-firewall/iptables nftables
 net-firewall/nftables json
@@ -12,3 +12,5 @@ sys-apps/systemd cryptsetup secureboot ukify bpf boot tpm curl elfutils pkcs11 t
 sys-fs/btrfs-progs -man
 sys-process/atop modules
 x11-drivers/nvidia-drivers -tools persistenced powerd
+
+dev-python/pillow -truetype
