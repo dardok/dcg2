@@ -6,7 +6,7 @@ media-libs/tiff -opengl
 media-video/pipewire extra
 sci-ml/caffe2 distributed
 sci-ml/huggingface_hub torch
-sci-ml/pytorch gloo distributed
+sci-ml/pytorch flash gloo distributed memefficient cusparselt kineto
 sys-apps/systemd cryptsetup secureboot ukify bpf boot tpm curl elfutils pkcs11 tpm
 sys-process/atop modules
 x11-drivers/nvidia-drivers kernel-open -tools persistenced powerd
