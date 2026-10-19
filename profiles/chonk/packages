@@ -2,6 +2,7 @@
 *app-containers/nvidia-container-toolkit
 *app-containers/podman
 *app-containers/podman-compose
+*app-crypt/clevis
 *app-crypt/efitools
 *app-crypt/tpm2-tools
 *app-editors/vim

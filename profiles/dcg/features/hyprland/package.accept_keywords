@@ -12,3 +12,8 @@ gui-libs/hyprtoolkit ~amd64 ~arm64
 gui-libs/hyprutils ~amd64 ~arm64
 gui-libs/hyprwire ~amd64 ~arm64
 gui-wm/hyprland ~amd64 ~arm64
+gui-apps/quickshell
+gui-libs/eglexternalplatform
+gui-libs/egl-gbm
+gui-libs/egl-wayland
+gui-libs/egl-wayland2

@@ -3,6 +3,7 @@ app-containers/netavark
 app-containers/nvidia-container-toolkit ~*
 app-containers/podman
 app-containers/container-libs
+app-crypt/clevis ~*
 app-crypt/efitools
 app-misc/tmuxp
 app-shells/liquidprompt ~*
@@ -20,12 +21,7 @@ dev-libs/sleef
 dev-python/libtmux
 dev-python/openai
 dev-util/nvidia-cuda-toolkit
-gui-apps/quickshell
 dev-libs/cudnn
-gui-libs/eglexternalplatform
-gui-libs/egl-gbm
-gui-libs/egl-wayland
-gui-libs/egl-wayland2
 media-libs/nv-codec-headers ~arm64
 media-libs/nvidia-vaapi-driver ~*
 media-video/v4l2loopback ~*

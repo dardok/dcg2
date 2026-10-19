@@ -1,3 +1,4 @@
+app-crypt/clevis dracut
 dev-libs/cutlass tools
 dev-util/nvidia-cuda-toolkit rdma profiler
 media-libs/gst-plugins-bad vnc
