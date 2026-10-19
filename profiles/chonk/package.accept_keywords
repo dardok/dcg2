@@ -15,6 +15,7 @@ dev-libs/dynolog ~arm64
 dev-libs/FXdiv ~arm64
 dev-python/jiter
 dev-libs/jose
+dev-libs/luksmeta
 dev-libs/mimalloc ~arm64
 dev-libs/pfs ~arm64
 dev-libs/pocketfft ~arm64
