@@ -12,6 +12,7 @@
 *app-portage/eix
 *app-portage/gentoolkit
 *app-shells/liquidprompt
+*dev-python/nvidia-ml-py
 *dev-python/openai
 *dev-python/pip
 *dev-python/uv

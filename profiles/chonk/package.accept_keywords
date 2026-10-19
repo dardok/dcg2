@@ -14,6 +14,7 @@ dev-libs/cutlass ~*
 dev-libs/dynolog ~arm64
 dev-libs/FXdiv ~arm64
 dev-python/jiter
+dev-python/nvidia-ml-py ~*
 dev-libs/jose
 dev-libs/luksmeta ~*
 dev-libs/mimalloc ~arm64
