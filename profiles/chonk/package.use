@@ -10,6 +10,6 @@ sci-ml/huggingface_hub torch
 sci-ml/pytorch distributed flash gloo memefficient cusparselt kineto
 sys-apps/systemd cryptsetup secureboot ukify bpf boot tpm curl elfutils pkcs11 tpm
 sys-fs/btrfs-progs -man
-sys-fs/lvm2 lvm
+sys-fs/lvm2 lvm nvme
 sys-process/atop modules
 x11-drivers/nvidia-drivers -tools persistenced powerd
