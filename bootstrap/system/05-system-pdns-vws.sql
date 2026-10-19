@@ -332,7 +332,7 @@ SELECT
             retry || ' ' || 
             expire || ' ' || 
             minimum
-        WHEN type = 'MX' THEN
+        WHEN type IN ('MX', 'CNAME') THEN
             data || '.' || zone
         WHEN type = 'SRV' THEN
             substring(data from position(' ' in data) + 1) || '.' || zone
@@ -351,10 +351,10 @@ SELECT
     '(0, ' || id || ')' AS ctid
 FROM ranked_rows;
 
-CREATE OR REPLACE RULE ignore_view_insert AS
+CREATE OR REPLACE RULE ignore_pdns_records_insert AS
 ON INSERT TO pdns_records
 DO INSTEAD NOTHING;
 
-CREATE OR REPLACE RULE ignore_view_update AS
+CREATE OR REPLACE RULE ignore_pdns_records_update AS
 ON UPDATE TO pdns_records
 DO INSTEAD NOTHING;

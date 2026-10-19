@@ -53,6 +53,7 @@ fi
 
 cat /run/systemd/resolve/resolv.conf > /mnt/etc/resolv.conf
 
+mkdir -m 0 -p /mnt/{dev,proc,sys,run,tmp,var/tmp}
 mount --bind /dev /mnt/dev
 mount --bind /dev/pts /mnt/dev/pts
 mount --bind /proc /mnt/proc

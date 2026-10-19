@@ -49,7 +49,7 @@ while [[ ! -b /dev/disk/by-id/${DISK_ID}-part2 ]] ; do
 	sleep 1
 done
 sleep 1
-pvcreate -y /dev/disk/by-id/${DISK_ID}-part2
+pvcreate -ff -y /dev/disk/by-id/${DISK_ID}-part2
 vgcreate -y vg.${SN} /dev/disk/by-id/${DISK_ID}-part2
 lvcreate -y -l 50%FREE vg.${SN} -n root
 lvcreate -y -l 40%FREE vg.${SN} -n var
@@ -93,3 +93,21 @@ cryptsetup close luks-${UUID4}
 cryptsetup close luks-${UUID3}
 cryptsetup close luks-${UUID2}
 cryptsetup close luks-${UUID1}
+
+exit 0
+
+SN=$(cat /sys/class/dmi/id/product_serial | tr '[A-Z]' ['a-z'])
+UUID4=$(blkid -o value -s UUID /dev/vg.${SN}/audit)
+UUID3=$(blkid -o value -s UUID /dev/vg.${SN}/log)
+UUID2=$(blkid -o value -s UUID /dev/vg.${SN}/var)
+UUID1=$(blkid -o value -s UUID /dev/vg.${SN}/root)
+
+cryptsetup -q open /dev/vg.${SN}/audit luks-${UUID4} <<<${P}
+cryptsetup -q open /dev/vg.${SN}/log luks-${UUID3} <<<${P}
+cryptsetup -q open /dev/vg.${SN}/var luks-${UUID2} <<<${P}
+cryptsetup -q open /dev/vg.${SN}/root luks-${UUID1} <<<${P}
+
+mount /dev/mapper/luks-${UUID1} /mnt
+mount /dev/mapper/luks-${UUID2} /mnt/var
+mount /dev/mapper/luks-${UUID3} /mnt/var/log
+mount /dev/mapper/luks-${UUID4} /mnt/var/log/audit

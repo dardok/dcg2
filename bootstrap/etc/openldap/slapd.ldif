@@ -1,0 +1,225 @@
+dn: cn=config
+objectClass: olcGlobal
+olcConfigDir: /etc/openldap/slapd.d
+olcPidFile: /run/openldap/slapd.pid
+olcArgsFile: /run/openldap/slapd.args
+olcAttributeOptions: lang-
+olcConcurrency: 0
+olcConnMaxPending: 100
+olcConnMaxPendingAuth: 1000
+olcGentleHUP: FALSE
+olcIdleTimeout: 0
+olcIndexSubstrIfMaxLen: 4
+olcIndexSubstrIfMinLen: 2
+olcIndexSubstrAnyLen: 4
+olcIndexSubstrAnyStep: 2
+olcIndexIntLen: 4
+olcLogLevel: Stats
+olcLogLevel: Sync
+olcSockbufMaxIncoming: 262143
+olcSockbufMaxIncomingAuth: 16777215
+olcWriteTimeout: 0
+olcSaslSecProps: minssf=0,nodict,noplain,noanonymous
+olcThreads: 8
+olcToolThreads: 1
+olcSecurity: ssf=0
+olcSecurity: tls=0
+olcSecurity: sasl=0
+olcSecurity: update_ssf=0
+olcSecurity: update_tls=0
+olcSecurity: update_sasl=0
+olcSecurity: simple_bind=128
+olcLocalSSF: 112
+olcAuthzPolicy: none
+olcAuthzRegexp: "gidNumber=0\+uidNumber=0,cn=peercred,cn=external,cn=auth" "cn=config"
+olcTLSCertificateFile: /etc/ssl/openldap/server.crt
+olcTLSCertificateKeyFile: /etc/ssl/openldap/server.key
+olcTLSCACertificateFile: /etc/ssl/certs/DCG_Root_CA_2.crt
+olcTLSVerifyClient: try
+olcTLSCipherSuite: HIGH:MEDIUM:+TLSv1.2:+TLSv1.3
+olcTLSProtocolMin: 3.1
+
+dn: cn=schema,cn=config
+objectClass: olcSchemaConfig
+
+include: file:///etc/openldap/schema/core.ldif
+include: file:///etc/openldap/schema/cosine.ldif
+include: file:///etc/openldap/schema/inetorgperson.ldif
+include: file:///etc/openldap/schema/nis.ldif
+include: file:///etc/openldap/schema/dhcp.ldif
+include: file:///etc/openldap/schema/sudo.ldif
+include: file:///etc/openldap/schema/kerberos.ldif
+
+dn: cn=ldapns,cn=schema,cn=config
+objectClass: olcSchemaConfig
+olcAttributeTypes: ( 1.3.6.1.4.1.5322.17.2.1 NAME 'authorizedService' DESC 'IANA GSS-API authorized service name' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} )
+olcObjectClasses: ( 1.3.6.1.4.1.5322.17.1.1 NAME 'authorizedServiceObject' DESC 'Auxiliary object class for adding authorizedService attribute' SUP top AUXILIARY MAY authorizedService )
+olcObjectClasses: ( 1.3.6.1.4.1.5322.17.1.2 NAME 'hostObject' DESC 'Auxiliary object class for adding host attribute' SUP top AUXILIARY MAY host )
+
+dn: cn=cmf,cn=schema,cn=config
+objectClass: olcSchemaConfig
+olcAttributeTypes: ( 1.3.6.1.4.1.16702.5594.2.1 NAME 'status' DESC 'Account status' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.44{32} )
+olcAttributeTypes: ( 1.3.6.1.4.1.16702.5594.2.2 NAME 'HPCacctno' DESC 'Account holders number' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.44{32} SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.16702.5594.2.3 NAME 'nac' DESC 'Account holders nac' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.44{32} SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.16702.5594.2.4 NAME 'renewal' DESC 'Account holders renewal' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.44{32} SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.16702.5594.2.5 NAME 'services' DESC 'List of services account holder has access to' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.44{64} )
+olcAttributeTypes: ( 1.3.6.1.4.1.16702.5594.2.6 NAME 'history' DESC 'History of actions done to this account' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.44{256} )
+olcAttributeTypes: ( 1.3.6.1.4.1.16702.5594.2.7 NAME 'comment' DESC 'Comments on this account' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.44{256} )
+olcAttributeTypes: ( 1.3.6.1.4.1.16702.5594.2.8 NAME 'homerealm' DESC 'Account holders Kerberos home realm' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.44{128} SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.16702.5594.2.9 NAME 'citizenship' DESC 'Account holders citizenship' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.44{64} SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.16702.5594.2.10 NAME 'lustreHome' DESC 'Account holders Lustre home directory' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.16702.5594.2.11 NAME 'cacSubject' DESC 'Account holders CAC DN' EQUALITY distinguishedNameMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 SINGLE-VALUE )
+olcObjectClasses: ( 1.3.6.1.4.1.16702.5594.1.1 NAME 'cmfAccount' DESC 'Account information relevant to cmf domain' SUP top AUXILIARY MAY ( status $ HPCacctno $ nac $ renewal $ services $ history $ comment $ homerealm $ citizenship $ lustreHome $ cacSubject ) )
+
+dn: cn=openssh-lpk,cn=schema,cn=config
+objectClass: olcSchemaConfig
+olcAttributeTypes: ( 1.3.6.1.4.1.24552.500.1.1.1.13 NAME 'sshPublicKey' DESC 'OpenSSH Public key' EQUALITY octetStringMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.40 )
+olcObjectClasses: ( 1.3.6.1.4.1.24552.500.1.1.2.0 NAME 'ldapPublicKey' SUP top AUXILIARY DESC 'OpenSSH LPK objectclass' MUST uid MAY sshPublicKey )
+
+dn: cn=module,cn=config
+objectClass: olcModuleList
+olcModuleLoad: accesslog.so
+olcModuleLoad: auditlog.so
+olcModuleLoad: back_ldap.so
+olcModuleLoad: back_mdb.so
+olcModuleLoad: back_monitor.so
+olcModuleLoad: back_relay.so
+olcModuleLoad: pcache.so
+olcModuleLoad: rwm.so
+olcModuleLoad: translucent.so
+
+dn: olcDatabase={-1}frontend,cn=config
+objectClass: olcDatabaseConfig
+objectClass: olcFrontendConfig
+# rootDSE
+olcAccess: {0}to dn.base="" by * read
+# Subschema (sub)entry DSE
+olcAccess: {1}to dn.base="cn=Subschema" by * read
+olcRequires: LDAPv3
+olcLastMod: TRUE
+olcAddContentAcl: FALSE
+olcMaxDerefDepth: 0
+olcSyncUseSubentry: FALSE
+
+dn: olcDatabase={0}config,cn=config
+objectClass: olcDatabaseConfig
+olcAccess: {0}to * by * none
+
+dn: olcDatabase={1}monitor,cn=config
+objectClass: olcDatabaseConfig
+olcAccess: {0}to * by * none
+olcRootDN: cn=config
+
+dn: olcDatabase={2}ldif,cn=config
+objectClass: olcLdifConfig
+olcDbDirectory: /etc/openldap/people.d
+olcReadOnly: TRUE
+olcSuffix: dc=cmf,dc=nrl,dc=navy,dc=mil
+olcRootDN: cn=config
+olcAccess: {0}to * by * read
+olcMaxDerefDepth: 15
+olcMonitoring: TRUE
+
+dn: olcOverlay={0}translucent,olcDatabase={2}ldif,cn=config
+objectClass: olcTranslucentConfig
+olcTranslucentLocal: sshPublicKey
+
+dn: olcDatabase={0}ldap,olcOverlay={0}translucent,olcDatabase={2}ldif,cn=config
+objectClass: olcLdapConfig
+objectClass: olcTranslucentDatabase
+olcDbURI: "ldap://tome.cmf.nrl.navy.mil ldap://scribe.cmf.nrl.navy.mil"
+olcDbStartTLS: start
+
+dn: olcOverlay={1}pcache,olcDatabase={2}ldif,cn=config
+objectClass: olcPcacheConfig
+olcPcache: mdb 100000 1 1000 100
+olcPcacheAttrset: 0 uid uidNumber gidNumber gecos homeDirectory loginShell services lustreHome cacSubject
+olcPcacheTemplate: (objectClass=*) 0 3600 300
+# olcPcacheTemplate: (|(objectClass=cmfAccount)(objectClass=posixAccount)(objectClass=inetOrgPerson)) 0 3600 300
+# olcPcacheTemplate: (objectClass=groupOfNames) 0 3600 300
+# olcPcacheTemplate: (objectClass=sudoRole) 0 3600 300
+
+dn: olcDatabase={0}mdb,olcOverlay={1}pcache,olcDatabase={2}ldif,cn=config
+objectClass: olcMdbConfig
+objectClass: olcPcacheDatabase
+olcDbDirectory: /var/lib/openldap/pcache
+olcDbMaxsize: 1073741824
+olcDbIndex: objectClass eq
+olcDbIndex: cn,sn,uid  pres,eq,sub
+
+dn: olcDatabase={3}ldif,cn=config
+objectClass: olcLdifConfig
+olcReadOnly: TRUE
+olcSuffix: ou=sudoers,dc=largedata,dc=net
+olcSubordinate: TRUE
+olcRootDN: cn=config
+olcAccess: {0}to * by * read
+olcMaxDerefDepth: 15
+olcMonitoring: TRUE
+olcDbDirectory: /etc/openldap/sudoers.d
+
+dn: olcDatabase={4}ldif,cn=config
+objectClass: olcLdifConfig
+olcReadOnly: TRUE
+olcSuffix: ou=service,dc=largedata,dc=net
+olcSubordinate: TRUE
+olcRootDN: cn=config
+olcAccess: {0}to * by * read
+olcMaxDerefDepth: 15
+olcMonitoring: TRUE
+olcDbDirectory: /etc/openldap/service.d
+
+dn: olcDatabase={5}ldif,cn=config
+objectClass: olcLdifConfig
+olcReadOnly: TRUE
+olcSuffix: ou=iphost,dc=largedata,dc=net
+olcSubordinate: TRUE
+olcRootDN: cn=config
+olcAccess: {0}to * by * read
+olcMaxDerefDepth: 15
+olcMonitoring: TRUE
+olcDbDirectory: /etc/openldap/iphost.d
+
+dn: olcDatabase={6}ldif,cn=config
+objectClass: olcLdifConfig
+olcReadOnly: TRUE
+olcSuffix: ou=ipnetwork,dc=largedata,dc=net
+olcSubordinate: TRUE
+olcRootDN: cn=config
+olcAccess: {0}to * by * read
+olcMaxDerefDepth: 15
+olcMonitoring: TRUE
+olcDbDirectory: /etc/openldap/ipnetwork.d
+
+dn: olcDatabase={7}mdb,cn=config
+objectClass: olcMdbConfig
+olcSuffix: cn=kerberos,dc=largedata,dc=net
+olcSubordinate: TRUE
+olcRootDN: cn=kerberos-admin,cn=kerberos,dc=largedata,dc=net
+olcRootPW: {SSHA}QOjVh3QquIwXCUt7EXME65tQtop2rmUe
+olcDbDirectory: /var/lib/openldap-data/kerberos
+olcDbMaxSize: 1073741824
+olcDbMaxReaders: 128
+olcDbMode: 0600
+olcDbSearchStack: 16
+olcAccess: {0}to dn.subtree="cn=LARGEDATA.NET,cn=kerberos,dc=largedata,dc=net"
+    by dn.exact="cn=kerberos-admin,cn=kerberos,dc=largedata,dc=net" write
+    by * none
+olcAddContentAcl: TRUE
+olcLastMod: TRUE
+olcMaxDerefDepth: 15
+olcMonitoring: TRUE
+
+dn: olcDatabase={8}relay,cn=config
+objectClass: olcRelayConfig
+olcReadOnly: TRUE
+olcSuffix: dc=largedata,dc=net
+olcRootDN: cn=config
+olcAccess: {0}to * by * read
+olcMaxDerefDepth: 15
+olcMonitoring: TRUE
+olcRelay: dc=cmf,dc=nrl,dc=navy,dc=mil
+
+dn: olcOverlay={0}rwm,olcDatabase={8}relay,cn=config
+objectClass: olcRwmConfig
+olcRwmRewrite: rwm-suffixmassage "dc=cmf,dc=nrl,dc=navy,dc=mil"

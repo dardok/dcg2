@@ -18,6 +18,11 @@ BEGIN
     PERFORM createAuditRevisionDHCP4(action || ' dhcp4_client_class ' || item);
 END
 $$ LANGUAGE plpgsql;
+CREATE OR REPLACE FUNCTION audit_dhcp4_option(action text, item text) RETURNS void AS $$
+BEGIN
+    PERFORM createAuditRevisionDHCP4(action || ' dhcp4_option ' || item);
+END
+$$ LANGUAGE plpgsql;
 
 -- Parse DHCP option strings: "name value", "space.name value", 'name "quoted value"'
 -- Returns SETOF (space text, name text, value text)

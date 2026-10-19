@@ -141,7 +141,7 @@ if [[ ! -d ${PKI_HOME} ]] ; then
 	certificatePolicies = 2.16.840.1.101.2.1.11.36
 
 	[ dcg_db_cert ]
-	basicConstraints = critical, CA:FALSE
+	basicConstraints = critical, CA:false
 	keyUsage = critical, digitalSignature
 	extendedKeyUsage = critical, codeSigning
 	authorityKeyIdentifier = keyid:always, issuer

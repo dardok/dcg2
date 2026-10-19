@@ -785,6 +785,11 @@ BEGIN
     END IF;
 
     IF new.boot_default IS NOT NULL THEN
+        PERFORM audit_dhcp4_option(
+            'insert',
+            'host ' || new.mgmt_device_id
+        );
+
         PERFORM apply_dhcp4_options(
             'host',
             NULL::text,
@@ -840,6 +845,11 @@ BEGIN
     END IF;
 
     IF new.boot_default IS DISTINCT FROM old.boot_default THEN
+        PERFORM audit_dhcp4_option(
+            'update',
+            'host ' || new.mgmt_device_id
+        );
+
         PERFORM apply_dhcp4_options(
             'host',
             NULL::text,
@@ -872,6 +882,11 @@ BEGIN
     END IF;
 
     IF old.boot_default IS NOT NULL THEN
+        PERFORM audit_dhcp4_option(
+            'delete',
+            'host ' || new.mgmt_device_id
+        );
+
         PERFORM apply_dhcp4_options(
             'host',
             NULL::text,
