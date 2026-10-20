@@ -4,6 +4,7 @@ dev-python/requests socks5
 dev-util/nvidia-cuda-toolkit rdma profiler
 media-libs/gst-plugins-bad vnc
 media-libs/libglvnd X
+media-libs/opencv contrib contribdnn contribfreetype cudnn eigen features2d ffmpeg non-free openmp
 media-libs/tiff -opengl
 media-video/pipewire extra
 net-firewall/iptables nftables
