@@ -28,6 +28,7 @@ dev-libs/pfs ~arm64
 dev-libs/pocketfft ~arm64
 dev-libs/sleef
 dev-python/cyclopts
+dev-python/docstring-parser ~amd64
 dev-python/ffmpeg-python **
 dev-python/humanfriendly **
 dev-python/imageio
