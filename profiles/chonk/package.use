@@ -2,7 +2,8 @@ app-crypt/clevis dracut -pkcs11
 dev-libs/cutlass tools
 dev-python/requests socks5
 dev-util/nvidia-cuda-toolkit rdma profiler
-media-libs/gst-plugins-bad vnc nvcomp nvcodec decklink
+media-libs/gst-plugins-bad vnc nvcomp nvcodec onnx
+media-libs/gst-plugins-meta http pulseaudio vpx x264
 media-libs/libglvnd X
 media-libs/opencv contrib contribdnn contribfreetype cudnn eigen features2d ffmpeg non-free openmp
 media-libs/tiff -opengl
