@@ -73,7 +73,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	GST_PLUGINS_NOAUTO="tinyalsa bz2 hls ipcpipeline lcevcdecoder lcevcencoder librfb shm va vulkan wayland"
+	GST_PLUGINS_NOAUTO="tinyalsa bz2 hls ipcpipeline lcevcdecoder lcevcencoder librfb shm va vulkan wayland nvcomp nvcodec"
 
 	local emesonargs=(
 		-Dshm=enabled
