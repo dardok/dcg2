@@ -13,6 +13,7 @@ dev-libs/cusparselt ~arm64
 dev-libs/cutlass ~*
 dev-libs/dynolog ~arm64
 dev-libs/FXdiv ~arm64
+dev-python/coloredlogs
 dev-python/jiter
 dev-python/nvidia-ml-py ~*
 dev-libs/jose
