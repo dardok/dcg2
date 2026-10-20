@@ -12,7 +12,7 @@ SRC_URI+=" verify-sig? ( https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz
 LICENSE="LGPL-2"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
-IUSE="X bzip2 +introspection +orc udev vaapi vnc vulkan wayland decklink nvenc"
+IUSE="X bzip2 +introspection +orc udev vaapi vnc vulkan wayland decklink nvcomp nvcodec"
 REQUIRED_USE="vulkan? ( || ( X wayland ) )"
 
 # X11 is automagic for now, upstream #709530 - only used by librfb USE=vnc plugin
