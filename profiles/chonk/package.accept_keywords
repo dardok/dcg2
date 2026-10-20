@@ -36,6 +36,7 @@ dev-python/imageio-ffmpeg
 dev-python/libtmux
 dev-python/lmdb
 dev-python/openai
+dev-python/rich-rst
 dev-python/scikit-build-core
 dev-python/scikit-image
 dev-python/scikit-learn
