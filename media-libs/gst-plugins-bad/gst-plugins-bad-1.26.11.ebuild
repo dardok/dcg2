@@ -12,7 +12,7 @@ SRC_URI+=" verify-sig? ( https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz
 LICENSE="LGPL-2"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
-IUSE="X bzip2 +introspection +orc udev vaapi vnc vulkan wayland decklink sctp dtls webrtc webrtcdsp nvcodec onnx"
+IUSE="X bzip2 +introspection +orc udev vaapi vnc vulkan wayland decklink sctp srtp dtls webrtc webrtcdsp nvcodec onnx"
 REQUIRED_USE="vulkan? ( || ( X wayland ) )"
 
 # X11 is automagic for now, upstream #709530 - only used by librfb USE=vnc plugin
@@ -73,7 +73,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	GST_PLUGINS_NOAUTO="tinyalsa bz2 hls ipcpipeline lcevcdecoder lcevcencoder librfb shm va vulkan wayland onnx sctp dtls webrtc webrtcdsp nvcodec webrtc"
+	GST_PLUGINS_NOAUTO="tinyalsa bz2 hls ipcpipeline lcevcdecoder lcevcencoder librfb shm va vulkan wayland onnx sctp srtp dtls webrtc webrtcdsp nvcodec webrtc"
 
 	local emesonargs=(
 		-Dshm=enabled
