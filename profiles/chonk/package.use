@@ -1,5 +1,6 @@
 app-crypt/clevis dracut -pkcs11
 dev-libs/cutlass tools
+dev-python/requests socks5
 dev-util/nvidia-cuda-toolkit rdma profiler
 media-libs/gst-plugins-bad vnc
 media-libs/libglvnd X
