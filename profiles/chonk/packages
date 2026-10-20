@@ -14,7 +14,13 @@
 *app-shells/liquidprompt
 *dev-python/nvidia-ml-py
 *dev-python/openai
+*dev-python/ffmpeg-python
+*dev-python/imageio
+*dev-python/imageio-ffmpeg
+*dev-python/lmdb
 *dev-python/pip
+*dev-python/scikit-image
+*dev-python/scikit-learn
 *dev-python/uv
 *dev-util/nvidia-cuda-toolkit
 *dev-vcs/git
@@ -28,7 +34,9 @@
 *net-misc/lldpd
 *net-misc/socat
 *sci-ml/huggingface_hub
+*sci-ml/onnxruntime
 *sci-ml/sentencepiece
+*sci-ml/transformers
 *sys-apps/ethtool
 *sys-apps/haveged
 *sys-apps/ipmitool

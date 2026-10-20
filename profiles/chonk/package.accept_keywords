@@ -21,8 +21,15 @@ dev-libs/mimalloc ~arm64
 dev-libs/pfs ~arm64
 dev-libs/pocketfft ~arm64
 dev-libs/sleef
+dev-python/ffmpeg-python **
+dev-python/imageio
+dev-python/imageio-ffmpeg
 dev-python/libtmux
+dev-python/lmdb
 dev-python/openai
+dev-python/scikit-build-core
+dev-python/scikit-image
+dev-python/scikit-learn
 dev-util/nvidia-cuda-toolkit
 dev-libs/cudnn
 media-libs/nv-codec-headers ~arm64
@@ -37,10 +44,12 @@ sci-ml/kineto ~arm64
 sci-ml/hf_xet
 sci-ml/huggingface_hub
 sci-ml/onnx
+sci-ml/onnxruntime ~*
 sci-ml/pytorch
 sci-ml/safetensors
 sci-ml/sentencepiece ~*
 sci-ml/tensorpipe ~*
+sci-ml/transformers ~*
 sys-apps/haveged
 sys-libs/libnvidia-container ~*
 sys-process/atop
