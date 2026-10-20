@@ -12,6 +12,7 @@ dev-cpp/tlfloat ~arm64
 dev-libs/cpuinfo
 dev-libs/cusparselt ~arm64
 dev-libs/cutlass ~*
+dev-libs/date ~arm64
 dev-libs/dynolog ~arm64
 dev-libs/FXdiv ~arm64
 dev-python/coloredlogs **
