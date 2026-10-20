@@ -91,7 +91,8 @@ multilib_src_configure() {
 		-Dx11=$(usex X $(usex vnc enabled disabled) disabled)
 		$(meson_feature wayland)
 		$(meson_feature decklink)
-		$(meson_feature nvenc)
+		$(meson_feature nvcomp)
+		$(meson_feature nvcodec)
 	)
 
 	if use vulkan; then
