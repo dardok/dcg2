@@ -43,7 +43,7 @@ dev-libs/cudnn
 media-libs/nv-codec-headers ~arm64
 media-libs/nvidia-vaapi-driver ~*
 media-libs/opencv
-media-plugins/gst-plugins-opencg
+media-plugins/gst-plugins-opencv
 media-video/v4l2loopback ~*
 sci-libs/dlpack ~*
 sci-libs/onnxruntime ~*
