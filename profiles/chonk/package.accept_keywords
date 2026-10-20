@@ -7,6 +7,7 @@ app-crypt/clevis ~*
 app-crypt/efitools
 app-misc/tmuxp
 app-shells/liquidprompt ~*
+dev-cpp/safeint ~*
 dev-cpp/tlfloat ~arm64
 dev-libs/cpuinfo
 dev-libs/cusparselt ~arm64
