@@ -27,6 +27,7 @@ dev-libs/mimalloc ~arm64
 dev-libs/pfs ~arm64
 dev-libs/pocketfft ~arm64
 dev-libs/sleef
+dev-python/cyclopts
 dev-python/ffmpeg-python **
 dev-python/humanfriendly **
 dev-python/imageio
@@ -42,6 +43,7 @@ dev-libs/cudnn
 media-libs/nv-codec-headers ~arm64
 media-libs/nvidia-vaapi-driver ~*
 media-libs/opencv
+media-plugins/gst-plugins-opencg
 media-video/v4l2loopback ~*
 sci-libs/dlpack ~*
 sci-libs/onnxruntime ~*
