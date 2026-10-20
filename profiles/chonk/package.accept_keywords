@@ -20,7 +20,7 @@ dev-python/jiter
 dev-python/lazy-loader ~arm64
 dev-python/narwhals
 dev-python/nvidia-ml-py ~*
-dev-python/tiffile ~arm64
+dev-python/tifffile ~arm64
 dev-libs/jose
 dev-libs/luksmeta ~*
 dev-libs/mimalloc ~arm64
