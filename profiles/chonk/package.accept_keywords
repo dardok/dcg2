@@ -25,6 +25,7 @@ dev-libs/pfs ~arm64
 dev-libs/pocketfft ~arm64
 dev-libs/sleef
 dev-python/ffmpeg-python **
+dev-python/humanfriendly
 dev-python/imageio
 dev-python/imageio-ffmpeg
 dev-python/libtmux
