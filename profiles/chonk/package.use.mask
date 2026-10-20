@@ -1,1 +1,2 @@
 sci-ml/pytorch -distributed
+media-libs/opencv -cudnn
