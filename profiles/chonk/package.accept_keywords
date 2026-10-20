@@ -38,6 +38,7 @@ dev-libs/cudnn
 media-libs/nv-codec-headers ~arm64
 media-libs/nvidia-vaapi-driver ~*
 media-video/v4l2loopback ~*
+sci-libs/dlpack ~*
 sci-libs/onnxruntime ~*
 net-misc/gdown ~*
 net-misc/lldpd **
