@@ -19,6 +19,7 @@
 *dev-python/imageio-ffmpeg
 *dev-python/lmdb
 *dev-python/pip
+*dev-python/pydantic-settings
 *dev-python/scikit-image
 *dev-python/scikit-learn
 *dev-python/uv
