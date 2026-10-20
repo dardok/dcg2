@@ -33,8 +33,8 @@
 *net-misc/gdown
 *net-misc/lldpd
 *net-misc/socat
+*sci-libs/onnxruntime
 *sci-ml/huggingface_hub
-*sci-ml/onnxruntime
 *sci-ml/sentencepiece
 *sci-ml/transformers
 *sys-apps/ethtool

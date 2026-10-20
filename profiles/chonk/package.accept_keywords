@@ -35,6 +35,7 @@ dev-libs/cudnn
 media-libs/nv-codec-headers ~arm64
 media-libs/nvidia-vaapi-driver ~*
 media-video/v4l2loopback ~*
+sci-libs/onnxruntime ~*
 net-misc/gdown ~*
 net-misc/lldpd **
 sci-ml/cudnn-frontend **
@@ -44,7 +45,6 @@ sci-ml/kineto ~arm64
 sci-ml/hf_xet
 sci-ml/huggingface_hub
 sci-ml/onnx
-sci-ml/onnxruntime ~*
 sci-ml/pytorch
 sci-ml/safetensors
 sci-ml/sentencepiece ~*
