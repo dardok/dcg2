@@ -95,6 +95,9 @@ multilib_src_configure() {
 		$(meson_feature nvcodec)
 		$(meson_feature webrtc)
 		$(meson_feature webrtcdsp)
+		-Ddtls=disabled
+		-Dsctp=disabled
+		-Dsrtp=disabled
 	)
 
 	if use vulkan; then
