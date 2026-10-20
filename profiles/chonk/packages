@@ -16,7 +16,7 @@
 *dev-python/nvidia-ml-py
 *dev-python/openai
 *dev-python/ffmpeg-python
-*dev-python/gobject
+*dev-python/pygobject
 *dev-python/imageio
 *dev-python/imageio-ffmpeg
 *dev-python/lmdb
