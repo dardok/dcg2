@@ -31,12 +31,14 @@
 *media-libs/nvidia-vaapi-driver
 *media-libs/opencv
 *media-plugins/gst-plugins-good
+*media-plugins/gst-plugins-libnice
 *media-plugins/gst-plugins-meta
 *media-plugins/gst-plugins-opencv
 *media-plugins/gst-plugins-ugly
 *media-video/pipewire
 *media-video/v4l2loopback
 *media-video/wireplumber
+*net-libs/libnice
 *net-libs/nodejs
 *net-misc/gdown
 *net-misc/lldpd
