@@ -23,6 +23,7 @@
 *media-video/pipewire
 *media-video/v4l2loopback
 *media-video/wireplumber
+*net-misc/gdown
 *net-misc/lldpd
 *net-misc/socat
 *sci-ml/huggingface_hub

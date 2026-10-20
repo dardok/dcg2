@@ -28,6 +28,7 @@ dev-libs/cudnn
 media-libs/nv-codec-headers ~arm64
 media-libs/nvidia-vaapi-driver ~*
 media-video/v4l2loopback ~*
+net-misc/gdown ~*
 net-misc/lldpd **
 sci-ml/cudnn-frontend **
 sci-ml/FP16
