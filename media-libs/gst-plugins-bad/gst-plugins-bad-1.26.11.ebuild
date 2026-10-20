@@ -90,10 +90,8 @@ multilib_src_configure() {
 		$(meson_feature vnc librfb)
 		-Dx11=$(usex X $(usex vnc enabled disabled) disabled)
 		$(meson_feature wayland)
-		$(meson_feature onnx)
 		$(meson_feature nvcodec)
-		$(meson_feature webrtc)
-		$(meson_feature webrtcdsp)
+		$(meson_feature onnx)
 	)
 
 	if use vulkan; then
