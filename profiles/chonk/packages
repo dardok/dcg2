@@ -30,11 +30,11 @@
 *dev-vcs/git-lfs
 *media-libs/nvidia-vaapi-driver
 *media-libs/opencv
-*media-plugins/gst-plugins-good
+*media-libs/gst-plugins-good
+*media-libs/gst-plugins-ugly
 *media-plugins/gst-plugins-libnice
 *media-plugins/gst-plugins-meta
 *media-plugins/gst-plugins-opencv
-*media-plugins/gst-plugins-ugly
 *media-video/pipewire
 *media-video/v4l2loopback
 *media-video/wireplumber
