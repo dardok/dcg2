@@ -55,6 +55,7 @@ media-plugins/gst-plugins-hls
 media-plugins/gst-plugins-opencv
 media-plugins/gst-plugins-sctp
 media-plugins/gst-plugins-webrtc ~arm64
+media-sound/piper
 media-video/v4l2loopback ~*
 net-misc/gdown ~*
 net-misc/lldpd **
