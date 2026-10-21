@@ -11,6 +11,7 @@ media-video/ffmpeg nvenc
 media-video/pipewire extra
 net-firewall/iptables nftables
 net-firewall/nftables json
+net-libs/neon libproxy
 net-libs/nodejs npm
 sci-ml/huggingface_hub torch
 sci-ml/onnx disableStaticReg
