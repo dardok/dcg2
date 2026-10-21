@@ -42,6 +42,10 @@ dev-python/scikit-image
 dev-python/scikit-learn
 dev-util/nvidia-cuda-toolkit
 dev-libs/cudnn
+gui-libs/egl-gbm
+gui-libs/egl-wayland
+gui-libs/egl-wayland2
+gui-libs/eglexternalplatform
 media-libs/nv-codec-headers ~arm64
 media-libs/nvidia-vaapi-driver ~*
 media-libs/opencv
