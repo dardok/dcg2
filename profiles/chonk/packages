@@ -41,6 +41,7 @@
 *media-plugins/gst-plugins-opencv
 *media-plugins/gst-plugins-vaapi
 *media-plugins/gst-plugins-vpx
+*media-plugins/gst-plugins-srtp
 *media-plugins/gst-plugins-webrtc
 *media-video/pipewire
 *media-video/v4l2loopback
