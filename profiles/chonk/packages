@@ -36,6 +36,7 @@
 *media-plugins/gst-plugins-libnice
 *media-plugins/gst-plugins-meta
 *media-plugins/gst-plugins-opencv
+*media-plugins/gst-plugins-webrtc
 *media-video/pipewire
 *media-video/v4l2loopback
 *media-video/wireplumber
