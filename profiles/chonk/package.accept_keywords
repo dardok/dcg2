@@ -50,6 +50,7 @@ media-libs/nv-codec-headers ~arm64
 media-libs/nvidia-vaapi-driver ~*
 media-libs/opencv
 media-plugins/gst-plugins-opencv
+media-plugins/gst-plugins-webrtc ~arm64
 media-video/v4l2loopback ~*
 sci-libs/dlpack ~*
 sci-libs/onnxruntime ~*
