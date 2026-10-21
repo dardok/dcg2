@@ -35,6 +35,7 @@
 *media-libs/gst-plugins-ugly
 *media-libs/nvidia-vaapi-driver
 *media-libs/opencv
+*media-plugins/gst-plugins-dtls
 *media-plugins/gst-plugins-hls
 *media-plugins/gst-plugins-libnice
 *media-plugins/gst-plugins-meta

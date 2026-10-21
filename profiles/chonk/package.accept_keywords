@@ -50,6 +50,7 @@ media-libs/nv-codec-headers ~arm64
 media-libs/nvidia-vaapi-driver ~*
 media-libs/opencv
 media-libs/webrtc-audio-processing ~arm64
+media-plugins/gst-plugins-dtls
 media-plugins/gst-plugins-hls
 media-plugins/gst-plugins-opencv
 media-plugins/gst-plugins-sctp
