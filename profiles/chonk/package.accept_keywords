@@ -51,6 +51,7 @@ media-libs/nvidia-vaapi-driver ~*
 media-libs/opencv
 media-plugins/gst-plugins-opencv
 media-plugins/gst-plugins-webrtc ~arm64
+media-plugins/gst-plugins-sctp
 media-video/v4l2loopback ~*
 sci-libs/dlpack ~*
 sci-libs/onnxruntime ~*
