@@ -36,6 +36,7 @@ dev-python/lmdb
 dev-python/narwhals
 dev-python/nvidia-ml-py ~*
 dev-python/openai
+dev-python/pathvalidate
 dev-python/rich-rst
 dev-python/scikit-build-core
 dev-python/scikit-image
