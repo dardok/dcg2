@@ -91,6 +91,7 @@ multilib_src_configure() {
 		-Dx11=$(usex X $(usex vnc enabled disabled) disabled)
 		$(meson_feature wayland)
 		$(meson_feature nvcodec)
+		-Dnvcodec-nvcc-arch=compute_100f
 		$(meson_feature onnx)
 	)
 
