@@ -1,5 +1,5 @@
 amd64 dcg/bootstrap exp
+amd64 dcg/core exp
 amd64 bonobo exp
 amd64 hitfist exp
 arm64 chonk exp
-
