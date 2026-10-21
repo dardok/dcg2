@@ -1,2 +1,3 @@
 sci-ml/pytorch -distributed
-media-libs/opencv -cudnn
+media-libs/opencv -cudnn -gstreamer
+media-video/ffmpeg -nvenc
