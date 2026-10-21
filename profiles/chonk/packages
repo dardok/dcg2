@@ -2,7 +2,6 @@
 *app-containers/nvidia-container-toolkit
 *app-containers/podman
 *app-containers/podman-compose
-*app-shells/bash-completion
 *app-crypt/clevis
 *app-crypt/efitools
 *app-crypt/tpm2-tools
@@ -11,6 +10,7 @@
 *app-misc/tmuxp
 *app-portage/eix
 *app-portage/gentoolkit
+*app-shells/bash-completion
 *app-shells/liquidprompt
 *dev-python/cyclopts
 *dev-python/ffmpeg-python
@@ -31,12 +31,12 @@
 *dev-util/nvidia-cuda-toolkit
 *dev-vcs/git
 *dev-vcs/git-lfs
-*media-libs/nvidia-vaapi-driver
-*media-libs/opencv
 *media-libs/gst-plugins-good
 *media-libs/gst-plugins-ugly
-*media-plugins/gst-plugins-libnice
+*media-libs/nvidia-vaapi-driver
+*media-libs/opencv
 *media-plugins/gst-plugins-hls
+*media-plugins/gst-plugins-libnice
 *media-plugins/gst-plugins-meta
 *media-plugins/gst-plugins-opencv
 *media-plugins/gst-plugins-vaapi

@@ -1,8 +1,8 @@
 app-containers/aardvark-dns
+app-containers/container-libs
 app-containers/netavark
 app-containers/nvidia-container-toolkit ~*
 app-containers/podman
-app-containers/container-libs
 app-crypt/clevis ~*
 app-crypt/efitools
 app-misc/tmuxp
@@ -10,38 +10,38 @@ app-shells/liquidprompt ~*
 dev-cpp/safeint ~*
 dev-cpp/tlfloat ~arm64
 dev-libs/cpuinfo
+dev-libs/cudnn
 dev-libs/cusparselt ~arm64
 dev-libs/cutlass ~*
 dev-libs/date ~arm64
 dev-libs/dynolog ~arm64
 dev-libs/FXdiv ~arm64
-dev-python/coloredlogs **
-dev-python/jiter
-dev-python/lazy-loader ~arm64
-dev-python/narwhals
-dev-python/nvidia-ml-py ~*
-dev-python/tifffile ~arm64
 dev-libs/jose
 dev-libs/luksmeta ~*
 dev-libs/mimalloc ~arm64
 dev-libs/pfs ~arm64
 dev-libs/pocketfft ~arm64
 dev-libs/sleef
+dev-python/coloredlogs **
 dev-python/cyclopts
 dev-python/docstring-parser **
 dev-python/ffmpeg-python **
 dev-python/humanfriendly **
 dev-python/imageio
 dev-python/imageio-ffmpeg
+dev-python/jiter
+dev-python/lazy-loader ~arm64
 dev-python/libtmux
 dev-python/lmdb
+dev-python/narwhals
+dev-python/nvidia-ml-py ~*
 dev-python/openai
 dev-python/rich-rst
 dev-python/scikit-build-core
 dev-python/scikit-image
 dev-python/scikit-learn
+dev-python/tifffile ~arm64
 dev-util/nvidia-cuda-toolkit
-dev-libs/cudnn
 gui-libs/egl-gbm
 gui-libs/egl-wayland
 gui-libs/egl-wayland2
@@ -52,19 +52,19 @@ media-libs/opencv
 media-libs/webrtc-audio-processing ~arm64
 media-plugins/gst-plugins-hls
 media-plugins/gst-plugins-opencv
-media-plugins/gst-plugins-webrtc ~arm64
 media-plugins/gst-plugins-sctp
+media-plugins/gst-plugins-webrtc ~arm64
 media-video/v4l2loopback ~*
-sci-libs/dlpack ~*
-sci-libs/onnxruntime ~*
 net-misc/gdown ~*
 net-misc/lldpd **
+sci-libs/dlpack ~*
+sci-libs/onnxruntime ~*
 sci-ml/cudnn-frontend **
 sci-ml/FP16
 sci-ml/gloo **
-sci-ml/kineto ~arm64
 sci-ml/hf_xet
 sci-ml/huggingface_hub
+sci-ml/kineto ~arm64
 sci-ml/onnx
 sci-ml/pytorch
 sci-ml/safetensors
