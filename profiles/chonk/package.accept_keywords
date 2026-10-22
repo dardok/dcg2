@@ -43,6 +43,7 @@ dev-python/scikit-image
 dev-python/scikit-learn
 dev-python/tifffile ~arm64
 dev-util/nvidia-cuda-toolkit
+dev-util/ruff
 gui-libs/egl-gbm
 gui-libs/egl-wayland
 gui-libs/egl-wayland2

@@ -19,6 +19,8 @@
 *dev-python/imageio
 *dev-python/imageio-ffmpeg
 *dev-python/lmdb
+*dev-python/mypy
+*dev-python/mypy-extensions
 *dev-python/nvidia-ml-py
 *dev-python/openai
 *dev-python/pip
@@ -30,6 +32,7 @@
 *dev-python/scikit-learn
 *dev-python/uv
 *dev-util/nvidia-cuda-toolkit
+*dev-util/ruff
 *dev-vcs/git
 *dev-vcs/git-lfs
 *media-libs/gst-plugins-good
