@@ -1,6 +1,9 @@
-CUSTOM_PROFILE="yes"
+ACCEPT_LICENSE="*"
+LINGUAS="-* en"
 
 VIDEO_CARDS="fbdev intel vesa dummy"
 
+USE="-consolekit -elogind -networkmanager -tcpd -xinetd"
+USE="${USE} secureboot"
 USE="${USE} X wayland vulkan"
 USE="${USE} bash-completion vim-syntax"
