@@ -1,1 +1,2 @@
 gui-wm/hyprland -guiutils
+gui-apps/quickshell -i3 -crash-handler
