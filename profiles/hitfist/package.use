@@ -10,14 +10,10 @@ dev-libs/appstream qt6
 dev-libs/libdbusmenu gtk3
 dev-libs/re2 icu
 dev-qt/qt5compat icu qml
-dev-qt/qtbase cups gtk icu libproxy
-dev-qt/qtbase icu
-dev-qt/qtbase opengl
-dev-qt/qtdeclarative opengl
-dev-qt/qtdeclarative svg
+dev-qt/qtbase cups gtk icu libproxy opengl
+dev-qt/qtdeclarative opengl svc
 dev-qt/qtgui accessibility dbus egl jpeg
-dev-qt/qttools opengl
-dev-qt/qttools qml
+dev-qt/qttools opengl qml
 dev-qt/qtwayland qml
 gui-apps/waypipe dmabuf lz4 zstd
 gui-libs/gtk colord cups gstreamer sysprof
@@ -36,8 +32,7 @@ media-sound/pulseaudio-daemon bluetooth dbus gstreamer
 media-video/ffmpeg-compat alsa lcms opengl pulseaudio sdl svg vorbis x264 xvid
 media-video/pipewire bluetooth dbus gstreamer
 media-video/vlc dbus xml libnotify optimisememory v4l vpx x264 x265 svc png rdp pulseaudio
-net-dns/dnsmasq dbus
-net-dns/dnsmasq script
+net-dns/dnsmasq dbus script
 net-libs/gnutls pkcs11 tools zstd
 net-libs/gtk-vnc -vala
 net-libs/webkit-gtk avif jpegxl keyring lcms pdf spell
@@ -45,6 +40,7 @@ net-misc/freerdp client gstreamer jpeg pulseaudio server usb
 net-misc/spice-gtk policykit usbredir webdav lz4
 net-print/cups dbus usb
 net-wireless/bluez cups
+sys-devel/gcc lto pgo
 sys-firmware/ipxe usb
 sys-fs/btrfs-progs -udev
 sys-libs/minizip-ng compat
