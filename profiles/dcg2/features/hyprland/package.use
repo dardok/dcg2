@@ -1,3 +1,4 @@
 gui-wm/hyprland -guiutils
 gui-apps/quickshell -i3 -crash-handler
 media-libs/libcanberra -udev
+media-libs/freetype harfbuzz
