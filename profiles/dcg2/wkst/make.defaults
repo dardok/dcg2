@@ -1,0 +1,2 @@
+USE="${USE} wayland -X -llvm"
+USE="${USE} gstreamer pulseaudio"
