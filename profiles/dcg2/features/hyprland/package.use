@@ -2,4 +2,3 @@ gui-wm/hyprland -guiutils
 gui-apps/quickshell -i3 -crash-handler -networkmanager -policykit
 media-libs/libcanberra -udev
 media-libs/freetype harfbuzz
-media-libs/libglvnd X
