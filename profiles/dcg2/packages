@@ -8,6 +8,7 @@
 *app-portage/gentoolkit
 *app-shells/bash-completion
 *app-shells/liquidprompt
+*dev-util/pahole
 *dev-vcs/git
 *net-fs/nfs-utils
 *net-misc/lldpd
@@ -21,7 +22,9 @@
 *sys-block/parted
 *sys-boot/efibootmgr
 *sys-cluster/rdma-core
+*sys-devel/bc
 *sys-fabric/mstflint
+*sys-firmware/intel-microcode
 *sys-fs/btrfs-progs
 *sys-fs/dosfstools
 *sys-fs/lvm2
