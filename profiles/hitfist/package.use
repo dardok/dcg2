@@ -11,7 +11,7 @@ dev-libs/libdbusmenu gtk3
 dev-libs/re2 icu
 dev-qt/qt5compat icu qml
 dev-qt/qtbase cups gtk icu libproxy opengl
-dev-qt/qtdeclarative opengl svc
+dev-qt/qtdeclarative opengl svc svg
 dev-qt/qtgui accessibility dbus egl jpeg
 dev-qt/qttools opengl qml
 dev-qt/qtwayland qml
