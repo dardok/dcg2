@@ -1,2 +1,2 @@
-USE="${USE} wayland vulkan opengl -X -llvm"
+USE="${USE} wayland vulkan opengl X -llvm"
 USE="${USE} gstreamer pulseaudio"
