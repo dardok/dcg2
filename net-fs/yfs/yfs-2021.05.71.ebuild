@@ -6,8 +6,6 @@ EAPI=8
 MODULES_OPTIONAL_IUSE="modules"
 inherit autotools linux-mod-r1 flag-o-matic pam systemd tmpfiles toolchain-funcs
 
-WANT_AUTOCONF="2.71"
-
 RESTRICT="bindist mirror fetch strip"
 
 DESCRIPTION="The AuriStor distributed file system"
@@ -50,7 +48,7 @@ QA_TEXTRELS_x86_fbsd="/boot/modules/libafs.ko"
 QA_TEXTRELS_amd64_fbsd="/boot/modules/libafs.ko"
 
 pkg_nofetch() {
-	einfo "The yfs-2021.05-71.tar.bz2 archive should be placed into your distfiles directory."
+    einfo "The yfs-2021.05-71.tar.bz2 archive should be placed into your distfiles directory."
 }
 
 pkg_setup() {
@@ -69,30 +67,10 @@ src_prepare() {
 
 	# packaging is f-ed up, so we can't run eautoreconf
 	# run autotools commands based on what is listed in regen.sh
-	local macro_includes=(
-		-I src/cf 
-		-I src/external/rra-c-util/m4 
-		-I src/external/heimdal/cf 
-		-I src/external/autoconf-archive/m4
-	)
-
-	einfo "Generating root autoconf configurations..."
-	eaclocal "${macro_includes[@]}"
-	eautoheader "${macro_includes[@]}"
-	eautoconf "${macro_includes[@]}"
-
-	# Step 2: Generate configure-libafs macros by temporarily substituting the context file
-	einfo "Generating specialized libafs autoconf configurations..."
-	mv configure.ac configure.ac.bak || die
-	cp configure-libafs.ac configure.ac || die
-
-	# Run eaclocal again to capture kernel-specific macros (AC_TRY_KBUILD, etc.)
-	eaclocal "${macro_includes[@]}"
-	eautoconf "${macro_includes[@]}" -o configure-libafs configure-libafs.ac
-
-	# Restore the original root configuration file
-	mv configure.ac.bak configure.ac || die
-
+	eaclocal -I src/cf -I src/external/rra-c-util/m4 -I src/external/heimdal/cf -I src/external/autoconf-archive/m4 -I src/cf-noparallel
+	eautoconf
+	eautoconf -o configure-libafs configure-libafs.ac
+	eautoheader
 	einfo "Deleting autom4te.cache directory"
 	rm -rf autom4te.cache || die
 }
