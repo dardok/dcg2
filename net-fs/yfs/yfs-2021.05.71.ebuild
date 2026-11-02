@@ -67,11 +67,10 @@ src_prepare() {
 
 	# packaging is f-ed up, so we can't run eautoreconf
 	# run autotools commands based on what is listed in regen.sh
-	AT_M4DIR="src/cf"
-	eaclocal -I src/cf -I src/external/rra-c-util/m4 -I src/external/heimdal/cf -I src/external/autoconf-archive/m4
-	eautoconf
-	eautoconf -o configure-libafs configure-libafs.ac
-	eautoheader
+	WANT_AUTOCONF="2.71" eaclocal -I src/cf -I src/external/rra-c-util/m4 -I src/external/heimdal/cf -I src/external/autoconf-archive/m4
+	WANT_AUTOCONF="2.71" eautoconf
+	WANT_AUTOCONF="2.71" eautoconf -o configure-libafs configure-libafs.ac
+	WANT_AUTOCONF="2.71" eautoheader
 	einfo "Deleting autom4te.cache directory"
 	rm -rf autom4te.cache || die
 }
