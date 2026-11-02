@@ -1,5 +1,5 @@
-x11-drivers/nvidia-drivers
-gui-apps/wayvnc
 dev-libs/aml
+gui-apps/wayvnc
 gui-libs/neatvnc
 www-apps/novnc
+x11-drivers/nvidia-drivers
