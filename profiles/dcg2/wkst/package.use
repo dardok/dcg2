@@ -1,2 +1,4 @@
 x11-drivers/nvidia-drivers kernel-open -tools
 media-video/ffmpeg nvenc v4l vaapi x264 x265
+app-text/xmlto text
+app-crypt/gcr gtk
