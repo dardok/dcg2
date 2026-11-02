@@ -1,17 +1,17 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-MODULES_OPTIONAL_USE="modules"
-inherit autotools linux-mod flag-o-matic pam systemd tmpfiles toolchain-funcs
+MODULES_OPTIONAL_IUSE="modules"
+inherit autotools linux-mod-r1 flag-o-matic pam systemd tmpfiles toolchain-funcs
 
 RESTRICT="bindist mirror fetch strip"
 
 DESCRIPTION="The AuriStor distributed file system"
 HOMEPAGE="https://www.auristor.com/filesystem/"
-SRC_URI="yfs-2021.05-64.tar.bz2"
-MY_PV=2021.05-64
+SRC_URI="yfs-2021.05-71.tar.bz2"
+MY_PV=2021.05-71
 
 LICENSE="Proprietary"
 SLOT="0"
@@ -20,7 +20,6 @@ KEYWORDS="~amd64"
 IUSE="debug fuse +kerberos +modules +namei"
 
 BDEPEND="
-	sys-devel/gcc:14
 	dev-lang/perl
 	sys-devel/flex
 	dev-util/byacc
@@ -39,7 +38,7 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-PATCHES=( )
+PATCHES=( "${FILESDIR}"/designated_init.patch )
 
 CONFIG_CHECK="~!AFS_FS KEYS"
 ERROR_AFS_FS="OpenAFS conflicts with the in-kernel AFS-support. Make sure not to load both at the same time!"
@@ -49,11 +48,11 @@ QA_TEXTRELS_x86_fbsd="/boot/modules/libafs.ko"
 QA_TEXTRELS_amd64_fbsd="/boot/modules/libafs.ko"
 
 pkg_nofetch() {
-    einfo "The yfs-2021.05-64.tar.bz2 archive should be placed into your distfiles directory."
+    einfo "The yfs-2021.05-71.tar.bz2 archive should be placed into your distfiles directory."
 }
 
 pkg_setup() {
-	use kernel_linux && linux-mod_pkg_setup
+	use kernel_linux && linux-mod-r1_pkg_setup
 }
 
 src_prepare() {
@@ -68,7 +67,7 @@ src_prepare() {
 
 	# packaging is f-ed up, so we can't run eautoreconf
 	# run autotools commands based on what is listed in regen.sh
-	eaclocal -I src/cf -I src/external/rra-c-util/m4 -I src/external/heimdal/cf -I src/external/autoconf-archive/m4
+	eaclocal -I src/cf -I src/external/rra-c-util/m4 -I src/external/heimdal/cf -I src/external/autoconf-archive/m4 -I src/cf-noparallel
 	eautoconf
 	eautoconf -o configure-libafs configure-libafs.ac
 	eautoheader
@@ -123,7 +122,7 @@ src_install() {
 
 			MODULE_NAMES="yfs(fs/yfs:${srcdir})"
 
-			linux-mod_src_install
+			linux-mod-r1_src_install
 		fi
 	fi
 
@@ -148,7 +147,7 @@ src_install() {
 pkg_postinst() {
 	if use modules; then
 		# Update linker.hints file
-		use kernel_linux && linux-mod_pkg_postinst
+		use kernel_linux && linux-mod-r1_pkg_postinst
 	fi
 
 	#tmpfiles_process openafs-client.conf
@@ -167,6 +166,6 @@ pkg_postinst() {
 pkg_postrm() {
 	if use modules; then
 		# Update linker.hints file
-		use kernel_linux && linux-mod_pkg_postrm
+		use kernel_linux && linux-mod-r1_pkg_postrm
 	fi
 }
