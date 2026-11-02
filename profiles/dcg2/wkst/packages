@@ -1,5 +1,6 @@
-*x11-drivers/nvidia-drivers
-*x11-terms/kitty
-*www-client/firefox-bin
 *gui-apps/wayvnc
 *sys-boot/grub
+*www-client/firefox-bin
+*www-client/microsoft-edge
+*x11-drivers/nvidia-drivers
+*x11-terms/kitty
