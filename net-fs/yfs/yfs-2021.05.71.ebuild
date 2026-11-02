@@ -67,6 +67,7 @@ src_prepare() {
 
 	# packaging is f-ed up, so we can't run eautoreconf
 	# run autotools commands based on what is listed in regen.sh
+	AT_M4DIR="cf" 
 	eaclocal -I src/cf -I src/external/rra-c-util/m4 -I src/external/heimdal/cf -I src/external/autoconf-archive/m4
 	eautoconf
 	eautoconf -o configure-libafs configure-libafs.ac
