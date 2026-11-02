@@ -3,7 +3,7 @@
 
 EAPI=8
 
-MODULES_OPTIONAL_USE="modules"
+MODULES_OPTIONAL_IUSE="modules"
 inherit autotools linux-mod-r1 flag-o-matic pam systemd tmpfiles toolchain-funcs
 
 RESTRICT="bindist mirror fetch strip"
