@@ -76,12 +76,22 @@ src_prepare() {
 		-I src/external/autoconf-archive/m4
 	)
 
+	einfo "Generating root autoconf configurations..."
 	eaclocal "${macro_includes[@]}"
 	eautoheader "${macro_includes[@]}"
-
-	# Pass macro directories directly to both autoconf steps so they can trace the tokens
 	eautoconf "${macro_includes[@]}"
+
+	# Step 2: Generate configure-libafs macros by temporarily substituting the context file
+	einfo "Generating specialized libafs autoconf configurations..."
+	mv configure.ac configure.ac.bak || die
+	cp configure-libafs.ac configure.ac || die
+
+	# Run eaclocal again to capture kernel-specific macros (AC_TRY_KBUILD, etc.)
+	eaclocal "${macro_includes[@]}"
 	eautoconf "${macro_includes[@]}" -o configure-libafs configure-libafs.ac
+
+	# Restore the original root configuration file
+	mv configure.ac.bak configure.ac || die
 
 	einfo "Deleting autom4te.cache directory"
 	rm -rf autom4te.cache || die
