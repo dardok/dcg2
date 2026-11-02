@@ -50,7 +50,7 @@ QA_TEXTRELS_x86_fbsd="/boot/modules/libafs.ko"
 QA_TEXTRELS_amd64_fbsd="/boot/modules/libafs.ko"
 
 pkg_nofetch() {
-    einfo "The yfs-2021.05-71.tar.bz2 archive should be placed into your distfiles directory."
+	einfo "The yfs-2021.05-71.tar.bz2 archive should be placed into your distfiles directory."
 }
 
 pkg_setup() {
@@ -69,10 +69,20 @@ src_prepare() {
 
 	# packaging is f-ed up, so we can't run eautoreconf
 	# run autotools commands based on what is listed in regen.sh
-	eaclocal -I src/cf -I src/external/rra-c-util/m4 -I src/external/heimdal/cf -I src/external/autoconf-archive/m4
-	eautoconf
-	eautoconf -o configure-libafs configure-libafs.ac
-	eautoheader
+	local macro_includes=(
+		-I src/cf 
+		-I src/external/rra-c-util/m4 
+		-I src/external/heimdal/cf 
+		-I src/external/autoconf-archive/m4
+	)
+
+	eaclocal "${macro_includes[@]}"
+	eautoheader "${macro_includes[@]}"
+
+	# Pass macro directories directly to both autoconf steps so they can trace the tokens
+	eautoconf "${macro_includes[@]}"
+	eautoconf "${macro_includes[@]}" -o configure-libafs configure-libafs.ac
+
 	einfo "Deleting autom4te.cache directory"
 	rm -rf autom4te.cache || die
 }
