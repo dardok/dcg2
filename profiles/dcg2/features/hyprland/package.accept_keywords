@@ -17,3 +17,4 @@ gui-libs/eglexternalplatform
 gui-libs/egl-gbm
 gui-libs/egl-wayland
 gui-libs/egl-wayland2
+gui-libs/xdg-desktop-portal-hyprland
