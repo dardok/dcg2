@@ -1,4 +1,5 @@
 *gui-apps/wayvnc
+*gui-libs/xdg-desktop-portal-wlr
 *sys-boot/grub
 *www-apps/novnc
 *www-client/firefox-bin
