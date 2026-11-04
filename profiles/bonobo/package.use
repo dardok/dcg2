@@ -1,12 +1,24 @@
 app-containers/apptainer network rootless suid
+app-emulation/qemu fuse infiniband io-uring keyutils numa spice usb usbredir virgl virtfs static-user
+app-emulation/virt-manager gui
 app-text/xmlto text
-gui-apps/quickshell -crash-handler pam bluetooth hyprland layer-shell
+dev-libs/glib static-libs
+dev-libs/libpcre2 static-libs
+dev-lua/lua-cjson lua_targets_lua5-4
+dev-python/pillow webp
+gui-apps/quickshell -crash-handler -networkmanager i3 pam bluetooth hyprland layer-shell
 media-libs/freetype harfbuzz
 media-video/pipewire bluetooth extra
 net-dns/dnsmasq script
 net-firewall/iptables nftables
 net-libs/gnutls tools
+net-libs/nodejs npm
+net-misc/spice-gtk usbredir webdav
+net-proxy/haproxy lua quic lua_single_target_lua5-4
+sys-apps/attr static-libs
 sys-apps/systemd acl audit boot -bpf cryptsetup curl http idn importd pam pcre pkcs11 policykit remote -sysv-utils ukify
 sys-fs/e2fsprogs fuse
 sys-kernel/gentoo-sources experimental
-sys-libs/zlib minizip
+sys-libs/zlib minizip static-libs
+sys-process/atop modules
+virtual/zlib static-libs

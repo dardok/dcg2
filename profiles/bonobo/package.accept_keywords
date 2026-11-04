@@ -1,4 +1,5 @@
-=sys-kernel/gentoo-sources-6.18*
+
+
 
 app-crypt/intel-ipsec-mb
 app-crypt/sops
@@ -14,9 +15,20 @@ dev-libs/cudnn
 dev-libs/hyprgraphics
 dev-libs/hyprland-protocols
 dev-libs/hyprlang
+dev-libs/wayland **
 dev-libs/wayland-protocols
+dev-libs/wayland-protocols **
+dev-lua/lua-cjson
+dev-python/aiohttp
+dev-python/aiohttp-retry
+dev-python/durationpy
+dev-python/geopandas
+dev-python/kubernetes
+dev-python/pyogrio
+dev-python/setuptools
 dev-util/hyprwayland-scanner
 dev-util/nvidia-cuda-toolkit
+dev-util/wayland-scanner **
 gui-apps/hypridle
 gui-apps/hyprlock
 gui-apps/hyprpicker
@@ -35,17 +47,12 @@ gui-libs/hyprwire
 gui-libs/xdg-desktop-portal-hyprland
 gui-wm/hyprland
 mpv-plugin/mpv-mpris
+net-dialup/tio
 net-fs/yfs
 net-misc/usbip
 net-wireless/bluez-tools
 sys-block/libfabric
+sys-cluster/kubectl
+=sys-kernel/gentoo-sources-6.18*
+sys-process/atop
 x11-themes/pulse-glass
-
-dev-python/pyogrio
-dev-python/geopandas
-
-dev-python/kubernetes
-dev-python/durationpy
-dev-python/setuptools
-dev-python/aiohttp
-dev-python/aiohttp-retry
