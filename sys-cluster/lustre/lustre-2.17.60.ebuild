@@ -21,7 +21,7 @@ else
 	S="${WORKDIR}/${PN}-release-${PV}"
 fi
 
-inherit ${scm} autotools linux-info linux-mod_r1-r1 toolchain-funcs udev flag-o-matic
+inherit ${scm} autotools linux-info linux-mod-r1 toolchain-funcs udev flag-o-matic
 
 DESCRIPTION="Lustre is a parallel distributed file system"
 HOMEPAGE="http://wiki.whamcloud.com/"
