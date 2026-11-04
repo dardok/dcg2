@@ -53,7 +53,7 @@ pkg_setup() {
 	filter-mfpmath i386
 	filter-flags -msse* -mavx* -mmmx -m3dnow
 
-	linux-mod_r1_pkg_setup
+	linux-mod-r1_pkg_setup
 	ARCH="$(tc-arch-kernel)"
 	ABI="${KERNEL_ABI}"
 }
