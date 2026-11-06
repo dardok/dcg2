@@ -39,7 +39,7 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/mstflint-4.36.0-build-system.patch"
+	"${FILESDIR}/mstflint-4.37.0-build-system.patch"
 )
 
 src_prepare() {
