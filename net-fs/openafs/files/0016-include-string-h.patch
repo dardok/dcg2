@@ -5,7 +5,7 @@ diff '--color=auto' -u -r -N a/src/afs/afs_dcache.c b/src/afs/afs_dcache.c
  #include "afs/afs_osidnlc.h"
  
  #include <opr/ffs.h>
-+#include <string.h>
++#include <linux/string.h> 
  
  /* Forward declarations. */
  static void afs_GetDownD(int anumber, int *aneedSpace, afs_int32 buckethint);
@@ -16,7 +16,7 @@ diff '--color=auto' -u -r -N a/src/afs/afs_pag_cred.c b/src/afs/afs_pag_cred.c
  #include "rx/rx_globals.h"
  #include "pagcb.h"
  
-+#include <string.h>
++#include <linux/string.h> 
  
  struct afspag_cell {
      struct afspag_cell *next;
@@ -27,7 +27,7 @@ diff '--color=auto' -u -r -N a/src/afs/afs_pioctl.c b/src/afs/afs_pioctl.c
  #include "rx/rx_globals.h"
  #include "token.h"
  
-+#include <string.h>
++#include <linux/string.h> 
 +
  extern int afs_rmtsys_enable;
  struct VenusFid afs_rootFid;
@@ -40,7 +40,7 @@ diff '--color=auto' -u -r -N a/src/afs/VNOPS/afs_vnop_flock.c b/src/afs/VNOPS/af
  #include "afs/unified_afs.h"
  
 -
-+#include <string.h>
++#include <linux/string.h> 
  
  
  
