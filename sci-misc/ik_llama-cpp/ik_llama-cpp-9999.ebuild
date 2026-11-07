@@ -89,8 +89,8 @@ src_configure() {
 		-DGGML_RPC=ON
 		-DLLAMA_CURL=$(usex curl)
 		-DBUILD_NUMBER="1"
-		-DGENTOO_REMOVE_CMAKE_BLAS_HACK=ON
 		-DGGML_CUDA=$(usex cuda)
+		-DCMAKE_CUDA_ARCHITECTURES="86"
 		-DGGML_OPENMP=$(usex openmp)
 		-DGGML_VULKAN=$(usex vulkan)
 
