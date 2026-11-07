@@ -1,3 +1,4 @@
+*dev-python/librosa
 *dev-python/soundfile
 *sci-libs/torchaudio
 *sci-ml/huggingface_hub
