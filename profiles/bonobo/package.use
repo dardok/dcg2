@@ -6,11 +6,12 @@ dev-libs/glib static-libs
 dev-libs/libpcre2 static-libs
 dev-lua/lua-cjson lua_targets_lua5-4
 dev-python/pillow webp
-gui-apps/quickshell -crash-handler -networkmanager i3 pam bluetooth hyprland layer-shell
+gui-apps/quickshell -crash-handler -networkmanager -i3 pam bluetooth hyprland layer-shell
 media-libs/freetype harfbuzz
 media-video/pipewire bluetooth extra
 net-dns/dnsmasq script
 net-firewall/iptables nftables
+net-firewall/nftables json
 net-libs/gnutls tools
 net-libs/nodejs npm
 net-misc/spice-gtk usbredir webdav
