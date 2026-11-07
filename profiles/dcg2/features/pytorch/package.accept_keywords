@@ -20,7 +20,6 @@ sci-ml/FP16
 sci-ml/gloo
 sci-ml/hf_xet
 sci-ml/huggingface_hub
-sci-ml/kineto
 sci-ml/onnx
 sci-ml/pytorch
 sci-ml/safetensors
