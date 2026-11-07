@@ -44,7 +44,7 @@ BDEPEND="
 "
 
 DISTUTILS_ARGS=(                                                                                                                                                              
-  -Ccmake.define.USE_SYSTEM_LIBSOXR=ON
+  -DUSE_SYSTEM_LIBSOXR=ON
 )
 
 distutils_enable_tests pytest
