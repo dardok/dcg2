@@ -1,3 +1,4 @@
 *sci-ml/huggingface_hub
-*sci-ml/torchvision
 *sci-ml/torchaudio
+*sci-ml/torchvision
+*sci-ml/transformers
