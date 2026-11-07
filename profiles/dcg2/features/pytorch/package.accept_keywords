@@ -5,6 +5,7 @@ dev-libs/dynolog
 dev-libs/pfs
 dev-libs/pocketfft
 dev-libs/pthreadpool
+dev-python/lazy-loader
 dev-python/librosa
 dev-python/multiprocess
 dev-python/numba
