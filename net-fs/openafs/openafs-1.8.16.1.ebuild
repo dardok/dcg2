@@ -77,6 +77,7 @@ PATCHES=(
 		"${FILESDIR}"/0013-kernel-cc-ld.patch
 		#"${FILESDIR}"/0014-upstream-struct-init.patch
 		#"${FILESDIR}"/0015-upstream-struct-desiginated-init.patch
+		"${FILESDIR}"/0016-linux-replace-strncpy-with-strscpy.patch
 )
 # see https://bugs.gentoo.org/943641
 # Upstream performs uses customized autoconf routines to check for
