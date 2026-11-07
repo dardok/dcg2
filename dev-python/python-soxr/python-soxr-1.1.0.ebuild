@@ -60,3 +60,8 @@ python_install_all() {
 	dodoc README.md
 }
 
+src_configure() {
+	export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+
+	distutils-r1_src_configure
+}
