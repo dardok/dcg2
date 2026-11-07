@@ -3,3 +3,4 @@ dev-util/nvidia-cuda-toolkit profiler
 sci-ml/huggingface_hub torch
 sci-ml/onnx disableStaticReg
 sci-ml/pytorch distributed flash gloo memefficient cusparselt
+sci-ml/transformers torch
