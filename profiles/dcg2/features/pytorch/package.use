@@ -1,4 +1,6 @@
+dev-libs/boost numpy python zstd
 dev-libs/cutlass tools
+dev-python/librosa display
 dev-util/nvidia-cuda-toolkit profiler
 sci-ml/datasets torch vision
 sci-ml/huggingface_hub torch
