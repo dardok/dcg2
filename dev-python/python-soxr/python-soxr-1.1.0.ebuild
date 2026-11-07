@@ -44,7 +44,7 @@ BDEPEND="
 "
 
 DISTUTILS_BUILD_ARGS=(                                                                                                                                                              
-  -CUSE_SYSTEM_LIBSOXR=ON                                                                                                                                                           
+  -Ccmake.define.USE_SYSTEM_LIBSOXR=ON
 )
 
 distutils_enable_tests pytest
@@ -60,8 +60,5 @@ python_install_all() {
 
 src_configure() {
 	export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
-	local mycmakeargs=(
-		-DUSE_SYSTEM_SOXR=ON
-	)
 	distutils-r1_src_configure
 }
