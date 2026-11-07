@@ -43,15 +43,9 @@ BDEPEND="
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 "
 
-# Use system libsoxr instead of bundled
-DISTUTILS_BUILD_ARGS=(
-	-CUSE_SYSTEM_LIBSOXR=ON
-)
-
 distutils_enable_tests pytest
 
 python_test() {
-	# Tests need the built extension, run from build dir
 	epytest -v
 }
 
@@ -62,6 +56,8 @@ python_install_all() {
 
 src_configure() {
 	export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
-
+	local mycmakeargs=(
+		-DWITH_SYSTEM_SOXR=ON
+	)
 	distutils-r1_src_configure
 }
