@@ -16,9 +16,11 @@
 *sys-apps/ethtool
 *sys-apps/haveged
 *sys-apps/ipmitool
+*sys-apps/kexec-tools
 *sys-apps/nvme-cli
 *sys-apps/restorecond
 *sys-apps/smartmontools
+*sys-auth/sssd
 *sys-block/parted
 *sys-boot/efibootmgr
 *sys-cluster/rdma-core
