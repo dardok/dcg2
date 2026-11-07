@@ -1,2 +1,3 @@
 *sci-ml/huggingface_hub
-*sci-ml/pytorch
+*sci-ml/torchvision
+*sci-ml/torchaudio
