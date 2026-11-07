@@ -5,6 +5,7 @@ dev-libs/dynolog
 dev-libs/pfs
 dev-libs/pocketfft
 dev-libs/pthreadpool
+sci-libs/torchaudio
 sci-ml/accelerate
 sci-ml/cudnn-frontend
 sci-ml/FP16
@@ -17,4 +18,5 @@ sci-ml/pytorch
 sci-ml/safetensors
 sci-ml/tensorpipe
 sci-ml/tokenizers
+sci-ml/torchvision
 sci-ml/transformers
