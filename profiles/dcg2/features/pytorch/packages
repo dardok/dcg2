@@ -1,6 +1,7 @@
 *dev-python/librosa
 *dev-python/soundfile
 *sci-libs/torchaudio
+*sci-ml/datasets
 *sci-ml/huggingface_hub
 *sci-ml/torchvision
 *sci-ml/transformers

@@ -12,6 +12,7 @@ dev-python/python-soxr
 sci-libs/torchaudio
 sci-ml/accelerate
 sci-ml/cudnn-frontend
+sci-ml/datasets
 sci-ml/FP16
 sci-ml/gloo
 sci-ml/hf_xet
