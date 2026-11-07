@@ -6,9 +6,10 @@ dev-libs/pfs
 dev-libs/pocketfft
 dev-libs/pthreadpool
 dev-python/librosa
+dev-python/multiprocess
 dev-python/numba
-dev-python/soundfile
 dev-python/python-soxr
+dev-python/soundfile
 sci-libs/torchaudio
 sci-ml/accelerate
 sci-ml/cudnn-frontend
