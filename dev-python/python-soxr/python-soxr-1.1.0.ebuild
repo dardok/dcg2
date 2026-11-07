@@ -3,14 +3,13 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..14} )
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=scikit-build-core
+PYPI_PN=python-soxr
+PYPI_VERIFY_REPO=https://github.com/dofuuz/python-soxr
+PYTHON_COMPAT=( python3_{12..15} )
 
-inherit distutils-r1
-
-DESCRIPTION="High quality, one-dimensional sample-rate conversion library for Python"
-HOMEPAGE="https://github.com/dofuuz/python-soxr https://python-soxr.readthedocs.io"
-SRC_URI="https://github.com/dofuuz/python-soxr/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+inherit distutils-r1 pypi
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -43,7 +42,7 @@ BDEPEND="
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 "
 
-DISTUTILS_BUILD_ARGS=(                                                                                                                                                              
+DISTUTILS_ARGS=(                                                                                                                                                              
   -Ccmake.define.USE_SYSTEM_LIBSOXR=ON
 )
 
