@@ -28,7 +28,7 @@ RDEPEND="
 	dev-python/decorator[${PYTHON_USEDEP}]
 	dev-python/soundfile[${PYTHON_USEDEP}]
 	dev-python/pooch[${PYTHON_USEDEP}]
-	dev-python/soxr[${PYTHON_USEDEP}]
+	dev-python/python-soxr[${PYTHON_USEDEP}]
 	dev-python/lazy-loader[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
 	display? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
