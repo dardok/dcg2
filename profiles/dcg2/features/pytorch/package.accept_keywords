@@ -8,6 +8,7 @@ dev-libs/pthreadpool
 dev-python/librosa
 dev-python/numba
 dev-python/soundfile
+dev-python/soxr
 sci-libs/torchaudio
 sci-ml/accelerate
 sci-ml/cudnn-frontend
