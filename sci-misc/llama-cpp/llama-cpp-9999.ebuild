@@ -210,7 +210,7 @@ src_configure() {
 
 		-DGGML_BLAS=$(usex blas)
 		-DGGML_CUDA=$(usex cuda)
-		-DCMAKE_CUDA_ARCHITECTURES="86"
+		-DCMAKE_CUDA_ARCHITECTURES="61"
 		-DGGML_VULKAN=$(usex vulkan)
 		-DGGML_OPENMP=$(usex openmp)
 		-DGGML_RPC=ON
