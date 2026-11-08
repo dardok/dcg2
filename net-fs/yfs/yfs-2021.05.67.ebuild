@@ -20,7 +20,6 @@ KEYWORDS="~amd64"
 IUSE="debug fuse +kerberos +modules +namei"
 
 BDEPEND="
-	sys-devel/gcc:14
 	dev-lang/perl
 	sys-devel/flex
 	dev-util/byacc
@@ -39,7 +38,7 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-PATCHES=( )
+PATCHES=( "${FILESDIR}"/designated_init.patch )
 
 CONFIG_CHECK="~!AFS_FS KEYS"
 ERROR_AFS_FS="OpenAFS conflicts with the in-kernel AFS-support. Make sure not to load both at the same time!"
@@ -49,7 +48,7 @@ QA_TEXTRELS_x86_fbsd="/boot/modules/libafs.ko"
 QA_TEXTRELS_amd64_fbsd="/boot/modules/libafs.ko"
 
 pkg_nofetch() {
-    einfo "The yfs-2021.05-64.tar.bz2 archive should be placed into your distfiles directory."
+    einfo "The yfs-2021.05-67.tar.bz2 archive should be placed into your distfiles directory."
 }
 
 pkg_setup() {
