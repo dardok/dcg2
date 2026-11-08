@@ -210,12 +210,17 @@ src_configure() {
 
 		-DGGML_BLAS=$(usex blas)
 		-DGGML_CUDA=$(usex cuda)
-		-DCMAKE_CUDA_ARCHITECTURES="61"
 		-DGGML_VULKAN=$(usex vulkan)
 		-DGGML_OPENMP=$(usex openmp)
 		-DGGML_RPC=ON
 		-DGGML_OPENCL=$(usex opencl)
 	)
+
+	if use cuda; then
+		mycmakeargs+=(
+		    -DCMAKE_CUDA_ARCHITECTURES="${CMAKE_CUDA_ARCHITECTURES:-75}"
+		)
+	fi
 
 	if use blas; then
 		if use flexiblas ; then
