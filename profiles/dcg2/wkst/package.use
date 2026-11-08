@@ -1,4 +1,7 @@
 app-crypt/gcr gtk
 app-text/xmlto text
+dev-python/pillow webp
+media-gfx/imagemagick jpeg png svg tiff
 media-video/ffmpeg nvenc v4l vaapi x264 x265
 x11-drivers/nvidia-drivers kernel-open -tools
+virtual/imagemagick-tools jpeg png svg tiff
