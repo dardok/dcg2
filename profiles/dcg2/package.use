@@ -1,8 +1,8 @@
+app-admin/sudo sasl sssd ldap
 net-dns/bind gssapi
 net-libs/nghttp2 xml
 net-libs/ngtcp2 gnutls
-net-nds/openldap minimal
-net-nds/openldap sasl experimental
+net-nds/openldap sasl experimental minimal
 sys-apps/systemd boot cryptsetup curl pkcs11 secureboot tpm ukify
 sys-auth/sssd nfsv4 python
 sys-cluster/rdma-core python
