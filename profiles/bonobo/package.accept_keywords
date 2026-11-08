@@ -1,6 +1,3 @@
-
-
-
 app-crypt/intel-ipsec-mb
 app-crypt/sops
 app-editors/sublime-text
@@ -16,7 +13,6 @@ dev-libs/hyprgraphics
 dev-libs/hyprland-protocols
 dev-libs/hyprlang
 dev-libs/wayland **
-dev-libs/wayland-protocols
 dev-libs/wayland-protocols **
 dev-lua/lua-cjson
 dev-python/aiohttp
@@ -52,7 +48,6 @@ net-fs/yfs
 net-misc/usbip
 net-wireless/bluez-tools
 sys-block/libfabric
-sys-cluster/kubectl
 =sys-kernel/gentoo-sources-6.18*
 sys-process/atop
 x11-themes/pulse-glass

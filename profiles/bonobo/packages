@@ -174,7 +174,6 @@
 *media-plugins/gst-plugins-x264
 *media-plugins/gst-plugins-x265
 *media-plugins/gst-plugins-ximagesrc
-*media-sound/bluez-alsa
 *media-sound/pavucontrol-qt
 *media-sound/playerctl
 *media-video/pipewire
