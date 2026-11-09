@@ -22,6 +22,7 @@ dev-python/python-soxr
 dev-python/soundfile
 dev-util/ruff
 sci-libs/torchaudio
+sci-misc/causal-conv1d
 sci-ml/accelerate
 sci-ml/cudnn-frontend
 sci-ml/datasets

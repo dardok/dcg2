@@ -11,6 +11,7 @@
 *dev-python/soundfile
 *dev-python/uvicorn
 *sci-libs/torchaudio
+*sci-misc/causal-conv1d
 *sci-ml/datasets
 *sci-ml/huggingface_hub
 *sci-ml/torchvision
