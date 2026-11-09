@@ -1,0 +1,12 @@
+diff --git a/rs/kio/Cargo.toml b/rs/kio/Cargo.toml
+index 1f829d308..7a73d0886 100644
+--- a/rs/kio/Cargo.toml
++++ b/rs/kio/Cargo.toml
+@@ -49,7 +49,7 @@ kio-macros = { workspace = true, optional = true }
+ rand = { workspace = true }
+ serde = { workspace = true, optional = true }
+ serde_with = { workspace = true, optional = true }
+-smallvec = { version = "1.15", features = ["union"] }
++smallvec = { version = "1.16", features = ["union"] }
+ # The host timers, and the runtime handle that keeps a paused runtime's clock on its own origin.
+ tokio = { workspace = true, features = ["rt", "time"], optional = true }

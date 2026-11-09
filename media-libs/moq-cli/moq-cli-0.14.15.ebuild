@@ -5,6 +5,8 @@
 
 EAPI=8
 
+PATCHES=( ${FILESDIR}/smallvec-version.patch )
+
 CRATES="
 	ab_glyph@0.2.32
 	ab_glyph_rasterizer@0.1.10
@@ -701,7 +703,7 @@ CRATES="
 	siphasher@1.0.4
 	slab@0.4.12
 	slotmap@1.1.1
-	smallvec@1.15.0
+	smallvec@1.16.5
 	smawk@0.3.3
 	smithay-client-toolkit@0.19.2
 	smol_str@0.2.2
