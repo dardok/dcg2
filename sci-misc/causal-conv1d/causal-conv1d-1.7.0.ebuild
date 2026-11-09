@@ -3,8 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..14} )
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{12..14} )
 inherit distutils-r1
 
 DESCRIPTION="Causal depthwise conv1d in CUDA, with a PyTorch interface"
