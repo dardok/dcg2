@@ -1,3 +1,4 @@
 media-libs/gst-plugins-base X alsa egl gles2 introspection nls ogg opengl orc pango theora vorbis wayland
 media-libs/gst-plugins-bad X bzip2 introspection nls orc udev vnc vulkan wayland vaapi
+media-libs/libsdl2 gles2
 media-plugins/gst-plugins-meta X a52 aac alsa cdda dts dv dvb dvd ffmpeg flac http jack lame libass libvisual modplug mp3 mpeg ogg opus oss pulseaudio taglib v4l vcd vpx wavpack theora vaapi vorbis x264
