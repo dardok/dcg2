@@ -25,11 +25,5 @@ DEPEND="
 RDEPEND="${DEPEND}
 	sci-ml/pytorch[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	${PYTHON_DEPS}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/wheel[${PYTHON_USEDEP}]
-	sci-ml/pytorch[${PYTHON_USEDEP}]
-"
 
 distutils_enable_tests pytest
