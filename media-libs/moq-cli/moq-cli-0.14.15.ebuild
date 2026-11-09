@@ -970,7 +970,7 @@ SRC_URI="
 	${CARGO_CRATE_URIS}
 "
 
-S="${WORKDIR}/moq-${P}"
+S="${WORKDIR}/moq-${PN}-v${PV}"
 
 LICENSE="|| ( Apache-2.0 MIT )"
 # Dependent crate licenses
