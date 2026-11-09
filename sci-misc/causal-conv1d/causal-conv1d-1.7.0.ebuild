@@ -31,4 +31,7 @@ BDEPEND="
 	')
 "
 
+# Force building from source instead of downloading pre-built wheels
+export CAUSAL_CONV1D_FORCE_BUILD=TRUE
+
 distutils_enable_tests pytest
