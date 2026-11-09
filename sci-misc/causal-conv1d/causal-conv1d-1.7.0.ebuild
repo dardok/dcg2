@@ -20,7 +20,7 @@ KEYWORDS="~amd64"
 RDEPEND="
 	sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	dev-build/ninja[${PYTHON_USEDEP}]
+	dev-build/ninja
 "
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
