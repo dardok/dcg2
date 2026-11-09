@@ -17,18 +17,18 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
-	dev-python/torch[${PYTHON_USEDEP}]
+	sci-ml/pytorch[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	dev-python/ninja[${PYTHON_USEDEP}]
+	dev-build/ninja[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}
-	dev-python/torch[${PYTHON_USEDEP}]
+	sci-ml/pytorch[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
-	dev-python/torch[${PYTHON_USEDEP}]
+	sci-ml/pytorch[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
