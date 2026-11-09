@@ -3,9 +3,9 @@
 
 EAPI=8
 
-DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..14} )
+DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
 DESCRIPTION="Causal depthwise conv1d in CUDA, with a PyTorch interface"
@@ -25,7 +25,6 @@ RDEPEND="
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
-	sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 "
 
 distutils_enable_tests pytest
