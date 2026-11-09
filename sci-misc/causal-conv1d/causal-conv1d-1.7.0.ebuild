@@ -19,12 +19,16 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
-	dev-python/packaging[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/packaging[${PYTHON_USEDEP}]
+	')
 	dev-build/ninja
 "
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/wheel[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_USEDEP}]
+		dev-python/wheel[${PYTHON_USEDEP}]
+	')
 "
 
 distutils_enable_tests pytest
