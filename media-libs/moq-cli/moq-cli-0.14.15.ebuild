@@ -966,6 +966,7 @@ inherit cargo
 DESCRIPTION="Media over QUIC"
 HOMEPAGE=""
 SRC_URI="
+	https://github.com/moq-dev/moq/archive/refs/tags/${PN}-v${PV}.tar.gz -> ${P}.gh.tar.gz
 	${CARGO_CRATE_URIS}
 "
 
