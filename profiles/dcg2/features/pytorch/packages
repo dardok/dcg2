@@ -1,4 +1,5 @@
 *dev-lang/bun-bin
+*dev-python/colorlog
 *dev-python/fastapi
 *dev-python/librosa
 *dev-python/nodeenv
