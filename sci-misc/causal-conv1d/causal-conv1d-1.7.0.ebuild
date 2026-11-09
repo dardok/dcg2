@@ -22,9 +22,7 @@ DEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-build/ninja[${PYTHON_USEDEP}]
 "
-RDEPEND="${DEPEND}
-	sci-ml/pytorch[${PYTHON_USEDEP}]
-"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-python/setuptools[${PYTHON_USEDEP}]
