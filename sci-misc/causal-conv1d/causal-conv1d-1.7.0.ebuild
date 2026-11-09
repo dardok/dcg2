@@ -17,14 +17,12 @@ LICENSE="BSD-3"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND="
+RDEPEND="
 	sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-build/ninja[${PYTHON_USEDEP}]
 "
-RDEPEND="${DEPEND}"
 BDEPEND="
-	${PYTHON_DEPS}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
 	sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
