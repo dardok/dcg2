@@ -21,5 +21,5 @@ QA_PREBUILT="/usr/lib.*/gstreamer-1.0/libgstmoq.so"
 
 src_install() {
 	exeinto /usr/$(get_libdir)/gstreamer-1.0
-	newexe "libgstmoq.so" "libgstmoq.so"
+	newexe "*/*/*/libgstmoq.so" "libgstmoq.so"
 }
