@@ -969,4 +969,3 @@ KEYWORDS="~amd64"
 src_install() {
 	cargo_src_install --path rs/${PN}
 }
-
