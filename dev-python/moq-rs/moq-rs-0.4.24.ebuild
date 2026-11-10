@@ -6,8 +6,6 @@ EAPI=8
 DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 cargo
-
 CRATES="
 	ab_glyph@0.2.32
 	ab_glyph_rasterizer@0.1.10
@@ -947,6 +945,8 @@ CRATES="
 	zvariant_derive@5.15.1
 	zvariant_utils@4.2.0
 "
+
+inherit distutils-r1 cargo
 
 DESCRIPTION="Python bindings for Media over QUIC (MoQ)"
 HOMEPAGE="https://github.com"
