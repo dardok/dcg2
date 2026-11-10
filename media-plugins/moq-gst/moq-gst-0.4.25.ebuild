@@ -982,6 +982,10 @@ RESTRICT="test strip"
 
 QA_FLAGS_IGNORED="/usr/lib64/gstreamer-1.0/libgstmoq.so"
 
+src_configure() {
+	sed -i -e '/moq-tokio/arustls = { version = "0.23", features = ["aws-lc-rs"], default-features = false }' Cargo.toml
+}
+
 src_compile() {
 	cargo build --locked --release -p moq-gst
 }
