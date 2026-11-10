@@ -984,7 +984,7 @@ QA_FLAGS_IGNORED="/usr/lib64/gstreamer-1.0/libgstmoq.so"
 
 src_configure() {
 	local myfeatures=(
-		aws-lc-rs
+		aws_lc_rs
 	)
 
 	cargo_src_configure
