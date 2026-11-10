@@ -955,7 +955,7 @@ SRC_URI="
 	${CARGO_CRATE_URIS}
 "
 
-S="${WORKDIR}/moq-${PN}-v${PV}"
+S="${WORKDIR}/moq-moq-ffi-v${PV}"
 
 LICENSE="MIT Apache-2.0"
 SLOT="0"
