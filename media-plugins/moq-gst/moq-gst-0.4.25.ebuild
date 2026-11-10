@@ -954,7 +954,7 @@ SRC_URI="
 
 S="${WORKDIR}/moq-${PN}-v${PV}"
 
-LICENSE="|| ( Apache-2.0 MIT )"
+LICENSE="Apache-2.0 MIT"
 LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD CC0-1.0
 	CDLA-Permissive-2.0 ISC MIT MPL-2.0 UoI-NCSA Unicode-3.0 Unlicense
@@ -963,8 +963,28 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
-RDEPEND="media-libs/gstreamer"
+RDEPEND="
+	dev-libs/glib:2
+	dev-libs/gobject-introspection
+	dev-libs/gobject-introspection-common
+	>=media-libs/gstreamer-1.26.0:1.0
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	${PYTHON_DEPS}
+	dev-util/cargo-c
+	virtual/pkgconfig
+"
+
+RESTRICT="test"
+
+QA_FLAGS_IGNORED="/usr/lib64/gstreamer-1.0/libgstmoq.so"
+
+src_compile() {
+	cargo build --release -p moq-gst
+}
 
 src_install() {
-	cargo_src_install --path rs/${PN}
+	exeinto /usr/$(get_libdir)/gstreamer-1.0
+	newexe "target/release/libgstmoq.so" "libgstmoq.so"
 }
