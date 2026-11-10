@@ -965,6 +965,6 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 src_configure() {
-	cargo_src_configure --bin moq-relay
+	cargo_src_configure --package moq-relay
 }
 
