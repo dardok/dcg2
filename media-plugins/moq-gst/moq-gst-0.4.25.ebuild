@@ -952,20 +952,19 @@ SRC_URI="
 	${CARGO_CRATE_URIS}
 "
 
-LICENSE="MIT Apache-2.0"
+S="${WORKDIR}/moq-${PN}-v${PV}"
+
+LICENSE="|| ( Apache-2.0 MIT )"
+LICENSE+="
+	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD CC0-1.0
+	CDLA-Permissive-2.0 ISC MIT MPL-2.0 UoI-NCSA Unicode-3.0 Unlicense
+	ZLIB
+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="media-libs/gstreamer"
 
-S="${WORKDIR}/moq-${PN}-v${PV}"
-
-QA_FLAGS_IGNORED="usr/lib.*/gstreamer-1.0/libgstmoq\.so"
-
 src_install() {
-	exeinto /usr/$(get_libdir)/gstreamer-1.0
-
-	newexe "target/release/libgstmoq.so" "libgstmoq.so"
-
-	einstalldocs
+	cargo_src_install --path rs/${PN}
 }
