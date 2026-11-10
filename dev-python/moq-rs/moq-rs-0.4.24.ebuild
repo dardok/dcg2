@@ -3,9 +3,8 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( python3_{12..14} )
-
+DISTUTILS_USE_PEP517=hatchling
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for Media over QUIC (MoQ)"
@@ -16,7 +15,7 @@ SRC_URI="
 
 S="${WORKDIR}/moq-moq-ffi-v${PV}"
 
-RDEPEND="dev-python/moq-ffi-${PV}[${PYTHON_USE_DEPS}]"
+RDEPEND="dev-python/moq-ffi-${PV}[${PYTHON_USEDEP}]"
 
 LICENSE="MIT Apache-2.0"
 SLOT="0"

@@ -3,8 +3,8 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=maturin
 PYTHON_COMPAT=( python3_{12..14} )
+DISTUTILS_USE_PEP517=maturin
 
 CRATES="
 	ab_glyph@0.2.32
