@@ -47,7 +47,7 @@ net-dialup/tio
 net-fs/yfs
 net-misc/usbip
 net-wireless/bluez-tools
-sci-misc/llama-cpp
+sci-misc/llama-cpp **
 sys-block/libfabric
 =sys-kernel/gentoo-sources-6.18*
 sys-process/atop
