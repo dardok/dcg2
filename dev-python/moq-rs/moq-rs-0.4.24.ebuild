@@ -15,7 +15,9 @@ SRC_URI="
 
 S="${WORKDIR}/moq-moq-ffi-v${PV}"
 
-RDEPEND="dev-python/moq-ffi-${PV}[${PYTHON_USEDEP}]"
+RDEPEND="
+	>=dev-python/moq-ffi-${PV}[${PYTHON_USEDEP}]
+"
 
 LICENSE="MIT Apache-2.0"
 SLOT="0"
