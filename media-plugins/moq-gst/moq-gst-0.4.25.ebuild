@@ -966,6 +966,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
+	app-crypt/aws-lc
 	dev-libs/glib:2
 	dev-libs/gobject-introspection
 	dev-libs/gobject-introspection-common
@@ -982,13 +983,8 @@ RESTRICT="test strip"
 
 QA_FLAGS_IGNORED="/usr/lib64/gstreamer-1.0/libgstmoq.so"
 
-src_configure() {
-	cd ${S}/rs/moq-gst
-	sed -i -e '/moq-tokio/arustls = { version = "0.23", features = ["aws-lc-rs"], default-features = false }' Cargo.toml
-}
-
 src_compile() {
-	cargo build --offline --release -p moq-gst
+	cargo build --release -p moq-gst
 }
 
 src_install() {
