@@ -988,7 +988,7 @@ src_configure() {
 }
 
 src_compile() {
-	cargo build --locked --release -p moq-gst
+	cargo build --offline --release -p moq-gst
 }
 
 src_install() {
