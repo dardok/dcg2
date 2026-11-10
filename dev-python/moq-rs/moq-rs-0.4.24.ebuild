@@ -973,6 +973,8 @@ src_configure() {
 	cargo_src_configure --package moq-ffi
 
 	# Hatchling configuration initialization
+	cd "${S}/py/moq-ffi" || die
+	distutils-r1_src_configure
 	cd "${S}/py/moq-rs" || die
 	distutils-r1_src_configure
 }
@@ -987,16 +989,22 @@ src_compile() {
 	cp "target/release/libmoq_ffi.so" "${S}/py/moq-rs/moq_ffi/_uniffi/libmoq_ffi.so" || die
 
 	# 3. Build the python wheel via hatchling
+	cd "${S}/py/moq-ffi" || die
+	distutils-r1_src_compile
 	cd "${S}/py/moq-rs" || die
 	distutils-r1_src_compile
 }
 
 src_test() {
+	cd "${S}/py/moq-ffi" || die
+	distutils-r1_src_test
 	cd "${S}/py/moq-rs" || die
 	distutils-r1_src_test
 }
 
 src_install() {
+	cd "${S}/py/moq-ffi" || die
+	distutils-r1_src_install
 	cd "${S}/py/moq-rs" || die
 	distutils-r1_src_install
 }
