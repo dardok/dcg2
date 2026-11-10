@@ -948,14 +948,6 @@ CRATES="
 	zvariant_utils@4.2.0
 "
 
-RDEPEND="
-	${PYTHON_DEPS}
-"
-BDEPEND="
-	${PYTHON_DEPS}
-	>=dev-util/cargo-1.70.0
-"
-
 DESCRIPTION="Python bindings for Media over QUIC (MoQ)"
 HOMEPAGE="https://github.com"
 SRC_URI="
