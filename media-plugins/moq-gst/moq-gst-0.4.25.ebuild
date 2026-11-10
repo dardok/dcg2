@@ -982,15 +982,9 @@ RESTRICT="test strip"
 
 QA_FLAGS_IGNORED="/usr/lib64/gstreamer-1.0/libgstmoq.so"
 
-src_configure() {
-	local myfeatures=(
-		aws_lc_rs
-	)
-
-	cargo_src_configure
-}
-
 src_compile() {
+	export AWS_LC_SYS_CMAKE_BUILDER=0
+	export BINDGEN_EXTRA_CLANG_ARGS="-nostdinc"
 	cargo build --release -p moq-gst
 }
 
