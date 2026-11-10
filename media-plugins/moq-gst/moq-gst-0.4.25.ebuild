@@ -983,12 +983,7 @@ RESTRICT="test strip"
 QA_FLAGS_IGNORED="/usr/lib64/gstreamer-1.0/libgstmoq.so"
 
 src_compile() {
-	tc-export CC AR
-
-	export CFLAGS="${CFLAGS}"
-	export CXXFLAGS="${CXXFLAGS}"
-
-	cargo build --release -p moq-gst
+	cargo build --locked --release -p moq-gst
 }
 
 src_install() {
