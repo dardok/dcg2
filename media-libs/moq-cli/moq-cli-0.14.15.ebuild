@@ -967,5 +967,5 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 src_install() {
-	cargo_src_install --path rs/moq-cli
+	cargo_src_install --path rs/${PN}
 }
