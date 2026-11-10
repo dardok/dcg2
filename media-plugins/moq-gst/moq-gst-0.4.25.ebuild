@@ -945,7 +945,7 @@ CRATES="
 
 RUST_MIN_VER="1.95"
 
-inherit cargo
+inherit cargo toolchain-funcs
 
 DESCRIPTION="Media over QUIC (MoQ) GStreamer Plugin"
 HOMEPAGE="https://github.com/moq-dev/moq"
@@ -983,6 +983,11 @@ RESTRICT="test strip"
 QA_FLAGS_IGNORED="/usr/lib64/gstreamer-1.0/libgstmoq.so"
 
 src_compile() {
+	tc-export CC AR
+
+	export CFLAGS="${CFLAGS}"
+	export CXXFLAGS="${CXXFLAGS}"
+
 	cargo build --release -p moq-gst
 }
 
