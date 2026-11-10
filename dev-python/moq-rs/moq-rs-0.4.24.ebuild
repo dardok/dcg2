@@ -15,13 +15,13 @@ SRC_URI="
 
 S="${WORKDIR}/moq-moq-ffi-v${PV}"
 
-RDEPEND="
-	>=dev-python/moq-ffi-${PV}[${PYTHON_USEDEP}]
-"
-
 LICENSE="MIT Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
+
+RDEPEND="
+	>=dev-python/moq-ffi-${PV}[${PYTHON_USEDEP}]
+"
 
 src_configure() {
 	cd "${S}/py/moq-rs" || die

@@ -945,10 +945,12 @@ CRATES="
 	zvariant_utils@4.2.0
 "
 
+RUST_MIN_VER="1.95"
+
 inherit cargo
 
-DESCRIPTION="Media over QUIC"
-HOMEPAGE=""
+DESCRIPTION="Media over QUIC (MoQ) Relay"
+HOMEPAGE="https://github.com/moq-dev/moq"
 SRC_URI="
 	https://github.com/moq-dev/moq/archive/refs/tags/${PN}-v${PV}.tar.gz -> ${P}.gh.tar.gz
 	${CARGO_CRATE_URIS}
@@ -956,15 +958,14 @@ SRC_URI="
 
 S="${WORKDIR}/moq-${PN}-v${PV}"
 
-LICENSE="|| ( Apache-2.0 MIT )"
-# Dependent crate licenses
+LICENSE="Apache-2.0 MIT"
 LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD CC0-1.0
 	CDLA-Permissive-2.0 ISC MIT MPL-2.0 UoI-NCSA Unicode-3.0 Unlicense
 	ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 src_install() {
 	cargo_src_install --path rs/${PN}

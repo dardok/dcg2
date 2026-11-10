@@ -943,9 +943,11 @@ CRATES="
 	zvariant_utils@4.2.0
 "
 
+RUST_MIN_VER="1.95"
+
 inherit cargo
 
-DESCRIPTION="Media over QUIC (MoQ) plugin for GStreamer"
+DESCRIPTION="Media over QUIC (MoQ) GStreamer Plugin"
 HOMEPAGE="https://github.com/moq-dev/moq"
 SRC_URI="
 	https://github.com/moq-dev/moq/archive/refs/tags/${PN}-v${PV}.tar.gz -> ${P}.gh.tar.gz
@@ -976,7 +978,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-RESTRICT="test"
+RESTRICT="test strip"
 
 QA_FLAGS_IGNORED="/usr/lib64/gstreamer-1.0/libgstmoq.so"
 

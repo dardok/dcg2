@@ -946,10 +946,12 @@ CRATES="
 	zvariant_utils@4.2.0
 "
 
+RUST_MIN_VER="1.95"
+
 inherit distutils-r1 cargo
 
-DESCRIPTION="Python bindings for Media over QUIC (MoQ)"
-HOMEPAGE="https://github.com"
+DESCRIPTION="Media over QUIC (MoQ) Python Bindings"
+HOMEPAGE="https://github.com/moq-dev/moq"
 SRC_URI="
 	https://github.com/moq-dev/moq/archive/refs/tags/moq-ffi-v${PV}.tar.gz -> ${P}.gh.tar.gz
 	${CARGO_CRATE_URIS}
@@ -961,32 +963,26 @@ LICENSE="MIT Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
-# Ignore QA warnings for the uniffi-compiled native library
-QA_FLAGS_IGNORED="usr/lib.*/python.*/site-packages/moq_ffi/_uniffi/libmoq_ffi\.so"
+QA_FLAGS_IGNORED="/usr/lib64/python.*/site-packages/moq_ffi/_uniffi/libmoq_ffi.so"
 
 src_unpack() {
 	cargo_src_unpack
 }
 
 src_configure() {
-	# Configure the workspace for the moq-ffi rust target
 	cargo_src_configure --package moq-ffi
 
-	# Hatchling configuration initialization
 	cd "${S}/py/moq-rs" || die
 	distutils-r1_src_configure
 }
 
 src_compile() {
-	# 1. Compile the native rust library target 
 	cd "${S}" || die
 	cargo_src_compile
 
-	# 2. Stage the compiled library directly into hatchling's package tree layout
 	mkdir -p "${S}/py/moq-rs/moq_ffi/_uniffi" || die
 	cp "target/release/libmoq_ffi.so" "${S}/py/moq-rs/moq_ffi/_uniffi/libmoq_ffi.so" || die
 
-	# 3. Build the python wheel via hatchling
 	cd "${S}/py/moq-ffi" || die
 	distutils-r1_src_compile
 }

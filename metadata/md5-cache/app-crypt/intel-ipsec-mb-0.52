@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install
+DEPEND=>=dev-lang/nasm-2.13.03
+DESCRIPTION=Intel(R) Multi-Buffer Crypto for IPSec
+EAPI=6
+HOMEPAGE=https://github.com/intel/intel-ipsec-mb
+IUSE=debug safe-data safe-param static-libs
+KEYWORDS=amd64
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/intel/intel-ipsec-mb/archive/v0.52.tar.gz -> intel-ipsec-mb-0.52.tar.gz
+_md5_=8579a8541a62f15b06bffc5dcad7f4ec
