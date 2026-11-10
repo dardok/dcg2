@@ -966,7 +966,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
-	app-crypt/aws-lc
 	dev-libs/glib:2
 	dev-libs/gobject-introspection
 	dev-libs/gobject-introspection-common
