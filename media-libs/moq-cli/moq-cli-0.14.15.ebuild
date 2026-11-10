@@ -966,6 +966,6 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64"
 
-src_configure() {
-	cargo_src_configure --package moq-cli
+src_install() {
+	cargo_src_install --path rs/moq-cli
 }

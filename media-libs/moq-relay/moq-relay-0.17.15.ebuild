@@ -964,7 +964,7 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64"
 
-src_configure() {
-	cargo_src_configure --package moq-relay
+src_install() {
+	cargo_src_install --path rs/moq-relay
 }
 
