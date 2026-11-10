@@ -4,7 +4,7 @@ inherit cmake
 
 DESCRIPTION="A general-purpose cryptographic library"
 HOMEPAGE="https://github.com/aws/aws-lc"
-SRC_URI="https://github.com/aws/${PN}/refs/tags/v${PV}.tar.gz"
+SRC_URI="https://github.com/aws/${PN}/archive/refs/tags/v${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
