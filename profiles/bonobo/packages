@@ -83,7 +83,7 @@
 *dev-python/pyserial
 *dev-python/pytest
 *dev-python/quart
-*dev-python/socksio
+#*dev-python/socksio
 *dev-python/uv
 *dev-util/nvidia-cuda-toolkit
 *dev-util/pkgdev
