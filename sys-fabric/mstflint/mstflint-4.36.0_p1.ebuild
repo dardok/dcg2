@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="|| ( GPL-2 BSD-2 )"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~x86"
 IUSE="adb-generic-tools +fw-mgr inband ssl"
 REQUIRED_USE="fw-mgr? ( ssl )"
 
