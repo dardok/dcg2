@@ -7,6 +7,7 @@ dev-libs/libpcre2 static-libs
 dev-lua/lua-cjson lua_targets_lua5-4
 dev-python/pillow webp
 gui-apps/quickshell -crash-handler -networkmanager -i3 pam bluetooth hyprland layer-shell
+gui-apps/waypipe lz4
 media-libs/freetype harfbuzz
 media-video/pipewire bluetooth extra
 net-dns/dnsmasq script

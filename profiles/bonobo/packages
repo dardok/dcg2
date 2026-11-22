@@ -60,6 +60,7 @@
 *dev-debug/ltrace
 *dev-debug/strace
 *dev-debug/valgrind
+*dev-lang/ruby
 *dev-libs/cudnn
 *dev-libs/hyprgraphics
 *dev-libs/libp11
@@ -109,6 +110,7 @@
 *gui-libs/hyprland-guiutils
 *gui-libs/xdg-desktop-portal-hyprland
 *gui-wm/hyprland
+*kde-frameworks/breeze-icons
 *mail-client/thunderbird-bin
 *media-fonts/artwiz-aleczapka-en
 *media-fonts/cantarell
@@ -242,4 +244,5 @@
 *x11-drivers/nvidia-drivers:0/580
 *x11-misc/dunst
 *x11-terms/kitty
+*x11-themes/obsidian-xcursors
 *x11-themes/pulse-glass
