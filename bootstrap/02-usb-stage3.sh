@@ -54,6 +54,9 @@ mount -t tmpfs tmpfs ${USB_DIR}/tmp
 mount -t tmpfs tmpfs ${USB_DIR}/var/tmp
 
 TERM=xterm chroot ${USB_DIR} <<"EOC"
+export PROMPT_DIRTRIM=
+set -euo pipefail
+
 ln -sfn ../usr/share/zoneinfo/UTC /etc/localtime
 printf "C\nen_US\n" > /etc/locale.gen
 locale-gen && eselect locale set "en_US.UTF-8"
@@ -101,8 +104,8 @@ printf "BINPKG_GPG_SIGNING_KEY=\"0x${DCG_SSB_ID}\"\n" >> /etc/portage/make.conf
 emerge-webrsync && eselect news read --quiet ; eselect news purge
 
 mkdir -p /var/db/repos/dcg2
-curl -fsSLo - https://github.com/dardok/dcg2/archive/refs/heads/main.zip | \
-	bsdtar -C /var/db/repos/dcg2 -xf - --strip-components=1
+curl -fsSLo - https://github.com/dardok/dcg2/archive/refs/heads/main.tar.gz | \
+	tar -C /var/db/repos/dcg2 -zvxf - --strip-components=1
 chown -R portage:portage /var/db/repos/dcg2
 
 [ -h /etc/portage/make.profile ] && rm -f /etc/portage/make.profile
@@ -133,10 +136,6 @@ cat > /etc/portage/package.use/targets <<EOF
 */* PYTHON_SINGLE_TARGET: -* python3_14
 EOF
 
-# cat > /etc/kernel/cmdline <<EOF
-# root=UUID=$(blkid -o value -s UUID /dev/disk/by-label/Gentoo) rootflags=rw rw console=ttyS0 audit=1 audit_backlog_limit=8192 lsm=landlock,selinux enforcing=0
-# EOF
-
 cat > /etc/kernel/cmdline <<EOF
 root=UUID=$(blkid -o value -s UUID /dev/disk/by-label/Gentoo) rootflags=rw rw console=tty0 console=ttyS1,115200n8 audit=1 audit_backlog_limit=8192 lsm=landlock,selinux enforcing=0
 EOF
@@ -157,6 +156,7 @@ emerge -jvbk1 $(qlist -IU | grep " python_targets_python3_13" | awk '{ print $1 
 CLEAN_DELAY=0 emerge -c
 eselect news read --quiet ; eselect news purge
 eselect editor set vim
+etc-update --automode -5
 
 mkdir -p /etc/systemd/system/{,serial-}getty@.service.d
 
@@ -172,152 +172,6 @@ cat > /etc/systemd/system/serial-getty@.service.d/autologin.conf <<-"EOF"
 Environment=TERM=vt-utf8
 ExecStart=
 ExecStart=-/usr/bin/agetty --autologin root --noreset --noclear --keep-baud 115200,57600,38400,9600 - ${TERM}
-EOF
-
-systemctl enable auditd
-
-setsebool -P systemd_tmpfiles_manage_all on
-setsebool -P global_ssp on
-
-cat > /tmp/custom.te <<EOF
-module custom 4.0;
-
-require {
-	type auditd_log_t;
-	type bin_t;
-	type boot_t;
-	type cgroup_t;
-	type default_t;
-	type dosfs_t;
-	type fs_t;
-	type getty_t;
-	type init_exec_t;
-	type init_runtime_t;
-	type init_t;
-	type initrc_runtime_t;
-	type kernel_t;
-	type loadkeys_t;
-	type local_login_t;
-	type mount_runtime_t;
-	type nsfs_t;
-	type ntpd_t;
-	type security_t;
-	type syslogd_t;
-	type systemd_generator_t;
-	type systemd_logind_t;
-	type systemd_networkd_t;
-	type systemd_nsresourced_t;
-	type systemd_pcrphase_t;
-	type systemd_resolved_t;
-	type systemd_tmpfiles_t;
-	type systemd_userdbd_t;
-	type tmpfs_t;
-	type udev_t;
-	type unconfined_t;
-	class blk_file { getattr ioctl open read };
-	class capability2 perfmon;
-	class dir { create getattr open read relabelfrom relabelto search };
-	class file { entrypoint getattr ioctl open read setattr write };
-	class filesystem { getattr mount };
-	class lnk_file { getattr read setattr };
-	class netlink_kobject_uevent_socket { getattr read write };
-	class process transition;
-	class sock_file write;
-	class unix_stream_socket { connectto read write };
-}
-
-#============= getty_t ==============
-allow getty_t initrc_runtime_t:dir { getattr open read search };
-allow getty_t tmpfs_t:dir { getattr open read search };
-
-#============= init_t ==============
-allow init_t unconfined_t:process transition;
-
-#============= loadkeys_t ==============
-allow loadkeys_t init_t:unix_stream_socket { read write };
-
-#============= local_login_t ==============
-allow local_login_t default_t:dir search;
-allow local_login_t init_runtime_t:sock_file write;
-allow local_login_t systemd_logind_t:unix_stream_socket connectto;
-
-#============= ntpd_t ==============
-allow ntpd_t cgroup_t:file { getattr open read write };
-
-#============= syslogd_t ==============
-allow syslogd_t cgroup_t:file { getattr open read write };
-allow syslogd_t tmpfs_t:dir search;
-
-#============= systemd_generator_t ==============
-allow systemd_generator_t tmpfs_t:filesystem mount;
-allow systemd_generator_t tmpfs_t:dir read;
-
-#============= systemd_networkd_t ==============
-allow systemd_networkd_t mount_runtime_t:dir search;
-
-#============= systemd_nsresourced_t ==============
-allow systemd_nsresourced_t cgroup_t:file { getattr open read write };
-allow systemd_nsresourced_t fs_t:filesystem getattr;
-allow systemd_nsresourced_t self:capability2 perfmon;
-
-#============= systemd_pcrphase_t ==============
-allow systemd_pcrphase_t boot_t:dir { getattr search };
-allow systemd_pcrphase_t fs_t:filesystem getattr;
-allow systemd_pcrphase_t init_runtime_t:dir create;
-allow systemd_pcrphase_t nsfs_t:file getattr;
-allow systemd_pcrphase_t tmpfs_t:dir { open read search };
-allow systemd_pcrphase_t tmpfs_t:file { getattr open read };
-allow systemd_pcrphase_t dosfs_t:dir { getattr search };
-allow systemd_pcrphase_t dosfs_t:file { getattr open read };
-allow systemd_pcrphase_t dosfs_t:filesystem getattr;
-
-#============= systemd_resolved_t ==============
-allow systemd_resolved_t cgroup_t:file { getattr open read write };
-allow systemd_resolved_t systemd_networkd_t:unix_stream_socket connectto;
-
-#============= systemd_tmpfiles_t ==============
-allow systemd_tmpfiles_t auditd_log_t:dir { relabelfrom relabelto };
-allow systemd_tmpfiles_t bin_t:lnk_file { getattr read };
-allow systemd_tmpfiles_t security_t:lnk_file { getattr read setattr };
-
-#============= systemd_userdbd_t ==============
-allow systemd_userdbd_t cgroup_t:file { getattr open read write };
-
-#============= udev_t ==============
-allow udev_t kernel_t:netlink_kobject_uevent_socket { getattr read write };
-allow udev_t tmpfs_t:file { getattr ioctl read write };
-
-#============= unconfined_t ==============
-allow unconfined_t init_exec_t:file entrypoint;
-EOF
-
-checkmodule -M -m -o /tmp/custom.mod /tmp/custom.te
-semodule_package -o /tmp/custom.pp -m /tmp/custom.mod
-semodule -i /tmp/custom.pp
-
-cp /usr/share/pam/security/faillock.conf /etc/security/faillock.conf
-semanage fcontext -a -t etc_t /etc/security/faillock.conf
-
-cat > /etc/pam.d/system-auth <<EOF
-auth        required      pam_env.so
-auth        required      pam_faillock.so preauth silent
-auth        sufficient    pam_unix.so nullok try_first_pass
-auth        [default=die] pam_faillock.so authfail
-auth        required      pam_deny.so
-
-account     required      pam_nologin.so
-account     required      pam_faillock.so
-account     required      pam_unix.so
-account     required      pam_permit.so
-
-password    required      pam_passwdqc.so config=/etc/security/passwdqc.conf
-password    sufficient    pam_unix.so try_first_pass yescrypt shadow
-password    required      pam_deny.so
-
-session     required      pam_limits.so
-session     required      pam_env.so
-session     required      pam_unix.so
--session     optional      pam_systemd.so
 EOF
 
 systemctl enable systemd-networkd

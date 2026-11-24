@@ -67,6 +67,9 @@ git -C /mnt/var/db/repos clone https://github.com/dardok/dcg2.git
 chown -R portage:portage /mnt/var/db/repos/dcg2
 
 TERM=xterm chroot /mnt <<"EOC"
+export PROMPT_DIRTRIM=
+set -euo pipefail
+
 ln -sfn ../usr/share/zoneinfo/UTC /etc/localtime
 printf "C\nen_US\n" > /etc/locale.gen
 locale-gen && eselect locale set "en_US.UTF-8"
@@ -111,7 +114,7 @@ EMERGE_DEFAULT_OPTS="--keep-going --with-bdeps y -j6 --load-average=6"
 
 USE="${USE} lto pgo"
 
-FEATURES="buildpkg binpkg-signing getbinpkg binpkg-request-signature"
+FEATURES="buildpkg binpkg-signing binpkg-request-signature"
 BINPKG_FORMAT="gpkg"
 BINPKG_GPG_SIGNING_GPG_HOME="/etc/portage/gnupg"
 BINPKG_GPG_SIGNING_BASE_COMMAND="/usr/bin/flock /run/lock/portage-binpkg-gpg.lock /usr/bin/gpg --quiet --no-permission-warning --batch --sign --armor --pinentry-mode loopback --passphrase-file /etc/portage/gnupg/pass [PORTAGE_CONFIG]"
