@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools flag-o-matic
+
 DESCRIPTION="Official ODBC driver for PostgreSQL"
 HOMEPAGE="https://odbc.postgresql.org/"
 SRC_URI="https://codeload.github.com/postgresql-interfaces/psqlodbc/tar.gz/refs/tags/REL-18_00_0006 -> ${P}.tar.gz"
@@ -11,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="iodbc ssl threads"
 
-S="${WORKDIR}/psqlodbc-REL-17_00_0006"
+S="${WORKDIR}/psqlodbc-REL-18_00_0006"
 
 DEPEND="dev-db/postgresql:*[ssl?]
 		!iodbc? ( dev-db/unixODBC )
@@ -30,6 +32,11 @@ HTML_DOCS=(
 	docs/release-7.3.html
 	docs/release.html
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
