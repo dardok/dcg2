@@ -2,6 +2,7 @@
 *app-crypt/efitools
 *app-crypt/tpm2-tools
 *app-editors/vim
+*app-misc/jq
 *app-misc/tmux
 *app-misc/tmuxp
 *app-portage/eix
