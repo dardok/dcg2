@@ -3,7 +3,7 @@ EAPI="8"
 IUSE=""
 MODS="dcg-base"
 BASEPOL="2.20260922_p1"
-POLICY_FILES="dcg.te"
+POLICY_FILES="dcg-base.te"
 
 inherit selinux-policy-2
 
