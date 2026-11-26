@@ -12,12 +12,10 @@ DESCRIPTION="Distributed Computing Group custom SELinux policy (base system)"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND+="
-	sec-policy/selinux-afs[${SELINUX_POLICY_USEDEP}]
 	sec-policy/selinux-apache[${SELINUX_POLICY_USEDEP}]
 	sec-policy/selinux-dhcp[${SELINUX_POLICY_USEDEP}]
 	sec-policy/selinux-kerberos[${SELINUX_POLICY_USEDEP}]
 	sec-policy/selinux-ldap[${SELINUX_POLICY_USEDEP}]
-	sec-policy/selinux-pdns[${SELINUX_POLICY_USEDEP}]
 	sec-policy/selinux-postfix[${SELINUX_POLICY_USEDEP}]
 	sec-policy/selinux-rpc[${SELINUX_POLICY_USEDEP}]
 	sec-policy/selinux-sssd[${SELINUX_POLICY_USEDEP}]
@@ -25,12 +23,10 @@ DEPEND+="
 	sec-policy/selinux-tftp[${SELINUX_POLICY_USEDEP}]
 "
 RDEPEND+="
-	sec-policy/selinux-afs[${SELINUX_POLICY_USEDEP}]
 	sec-policy/selinux-apache[${SELINUX_POLICY_USEDEP}]
 	sec-policy/selinux-dhcp[${SELINUX_POLICY_USEDEP}]
 	sec-policy/selinux-kerberos[${SELINUX_POLICY_USEDEP}]
 	sec-policy/selinux-ldap[${SELINUX_POLICY_USEDEP}]
-	sec-policy/selinux-pdns[${SELINUX_POLICY_USEDEP}]
 	sec-policy/selinux-postfix[${SELINUX_POLICY_USEDEP}]
 	sec-policy/selinux-rpc[${SELINUX_POLICY_USEDEP}]
 	sec-policy/selinux-sssd[${SELINUX_POLICY_USEDEP}]
