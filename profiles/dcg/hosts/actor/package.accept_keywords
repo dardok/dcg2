@@ -1,5 +1,6 @@
 sec-policy/selinux-apache
 sec-policy/selinux-chronyd
+sec-policy/selinux-dhcp
 sec-policy/selinux-kerberos
 sec-policy/selinux-ldap
 sec-policy/selinux-ntp
