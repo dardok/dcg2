@@ -1,8 +1,5 @@
-app-admin/setools
-sys-apps/checkpolicy
-sys-apps/policycoreutils
-sys-apps/selinux-python
-sys-libs/libselinux
-sys-libs/libsemanage
-sys-libs/libsepol
+app-shells/liquidprompt
+sys-apps/mlxup-bin
+sys-cluster/rdma-core
+sys-fabric/mstflint
 sys-process/audit

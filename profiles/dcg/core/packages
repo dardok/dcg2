@@ -1,4 +1,11 @@
-*sys-apps/mlxup-bin
+*app-admin/sudo
+*app-misc/tmuxp
+*net-fs/nfs-utils
+*net-misc/lldpd
+*sys-apps/ethtool
+*sys-apps/haveged
+*sys-apps/kexec-tools
+*sys-apps/smartmontools
 *sys-auth/sssd
 *sys-cluster/rdma-core
-*sys-fabric/mstflint
+*sys-process/audit

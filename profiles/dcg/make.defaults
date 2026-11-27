@@ -4,6 +4,6 @@ ACCEPT_LICENSE="*"
 
 LINGUAS="-* en"
 
-GRUB_PLATFORMS="-* efi-32 efi-64 pc qemu"
+GRUB_PLATFORMS="-* efi-64 qemu"
 
-USE="${USE} kerberos"
+USE="${USE} kerberos gssapi"
