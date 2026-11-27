@@ -11,6 +11,8 @@ DIR=$(dirname ${0})
 
 [[ -b /dev/disk/by-id/${DISK_ID} ]] || { echo "Disk Device /dev/disk/by-id/${DISK_ID} does not exist" ; exit 1 ; }
 
+SYS_DISK=/dev/disk/by-id/${DISK_ID}
+
 if [[ -t 0 ]] ; then
 	read -sp "Passphrase: " P ; echo
 	read -sp "Passphrase again: " P2 ; echo
@@ -20,94 +22,64 @@ else
 fi
 [[ "${#P}" -ge 1 && "${P}" == "${P2}" ]] || { echo "Passphrase empty or does not match" ; exit 1 ; }
 
-blockdev --rereadpt /dev/disk/by-id/${DISK_ID}
-dd if=/dev/zero of=/dev/disk/by-id/${DISK_ID} bs=512c count=2048 status=noxfer
-dd if=/dev/zero of=/dev/disk/by-id/${DISK_ID} bs=512c seek=$(($(lsblk -n -b -d -o SIZE /dev/disk/by-id/${DISK_ID}) / 512 - 32)) bs=512 count=32 status=noxfer
+dmsetup remove_all -f
+blockdev --rereadpt ${SYS_DISK}
+dd if=/dev/zero of=${SYS_DISK} bs=512c count=2048 status=noxfer
+dd if=/dev/zero of=${SYS_DISK} bs=512c seek=$(($(lsblk -n -b -d -o SIZE ${SYS_DISK}) / 512 - 32)) bs=512 count=32 status=noxfer
 udevadm trigger && udevadm settle
-blockdev --rereadpt /dev/disk/by-id/${DISK_ID}
+blockdev --rereadpt ${SYS_DISK}
 
-parted /dev/disk/by-id/${DISK_ID} mklabel gpt
-parted /dev/disk/by-id/${DISK_ID} mkpart primary 0% 512M
-parted /dev/disk/by-id/${DISK_ID} name 1 "'EFI System Partition'"
-parted /dev/disk/by-id/${DISK_ID} toggle 1 boot
-parted /dev/disk/by-id/${DISK_ID} mkpart primary 512M 100%
-parted /dev/disk/by-id/${DISK_ID} name 2 "'Gentoo GNU/Linux'"
+parted ---pretend-input-tty ${SYS_DISK} <<EOF
+mklabel gpt
+mkpart primary 0% 512M
+name 1 "EFI System Partition"
+toggle 1 boot
+mkpart primary 512M 100%
+name 2 "Gentoo GNU/Linux"
+EOF
 udevadm trigger && udevadm settle && sleep 1
-blockdev --rereadpt /dev/disk/by-id/${DISK_ID}
+blockdev --rereadpt ${SYS_DISK} && sleep 1
 
-while [[ ! -b /dev/disk/by-id/${DISK_ID}-part1 ]] ; do
-	echo "Waiting for /dev/disk/by-id/${DISK_ID}-part1"
+while [[ ! -b ${SYS_DISK}-part1 ]] ; do
+	echo "Waiting for ${SYS_DISK}-part1"
 	sleep 1
 done
 sleep 1
-mkfs.vfat -F 32 /dev/disk/by-id/${DISK_ID}-part1
+mkfs.vfat -F 32 ${SYS_DISK}-part1
 
 SN=$(cat /sys/class/dmi/id/product_serial | tr '[A-Z]' ['a-z'])
 
-while [[ ! -b /dev/disk/by-id/${DISK_ID}-part2 ]] ; do
-	echo "Waiting for /dev/disk/by-id/${DISK_ID}-part2"
+while [[ ! -b ${SYS_DISK}-part2 ]] ; do
+	echo "Waiting for ${SYS_DISK}-part2"
 	sleep 1
 done
 sleep 1
-pvcreate -ff -y /dev/disk/by-id/${DISK_ID}-part2
-vgcreate -y vg.${SN} /dev/disk/by-id/${DISK_ID}-part2
+
+UUID=$(blkid -o value -s UUID ${SYS_DISK}-part2)
+cryptsetup -q luksFormat ${SYS_DISK}-part2 <<<${P}
+cryptsetup -q open ${SYS_DISK}-part2 luks-${UUID} <<<${P}
+
+pvcreate -ff -y /dev/mapper/luks-${UUID}
+vgcreate -y vg.${SN} /dev/mapper/luks-${UUID}
 lvcreate -y -l 50%FREE vg.${SN} -n root
 lvcreate -y -l 40%FREE vg.${SN} -n var
 lvcreate -y -l 10%FREE vg.${SN} -n log
 lvcreate -y -l 10%FREE vg.${SN} -n audit
+udevadm trigger && udevadm settle && sleep 1
 
-cryptsetup -q luksFormat /dev/vg.${SN}/audit <<<${P}
-cryptsetup -q luksFormat /dev/vg.${SN}/log <<<${P}
-cryptsetup -q luksFormat /dev/vg.${SN}/var <<<${P}
-cryptsetup -q luksFormat /dev/vg.${SN}/root <<<${P}
+PASSWORD="${P}" systemd-cryptenroll --tpm2-device=auto ${SYS_DISK}-part2
 
-UUID4=$(blkid -o value -s UUID /dev/vg.${SN}/audit)
-cryptsetup -q open /dev/vg.${SN}/audit luks-${UUID4} <<<${P}
-UUID3=$(blkid -o value -s UUID /dev/vg.${SN}/log)
-cryptsetup -q open /dev/vg.${SN}/log luks-${UUID3} <<<${P}
-UUID2=$(blkid -o value -s UUID /dev/vg.${SN}/var)
-cryptsetup -q open /dev/vg.${SN}/var luks-${UUID2} <<<${P}
-UUID1=$(blkid -o value -s UUID /dev/vg.${SN}/root)
-cryptsetup -q open /dev/vg.${SN}/root luks-${UUID1} <<<${P}
-
-PASSWORD="${P}" systemd-cryptenroll --tpm2-device=auto /dev/vg.${SN}/audit
-PASSWORD="${P}" systemd-cryptenroll --tpm2-device=auto /dev/vg.${SN}/log
-PASSWORD="${P}" systemd-cryptenroll --tpm2-device=auto /dev/vg.${SN}/var
-PASSWORD="${P}" systemd-cryptenroll --tpm2-device=auto /dev/vg.${SN}/root
-
-mkfs.xfs -m crc=0 -L root -f /dev/mapper/luks-${UUID1}
-mount /dev/mapper/luks-${UUID1} /mnt
+mkfs.xfs -L root -f /dev/mapper/vg.${SN}-root
+mount /dev/mapper/vg.${SN}-root /mnt
 mkdir -p -m 0 /mnt/var
-mkfs.xfs -m crc=0 -L var -f /dev/mapper/luks-${UUID2}
-mount /dev/mapper/luks-${UUID2} /mnt/var
+mkfs.xfs -L var -f /dev/mapper/vg.${SN}-var
+mount /dev/mapper/vg.${SN}-var /mnt/var
 mkdir -p -m 0 /mnt/var/log
-mkfs.xfs -m crc=0 -L log -f /dev/mapper/luks-${UUID3}
-mount /dev/mapper/luks-${UUID3} /mnt/var/log
+mkfs.xfs -L log -f /dev/mapper/vg.${SN}-log
+mount /dev/mapper/vg.${SN}-log /mnt/var/log
 mkdir -p -m 0 /mnt/var/log/audit
-mkfs.xfs -m crc=0 -L audit -f /dev/mapper/luks-${UUID4}
-mount /dev/mapper/luks-${UUID4} /mnt/var/log/audit
+mkfs.xfs -L audit -f /dev/mapper/vg.${SN}-audit
+mount /dev/mapper/vg.${SN}-audit /mnt/var/log/audit
 
 umount -R /mnt
-
-cryptsetup close luks-${UUID4}
-cryptsetup close luks-${UUID3}
-cryptsetup close luks-${UUID2}
-cryptsetup close luks-${UUID1}
-
-exit 0
-
-SN=$(cat /sys/class/dmi/id/product_serial | tr '[A-Z]' ['a-z'])
-UUID4=$(blkid -o value -s UUID /dev/vg.${SN}/audit)
-UUID3=$(blkid -o value -s UUID /dev/vg.${SN}/log)
-UUID2=$(blkid -o value -s UUID /dev/vg.${SN}/var)
-UUID1=$(blkid -o value -s UUID /dev/vg.${SN}/root)
-
-cryptsetup -q open /dev/vg.${SN}/audit luks-${UUID4} <<<${P}
-cryptsetup -q open /dev/vg.${SN}/log luks-${UUID3} <<<${P}
-cryptsetup -q open /dev/vg.${SN}/var luks-${UUID2} <<<${P}
-cryptsetup -q open /dev/vg.${SN}/root luks-${UUID1} <<<${P}
-
-mount /dev/mapper/luks-${UUID1} /mnt
-mount /dev/mapper/luks-${UUID2} /mnt/var
-mount /dev/mapper/luks-${UUID3} /mnt/var/log
-mount /dev/mapper/luks-${UUID4} /mnt/var/log/audit
+dmsetup remove_all -f

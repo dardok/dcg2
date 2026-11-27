@@ -12,6 +12,8 @@ DIR=$(dirname ${0})
 [[ -b /dev/disk/by-id/${DISK_ID}-part2 ]] || { echo "Disk Partition /dev/disk/by-id/${DISK_ID}-part2 does not exist" ; exit 1 ; }
 [[ -b /dev/disk/by-id/${USB_ID}-part3 ]] || { echo "USB Partition /dev/disk/by-id/${USB_ID}-part3 does not exist" ; exit 1 ; }
 
+SYS_DISK=/dev/disk/by-id/${DISK_ID}
+
 if [[ -t 0 ]] ; then
 	read -sp "Passphrase: " P ; echo
 else
@@ -20,33 +22,25 @@ fi
 [[ "${#P}" -ge 1 ]] || { echo "Passphrase empty" ; exit 1 ; }
 
 SN=$(cat /sys/class/dmi/id/product_serial | tr '[A-Z]' ['a-z'])
+UUID=$(blkid -o value -s UUID ${SYS_DISK}-part2)
+cryptsetup -q open ${SYS_DISK}-part2 luks-${UUID} <<<${P}
+udevadm trigger && udevadm settle
+vgchange -ay
 
-UUID4=$(blkid -o value -s UUID /dev/vg.${SN}/audit)
-cryptsetup -q open /dev/vg.${SN}/audit luks-${UUID4} <<<${P}
-UUID3=$(blkid -o value -s UUID /dev/vg.${SN}/log)
-cryptsetup -q open /dev/vg.${SN}/log luks-${UUID3} <<<${P}
-UUID2=$(blkid -o value -s UUID /dev/vg.${SN}/var)
-cryptsetup -q open /dev/vg.${SN}/var luks-${UUID2} <<<${P}
-UUID1=$(blkid -o value -s UUID /dev/vg.${SN}/root)
-cryptsetup -q open /dev/vg.${SN}/root luks-${UUID1} <<<${P}
+mkdir -m 0755 -p /mnt
+mount /dev/vg.${SN}/root /mnt
+mount /dev/vg.${SN}/var /mnt/var
+mount /dev/vg.${SN}/log /mnt/var/log
+mount /dev/vg.${SN}/audit /mnt/var/log/audit
+mkdir -m 0 -p /mnt/boot
+mount ${SYS_DISK}-part1 /mnt/boot
 
-if [[ ! -d /mnt/boot ]] ; then
-	mkdir -m 0755 -p /mnt
-	mount /dev/mapper/luks-${UUID1} /mnt
-	mount /dev/mapper/luks-${UUID2} /mnt/var
-	mount /dev/mapper/luks-${UUID3} /mnt/var/log
-	mount /dev/mapper/luks-${UUID4} /mnt/var/log/audit
-	mkdir -m 0 -p /mnt/boot
-	mount /dev/disk/by-id/${DISK_ID}-part1 /mnt/boot
-fi
 KEYSTORE=/mnt/root/.keystore
-if [[ ! -b /dev/mapper/keystore ]] ; then
-	cryptsetup open /dev/disk/by-id/${USB_ID}-part3 keystore <<<${P}
-	mkdir -m 0 -p ${KEYSTORE}
-	mount /dev/mapper/keystore ${KEYSTORE}
-fi
+cryptsetup open /dev/disk/by-id/${USB_ID}-part3 keystore <<<${P}
+mkdir -m 0 -p ${KEYSTORE}
+mount /dev/mapper/keystore ${KEYSTORE}
 
-if [[ ! -e /mnt/etc/os-release ]] ; then
+if [ ! -e /mnt/etc/os-release ] ; then
 	LATEST_STAGE3=${AUTOBUILDS}/$(curl -fsSLo - ${AUTOBUILDS}/latest-stage3-amd64-hardened-selinux-systemd.txt | awk '/stage3/ { print $1 }')
 	curl -fsSLo - ${LATEST_STAGE3} | tar -C /mnt -Jxf -
 fi
@@ -66,7 +60,7 @@ mount -t tmpfs tmpfs /mnt/var/tmp
 git -C /mnt/var/db/repos clone https://github.com/dardok/dcg2.git
 chown -R portage:portage /mnt/var/db/repos/dcg2
 
-TERM=xterm chroot /mnt <<"EOC"
+TERM=xterm SYS_DISK=${SYS_DISK} SN=${SN} UUID=${UUID} chroot /mnt <<"EOC"
 export PROMPT_DIRTRIM=
 set -euo pipefail
 
@@ -81,19 +75,17 @@ kill_gpg_agents() {
 }
 trap kill_gpg_agents EXIT
 
-if [[ ! -d /etc/portage/gnupg ]] ; then
-	getuto
+getuto
 
-	DCG_SEC_ID=$(gpg --homedir /root/.keystore/gpg --quiet --no-permission-warning --list-secret-keys --keyid-format long --with-colons | grep -A1 "^sec" | tail -1 | awk -F: '{ print $10 }')
-	DCG_SSB_ID=$(gpg --homedir /root/.keystore/gpg --quiet --no-permission-warning --list-secret-keys --keyid-format long --with-colons | grep -A1 "^ssb" | tail -1 | awk -F: '{ print $10 }')
-	gpg --quiet --no-permission-warning --homedir /root/.keystore/gpg --batch --export-secret-key --armor --pinentry-mode loopback --passphrase-file /root/.keystore/gpg/pass ${DCG_SEC_ID} | \
-		gpg --quiet --no-permission-warning --homedir /etc/portage/gnupg --batch --import --pinentry-mode loopback --passphrase-file /etc/portage/gnupg/pass
-	cat /root/.keystore/gpg/pass /etc/portage/gnupg/pass /etc/portage/gnupg/pass | \
-		gpg --quiet --no-permission-warning --homedir /etc/portage/gnupg --batch --command-fd 0 --pinentry-mode loopback --edit-key ${DCG_SEC_ID} passwd save
-	printf "5\ny\n" | gpg --quiet --no-permission-warning --homedir /etc/portage/gnupg --batch --command-fd 0 --pinentry-mode loopback --edit-key ${DCG_SEC_ID} trust save
-	gpg --quiet --no-permission-warning --homedir /etc/portage/gnupg --batch --yes --no-tty --passphrase-file /etc/portage/gnupg/pass --pinentry-mode loopback --quick-lsign-key ${DCG_SEC_ID}
-	printf "y\ny\n" | gpg --quiet --no-permission-warning --homedir /etc/portage/gnupg --batch --yes --no-tty --passphrase-file /etc/portage/gnupg/pass --pinentry-mode loopback --lsign-key ${DCG_SSB_ID}
-fi
+DCG_SEC_ID=$(gpg --homedir /root/.keystore/gpg --quiet --no-permission-warning --list-secret-keys --keyid-format long --with-colons | grep -A1 "^sec" | tail -1 | awk -F: '{ print $10 }')
+DCG_SSB_ID=$(gpg --homedir /root/.keystore/gpg --quiet --no-permission-warning --list-secret-keys --keyid-format long --with-colons | grep -A1 "^ssb" | tail -1 | awk -F: '{ print $10 }')
+gpg --quiet --no-permission-warning --homedir /root/.keystore/gpg --batch --export-secret-key --armor --pinentry-mode loopback --passphrase-file /root/.keystore/gpg/pass ${DCG_SEC_ID} | \
+	gpg --quiet --no-permission-warning --homedir /etc/portage/gnupg --batch --import --pinentry-mode loopback --passphrase-file /etc/portage/gnupg/pass
+cat /root/.keystore/gpg/pass /etc/portage/gnupg/pass /etc/portage/gnupg/pass | \
+	gpg --quiet --no-permission-warning --homedir /etc/portage/gnupg --batch --command-fd 0 --pinentry-mode loopback --edit-key ${DCG_SEC_ID} passwd save
+printf "5\ny\n" | gpg --quiet --no-permission-warning --homedir /etc/portage/gnupg --batch --command-fd 0 --pinentry-mode loopback --edit-key ${DCG_SEC_ID} trust save
+gpg --quiet --no-permission-warning --homedir /etc/portage/gnupg --batch --yes --no-tty --passphrase-file /etc/portage/gnupg/pass --pinentry-mode loopback --quick-lsign-key ${DCG_SEC_ID}
+printf "y\ny\n" | gpg --quiet --no-permission-warning --homedir /etc/portage/gnupg --batch --yes --no-tty --passphrase-file /etc/portage/gnupg/pass --pinentry-mode loopback --lsign-key ${DCG_SSB_ID}
 DCG_SSB_ID=$(gpg --homedir /etc/portage/gnupg --quiet --no-permission-warning --list-secret-keys --keyid-format long | grep -A2 "DCG GPG" | tail -1 | xargs)
 
 cat > /etc/portage/make.conf <<-"EOF"
@@ -142,13 +134,6 @@ sync-uri = https://github.com/dardok/dcg2.git
 priority = 100
 EOF
 
-mkdir -p /etc/portage/binrepos.conf
-cat > /etc/portage/binrepos.conf/gentoobinhost.conf <<-EOF
-[gentoobinhost]
-priority = 1
-sync-uri = https://distfiles.gentoo.org/releases/amd64/binpackages/23.0/x86-64
-EOF
-
 mkdir -p /var/cache/binhost
 semanage fcontext -a -t portage_ebuild_t /var/cache/binhost
 
@@ -158,27 +143,22 @@ cat > /etc/portage/package.use/targets <<EOF
 */* PYTHON_SINGLE_TARGET: -* python3_14
 EOF
 
-SN=$(cat /sys/class/dmi/id/product_serial | tr '[A-Z]' ['a-z'])
-
+ROOT_UUID=$(blkid -o value -s UUID /dev/vg.${SN}/root)
 cat > /etc/kernel/cmdline <<EOF
-root=UUID=$(blkid -o value -s UUID /dev/mapper/luks-$(blkid -o value -s UUID /dev/vg.${SN}/root)) rd.luks.uuid=$(blkid -o value -s UUID /dev/vg.${SN}/root) rd.luks.options=tpm2-device=auto rd.lvm.lv=vg.${SN}/root rootflags=rw rw console=tty0 console=ttyS1,115200n8 audit=1 audit_backlog_limit=8192 lsm=landlock,selinux enforcing=0
-EOF
-
-cat > /etc/fstab <<EOF
-UUID=$(blkid -o value -s UUID /dev/sda1) /boot vfat defaults,umask=0077,shortname=winnt,nodev,nosuid 0 0
-/dev/mapper/luks-$(blkid -o value -s UUID /dev/vg.${SN}/root) /              xfs defaults,x-systemd.device-timeout=0 0 0
-/dev/mapper/luks-$(blkid -o value -s UUID /dev/vg.${SN}/var) /var           xfs defaults,nodev 0 0
-/dev/mapper/luks-$(blkid -o value -s UUID /dev/vg.${SN}/log) /var/log       xfs defaults,nodev,noexec,nosuid 0 0
-/dev/mapper/luks-$(blkid -o value -s UUID /dev/vg.${SN}/audit) /var/log/audit xfs defaults,nodev,noexec,nosuid 0 0
+root=UUID=${ROOT_UUID} rd.luks.uuid=${UUID} rd.luks.options=tpm2-device=auto rd.lvm.lv=vg.${SN}/root rootflags=rw,relatime rw console=tty1 console=ttyS1,115200n8 crashkernel=1024M,high audit=1 audit_backlog_limit=8192 lsm=landlock,selinux enforcing=1 fips=1
 EOF
 
 cat > /etc/crypttab <<EOF
-luks-$(blkid -o value -s UUID /dev/vg.${SN}/root) UUID=$(blkid -o value -s UUID /dev/vg.${SN}/root) none luks,tpm2-device=auto
-luks-$(blkid -o value -s UUID /dev/vg.${SN}/var) UUID=$(blkid -o value -s UUID /dev/vg.${SN}/var) none luks,tpm2-device=auto
-luks-$(blkid -o value -s UUID /dev/vg.${SN}/log) UUID=$(blkid -o value -s UUID /dev/vg.${SN}/log) none luks,tpm2-device=auto
-luks-$(blkid -o value -s UUID /dev/vg.${SN}/audit) UUID=$(blkid -o value -s UUID /dev/vg.${SN}/audit) none luks,tpm2-device=auto
+luks-${UUID} UUID=${UUID} none luks,tpm2-device=auto
 EOF
-ln -sfn crypttab /etc/crypttab.initramfs
+
+cat > /etc/fstab <<EOF
+UUID=$(blkid -o value -s UUID ${SYS_DISK}-part1) /boot vfat defaults,umask=0077,shortname=winnt,nodev,nosuid 0 0
+/dev/vg.${SN}/root / xfs defaults,x-systemd.device-timeout=0 0 0
+/dev/vg.${SN}/var /var xfs defaults,x-systemd.device-timeout=0 0 0
+/dev/vg.${SN}/log /var/log xfs defaults,x-systemd.device-timeout=0 0 0
+/dev/vg.${SN}/audit /var/log/audit xfs defaults,x-systemd.device-timeout=0 0 0
+EOF
 
 cat > /etc/kernel/uki.conf <<EOF
 [UKI]
@@ -187,7 +167,7 @@ SecureBootPrivateKey=/root/.keystore/pki/secureboot/DCG_DB.key
 SecureBootCertificate=/root/.keystore/pki/secureboot/DCG_DB.crt
 EOF
 
-emerge -jvbkUDut --keep-going @world || emerge -jvbkUDut --keep-going @world
+USE="-openldap" emerge -jvbkUDut --keep-going @world && emerge -jvbkUDut --keep-going @world || exit 1
 emerge -jvbk1 $(qlist -IU | grep " python_targets_python3_13" | awk '{ print $1 }' | tr '\n' ' ')
 CLEAN_DELAY=0 emerge -c
 eselect news read --quiet ; eselect news purge
@@ -240,15 +220,13 @@ systemctl enable systemd-networkd
 cat > /etc/systemd/timesyncd.conf <<EOF
 [Time]
 NTP=192.168.180.1
-FallbackNTP=134.207.14.235 134.207.14.236
 EOF
 systemctl enable systemd-timesyncd
 
 cat > /etc/systemd/resolved.conf <<EOF
 [Resolve]
-DNS=192.168.181.13
 DNS=192.168.180.1
-FallbackDNS=134.207.14.160 134.207.14.161
+DNS=192.168.181.13
 Domains=largedata.net
 DNSSEC=no
 DNSOverTLS=no
@@ -278,6 +256,8 @@ setfiles -v /etc/selinux/mcs/contexts/files/file_contexts /
 gpgconf --homedir /etc/portage/gnupg --kill all
 gpgconf --homedir /root/.keystore/gpg --kill all
 
+### EMERGE, BUILD, INSTALL KERNEL
+
 rm -fr /etc/resolv.conf
 EOC
 
@@ -303,4 +283,4 @@ umount -R /mnt
 
 cryptsetup close keystore
 
-efibootmgr -v -c -b 0 -d /dev/sda -L Gentoo -l \\EFI\\Linux\\gentoo-6.18.35-gentoo-dist-bin.efi
+# efibootmgr -v -c -b 0 -d /dev/sda -L Gentoo -l \\EFI\\Linux\\gentoo-6.18.35-gentoo-dist-bin.efi
