@@ -61,85 +61,42 @@ require {
 
 #============= auditctl_t ==============
 allow auditctl_t auditd_etc_t:file map;
-allow auditctl_t proc_t:filesystem getattr;
 
 #============= auditd_t ==============
 allow auditd_t auditd_etc_t:file map;
 
-#============= bootloader_t ==============
-allow bootloader_t self:capability net_admin;
-
-#============= getty_t ==============
-allow getty_t tmpfs_t:dir { getattr open read search };
-
-#============= init_t ==============
-allow init_t self:process dyntransition;
-
 #============= kernel_t ==============
 allow kernel_t self:system firmware_load;
-
-#============= kmod_t ==============
-allow kmod_t tmpfs_t:dir { getattr open read };
 
 #============= lvm_t ==============
 allow lvm_t unlabeled_t:dir search;
 
 #============= sshd_t ==============
 allow sshd_t chkpwd_t:process { noatsecure rlimitinh siginh };
-allow sshd_t ssh_home_t:dir { add_name write };
-allow sshd_t ssh_home_t:sock_file create;
 allow sshd_t staff_t:process { noatsecure rlimitinh siginh };
 
-#!!!! This avc can be allowed using the boolean 'allow_polyinstantiation'
-allow sshd_t user_home_dir_t:dir read;
-
-#============= staff_t ==============
-allow staff_t auditd_etc_t:dir search;
-allow staff_t auditd_etc_t:file { getattr map open read };
-allow staff_t auditd_log_t:dir { getattr open read search };
-allow staff_t auditd_log_t:file { getattr map open read };
-allow staff_t security_t:security read_policy;
-
 #============= sysadm_systemd_t ==============
-allow sysadm_systemd_t restorecond_exec_t:file execute;
-allow sysadm_systemd_t self:capability { mknod net_admin };
-allow sysadm_systemd_t self:capability2 { bpf perfmon };
 allow sysadm_systemd_t sysadm_t:process { noatsecure siginh };
 
-#============= syslogd_t ==============
-allow syslogd_t systemd_unit_t:dir search;
-allow syslogd_t systemd_unit_t:lnk_file read;
-allow syslogd_t tmpfs_t:dir search;
-
 #============= systemd_generator_t ==============
-allow systemd_generator_t self:capability dac_read_search;
 allow systemd_generator_t tmpfs_t:dir read;
 allow systemd_generator_t unlabeled_t:dir { getattr search };
 
-#============= systemd_journal_init_t ==============
-allow systemd_journal_init_t self:capability net_admin;
-
 #============= systemd_modules_load_t ==============
 allow systemd_modules_load_t cgroup_t:file { getattr ioctl open read };
-
-#!!!! This avc can be allowed using the boolean 'kernel_module_load_net_admin'
-allow systemd_modules_load_t self:capability net_admin;
 allow systemd_modules_load_t tmpfs_t:dir read;
 
 #============= systemd_networkd_t ==============
 allow systemd_networkd_t mount_runtime_t:file { open read };
-allow systemd_networkd_t selinux_config_t:dir search;
 
 #============= systemd_nsresourced_t ==============
 allow systemd_nsresourced_t fs_t:filesystem getattr;
 allow systemd_nsresourced_t self:capability net_admin;
-allow systemd_nsresourced_t self:capability2 perfmon;
 
 #============= systemd_pcrphase_t ==============
 allow systemd_pcrphase_t dosfs_t:dir { getattr search };
 allow systemd_pcrphase_t dosfs_t:file { getattr open read };
 allow systemd_pcrphase_t nsfs_t:file getattr;
-allow systemd_pcrphase_t self:capability net_admin;
 allow systemd_pcrphase_t sysfs_t:filesystem getattr;
 allow systemd_pcrphase_t systemd_userdbd_runtime_t:dir search;
 allow systemd_pcrphase_t systemd_userdbd_runtime_t:sock_file write;
@@ -147,16 +104,8 @@ allow systemd_pcrphase_t systemd_userdbd_t:unix_stream_socket connectto;
 allow systemd_pcrphase_t udev_runtime_t:dir search;
 allow systemd_pcrphase_t udev_runtime_t:file { getattr open read };
 
-#============= systemd_sessions_t ==============
-allow systemd_sessions_t self:capability net_admin;
-
 #============= systemd_tmpfiles_t ==============
-allow systemd_tmpfiles_t bin_t:lnk_file { getattr read };
-allow systemd_tmpfiles_t security_t:lnk_file { getattr read };
 allow systemd_tmpfiles_t tmpfs_t:lnk_file { create getattr read };
-
-#============= systemd_user_runtime_dir_t ==============
-allow systemd_user_runtime_dir_t self:capability net_admin;
 
 #============= udev_t ==============
 allow udev_t lvm_t:process { noatsecure rlimitinh siginh };
