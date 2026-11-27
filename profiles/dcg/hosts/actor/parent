@@ -1,3 +1,1 @@
-../../core
-gentoo:features/selinux
-gentoo:features/hardened/amd64/no-multilib
+dcg2:srvr/selinux

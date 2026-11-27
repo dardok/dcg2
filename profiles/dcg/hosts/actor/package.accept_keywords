@@ -1,3 +1,8 @@
-sec-policy/selinux-dcg
+sec-policy/selinux-apache
+sec-policy/selinux-chronyd
+sec-policy/selinux-kerberos
+sec-policy/selinux-ldap
+sec-policy/selinux-ntp
 sec-policy/selinux-pdns
-sys-auth/pam-afs-session
+sec-policy/selinux-postfix
+sec-policy/selinux-postgresql

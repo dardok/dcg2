@@ -4,4 +4,5 @@ net-nds/openldap sasl experimental minimal
 sys-auth/pambase pam_krb5 securetty sssd
 sys-auth/sssd nfsv4 passkey python samba
 sys-cluster/rdma-core python neigh
+sys-kernel/installkernel dracut uki ukify
 sys-fs/cryptsetup passwdqc ssh

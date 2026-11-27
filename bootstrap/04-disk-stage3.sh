@@ -215,6 +215,11 @@ session     required      pam_unix.so
 -session    optional      pam_sss.so
 EOF
 
+cat > /etc/smartd.conf <<EOF
+DEVICESCAN -a -o on -S on -s (S/../.././02|L/../../6/03) -H -m root
+EOF
+systemctl enable smartd
+
 systemctl enable systemd-networkd
 
 cat > /etc/systemd/timesyncd.conf <<EOF
@@ -247,6 +252,8 @@ mkdir -m 0750 /home/toor/.ssh && cat > /home/toor/.ssh/authorized_keys <<EOF
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL6fabrxoskifxFtfW/9U9pr2xHsTCcdb1nhzgYm1m6t dkleiner@briar
 EOF
 chown -R toor:toor /home/toor/.ssh
+
+systemctl enable haveged
 
 semanage login -a -s root root
 sed -i -e 's/^root.*/root ALL=(ALL:ALL) ROLE=sysadm_r TYPE=sysadm_t NOPASSWD: ALL/g' /etc/sudoers

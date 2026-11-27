@@ -8,4 +8,5 @@
 *sys-apps/smartmontools
 *sys-auth/sssd
 *sys-cluster/rdma-core
+*sys-kernel/installkernel
 *sys-process/audit
