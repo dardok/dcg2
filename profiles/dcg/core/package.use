@@ -1,4 +1,5 @@
 app-admin/sudo ldap sssd
+net-firewall/iptables conntrack netlink nftables
 net-fs/samba winbind
 net-nds/openldap sasl experimental minimal
 sys-auth/pambase pam_krb5 securetty sssd
